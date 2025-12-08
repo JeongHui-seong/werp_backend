@@ -13,4 +13,14 @@ export class UserRepository {
             where: { email },
         })
     }
+
+    findByEmailWithRelations(email: string) {
+        return prisma.user.findUnique({
+            where: { email },
+            include: {
+                department: true,
+                role: true,
+            }
+        })
+    }
 }
