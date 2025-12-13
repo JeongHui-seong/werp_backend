@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.0.1",
   "engineVersion": "f09f2815f091dbba658cdcd2264306d88bb5bda6",
   "activeProvider": "postgresql",
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider   = \"prisma-client\"\n  output     = \"../src/generated\"\n  engineType = \"client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel User {\n  id         String   @id @default(uuid()) @db.Uuid\n  email      String   @unique\n  name       String\n  phone      String   @unique\n  status     String\n  hire_date  DateTime @default(now())\n  updated_at DateTime @default(now()) @updatedAt\n\n  dept_id Int\n  role_id Int\n\n  department Department @relation(fields: [dept_id], references: [id])\n  role       Role       @relation(fields: [role_id], references: [id])\n}\n\nmodel Department {\n  id   Int    @id @default(autoincrement())\n  name String\n\n  users User[]\n}\n\nmodel Role {\n  id   Int    @id @default(autoincrement())\n  name String\n\n  users User[]\n}\n",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider   = \"prisma-client\"\n  output     = \"../src/generated\"\n  engineType = \"client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel User {\n  id         String   @id @default(uuid()) @db.Uuid\n  email      String   @unique\n  name       String\n  phone      String   @unique\n  status     String\n  hire_date  DateTime @default(now())\n  updated_at DateTime @default(now()) @updatedAt\n\n  dept_id Int\n  role_id Int\n\n  department Department @relation(fields: [dept_id], references: [id])\n  role       Role       @relation(fields: [role_id], references: [id])\n\n  attendances    Attendance[]\n  leaves         Leave[]\n  approvedLeaves Leave[]      @relation(\"ApprovedLeaves\")\n}\n\nmodel Department {\n  id   Int    @id @default(autoincrement())\n  name String\n\n  users User[]\n}\n\nmodel Role {\n  id   Int    @id @default(autoincrement())\n  name String\n\n  users User[]\n}\n\nmodel Attendance {\n  id        Int       @id @default(autoincrement())\n  user_id   String    @db.Uuid\n  date      DateTime  @default(now()) @db.Date\n  clockin   DateTime  @default(now())\n  clockout  DateTime?\n  worktime  Int?\n  leaves_id Int?\n  note      String?   @db.Text\n\n  user  User   @relation(fields: [user_id], references: [id])\n  leave Leave? @relation(fields: [leaves_id], references: [id])\n\n  @@index([user_id])\n  @@index([date])\n}\n\nmodel Leave {\n  id               Int       @id @default(autoincrement())\n  user_id          String    @db.Uuid\n  approver_id      String?   @db.Uuid\n  leave_type_id    Int\n  startdate        DateTime  @db.Date\n  enddate          DateTime  @db.Date\n  status           String    @db.VarChar(20)\n  reason           String?   @db.VarChar(255)\n  approved_at      DateTime? @db.Date\n  created_at       DateTime  @default(now()) @db.Date\n  rejection_reason String?   @db.VarChar(255)\n\n  user        User         @relation(fields: [user_id], references: [id])\n  approver    User?        @relation(\"ApprovedLeaves\", fields: [approver_id], references: [id])\n  leave_type  LeaveType    @relation(fields: [leave_type_id], references: [id])\n  attendances Attendance[]\n\n  @@index([user_id])\n  @@index([approver_id])\n  @@index([leave_type_id])\n}\n\nmodel LeaveType {\n  id   Int    @id @default(autoincrement())\n  type String @db.VarChar(20)\n\n  leaves Leave[]\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -28,7 +28,7 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"hire_date\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updated_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"dept_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"role_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"department\",\"kind\":\"object\",\"type\":\"Department\",\"relationName\":\"DepartmentToUser\"},{\"name\":\"role\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"RoleToUser\"}],\"dbName\":null},\"Department\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"DepartmentToUser\"}],\"dbName\":null},\"Role\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"RoleToUser\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"hire_date\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updated_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"dept_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"role_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"department\",\"kind\":\"object\",\"type\":\"Department\",\"relationName\":\"DepartmentToUser\"},{\"name\":\"role\",\"kind\":\"object\",\"type\":\"Role\",\"relationName\":\"RoleToUser\"},{\"name\":\"attendances\",\"kind\":\"object\",\"type\":\"Attendance\",\"relationName\":\"AttendanceToUser\"},{\"name\":\"leaves\",\"kind\":\"object\",\"type\":\"Leave\",\"relationName\":\"LeaveToUser\"},{\"name\":\"approvedLeaves\",\"kind\":\"object\",\"type\":\"Leave\",\"relationName\":\"ApprovedLeaves\"}],\"dbName\":null},\"Department\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"DepartmentToUser\"}],\"dbName\":null},\"Role\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"RoleToUser\"}],\"dbName\":null},\"Attendance\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"user_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"date\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"clockin\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"clockout\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"worktime\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"leaves_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"note\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"AttendanceToUser\"},{\"name\":\"leave\",\"kind\":\"object\",\"type\":\"Leave\",\"relationName\":\"AttendanceToLeave\"}],\"dbName\":null},\"Leave\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"user_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"approver_id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"leave_type_id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"startdate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"enddate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"reason\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"approved_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"created_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"rejection_reason\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"LeaveToUser\"},{\"name\":\"approver\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"ApprovedLeaves\"},{\"name\":\"leave_type\",\"kind\":\"object\",\"type\":\"LeaveType\",\"relationName\":\"LeaveToLeaveType\"},{\"name\":\"attendances\",\"kind\":\"object\",\"type\":\"Attendance\",\"relationName\":\"AttendanceToLeave\"}],\"dbName\":null},\"LeaveType\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"leaves\",\"kind\":\"object\",\"type\":\"Leave\",\"relationName\":\"LeaveToLeaveType\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
   const { Buffer } = await import('node:buffer')
@@ -203,6 +203,36 @@ export interface PrismaClient<
     * ```
     */
   get role(): Prisma.RoleDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.attendance`: Exposes CRUD operations for the **Attendance** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Attendances
+    * const attendances = await prisma.attendance.findMany()
+    * ```
+    */
+  get attendance(): Prisma.AttendanceDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.leave`: Exposes CRUD operations for the **Leave** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Leaves
+    * const leaves = await prisma.leave.findMany()
+    * ```
+    */
+  get leave(): Prisma.LeaveDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.leaveType`: Exposes CRUD operations for the **LeaveType** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more LeaveTypes
+    * const leaveTypes = await prisma.leaveType.findMany()
+    * ```
+    */
+  get leaveType(): Prisma.LeaveTypeDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {

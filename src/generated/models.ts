@@ -11,4 +11,7 @@
 export type * from './models/User'
 export type * from './models/Department'
 export type * from './models/Role'
+export type * from './models/Attendance'
+export type * from './models/Leave'
+export type * from './models/LeaveType'
 export type * from './commonInputTypes'

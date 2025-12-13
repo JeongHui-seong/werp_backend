@@ -32,3 +32,18 @@ export type Department = Prisma.DepartmentModel
  * 
  */
 export type Role = Prisma.RoleModel
+/**
+ * Model Attendance
+ * 
+ */
+export type Attendance = Prisma.AttendanceModel
+/**
+ * Model Leave
+ * 
+ */
+export type Leave = Prisma.LeaveModel
+/**
+ * Model LeaveType
+ * 
+ */
+export type LeaveType = Prisma.LeaveTypeModel

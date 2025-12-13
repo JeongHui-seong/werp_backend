@@ -28,6 +28,10 @@ model User {
 
   department  Department  @relation(fields: [dept_id], references: [id])
   role  Role  @relation(fields: [role_id], references: [id])
+  
+  attendances Attendance[]
+  leaves Leave[]
+  approvedLeaves Leave[] @relation("ApprovedLeaves")
 }
 
 model Department {
@@ -42,4 +46,51 @@ model Role {
   name  String
 
   users User[]
+}
+
+model Attendance {
+  id  Int @id @default(autoincrement())
+  user_id String @db.Uuid
+  date DateTime @default(now()) @db.Date
+  clockin DateTime @default(now())
+  clockout DateTime?
+  worktime Int?
+  leaves_id Int?
+  note String? @db.Text
+
+  user User @relation(fields: [user_id], references: [id])
+  leave Leave? @relation(fields: [leaves_id], references: [id])
+
+  @@index([user_id])
+  @@index([date])
+}
+
+model Leave {
+  id  Int @id @default(autoincrement())
+  user_id String @db.Uuid
+  approver_id String? @db.Uuid
+  leave_type_id Int
+  startdate DateTime @db.Date
+  enddate DateTime @db.Date
+  status String @db.VarChar(20)
+  reason String? @db.VarChar(255)
+  approved_at DateTime? @db.Date
+  created_at DateTime @default(now()) @db.Date
+  rejection_reason String? @db.VarChar(255)
+
+  user User @relation(fields: [user_id], references: [id])
+  approver User? @relation("ApprovedLeaves", fields: [approver_id], references: [id])
+  leave_type LeaveType @relation(fields: [leave_type_id], references: [id])
+  attendances Attendance[]
+
+  @@index([user_id])
+  @@index([approver_id])
+  @@index([leave_type_id])
+}
+
+model LeaveType {
+  id  Int @id @default(autoincrement())
+  type String @db.VarChar(20)
+
+  leaves Leave[]
 }

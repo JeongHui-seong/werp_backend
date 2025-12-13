@@ -53,7 +53,10 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   User: 'User',
   Department: 'Department',
-  Role: 'Role'
+  Role: 'Role',
+  Attendance: 'Attendance',
+  Leave: 'Leave',
+  LeaveType: 'LeaveType'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -103,6 +106,45 @@ export const RoleScalarFieldEnum = {
 export type RoleScalarFieldEnum = (typeof RoleScalarFieldEnum)[keyof typeof RoleScalarFieldEnum]
 
 
+export const AttendanceScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  date: 'date',
+  clockin: 'clockin',
+  clockout: 'clockout',
+  worktime: 'worktime',
+  leaves_id: 'leaves_id',
+  note: 'note'
+} as const
+
+export type AttendanceScalarFieldEnum = (typeof AttendanceScalarFieldEnum)[keyof typeof AttendanceScalarFieldEnum]
+
+
+export const LeaveScalarFieldEnum = {
+  id: 'id',
+  user_id: 'user_id',
+  approver_id: 'approver_id',
+  leave_type_id: 'leave_type_id',
+  startdate: 'startdate',
+  enddate: 'enddate',
+  status: 'status',
+  reason: 'reason',
+  approved_at: 'approved_at',
+  created_at: 'created_at',
+  rejection_reason: 'rejection_reason'
+} as const
+
+export type LeaveScalarFieldEnum = (typeof LeaveScalarFieldEnum)[keyof typeof LeaveScalarFieldEnum]
+
+
+export const LeaveTypeScalarFieldEnum = {
+  id: 'id',
+  type: 'type'
+} as const
+
+export type LeaveTypeScalarFieldEnum = (typeof LeaveTypeScalarFieldEnum)[keyof typeof LeaveTypeScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -117,4 +159,12 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
