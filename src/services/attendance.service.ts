@@ -13,7 +13,7 @@ export class AttendanceService {
         if (!payload) {
             return {
                 success: false,
-                message: "출근 등록에 실패하였습니다. 잠시 후 다시 시도해주세요."
+                message: "유효하지 않은 인증 토큰입니다. 다시 로그인해주세요."
             };
         }
 
@@ -23,7 +23,7 @@ export class AttendanceService {
         if (!user) {
             return {
                 success: false,
-                message: "출근 등록에 실패하였습니다. 잠시 후 다시 시도해주세요."
+                message: "사용자를 찾을 수 없습니다."
             };
         }
 

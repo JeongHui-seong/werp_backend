@@ -16,7 +16,14 @@ export class AuthController {
         }
 
         const result = await this.service.findEmail(dto.email);
-        return res.json(result);
+        
+        if (!result.success) {
+            // 사용자를 찾지 못한 경우 404, 이메일 전송 실패 등 기타 오류는 500
+            const statusCode = result.message.includes("등록되지 않은 이메일") ? 404 : 500;
+            return res.status(statusCode).json(result);
+        }
+        
+        return res.status(200).json(result);
     }
 
     resendCode = async (req: Request, res: Response) => {
@@ -30,7 +37,14 @@ export class AuthController {
         }
 
         const result = await this.service.resendVerificationCode(email);
-        return res.json(result);
+        
+        if (!result.success) {
+            // 사용자를 찾지 못한 경우 404, 이메일 전송 실패 등 기타 오류는 500
+            const statusCode = result.message.includes("등록되지 않은 이메일") ? 404 : 500;
+            return res.status(statusCode).json(result);
+        }
+        
+        return res.status(200).json(result);
     }
 
     login = async (req: Request, res: Response) => {
@@ -44,6 +58,12 @@ export class AuthController {
         }
 
         const result = await this.service.login(email);
-        return res.json(result);
+        
+        if (!result.success) {
+            // 사용자를 찾지 못한 경우 404
+            return res.status(404).json(result);
+        }
+        
+        return res.status(200).json(result);
     }
 }
