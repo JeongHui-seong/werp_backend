@@ -1,7 +1,6 @@
 import { AttendanceRepository } from "../repositories/attendance.repository";
 import { UserRepository } from "../repositories/user.repository";
 import { verifyToken } from "../utils/jwt";
-import { convertToAsiaSeoul } from "../utils/dateTime";
 
 export class AttendanceService {
     private attendanceRepo = new AttendanceRepository();
@@ -38,9 +37,9 @@ export class AttendanceService {
                 attendance: {
                     id: attendance.id,
                     user_id: attendance.user_id,
-                    date: convertToAsiaSeoul(attendance.date),
-                    clockin: convertToAsiaSeoul(attendance.clockin),
-                    clockout: convertToAsiaSeoul(attendance.clockout),
+                    date: attendance.date,
+                    clockin: attendance.clockin,
+                    clockout: attendance.clockout,
                 }
             };
         } catch (error) {
@@ -84,9 +83,9 @@ export class AttendanceService {
                 attendance: {
                     id: attendance?.id,
                     user_id: attendance?.user_id,
-                    date: attendance?.date ? convertToAsiaSeoul(attendance.date) : null,
-                    clockin: attendance?.clockin ? convertToAsiaSeoul(attendance.clockin) : null,
-                    clockout: attendance?.clockout ? convertToAsiaSeoul(attendance.clockout) : null,
+                    date: attendance?.date ? attendance.date : null,
+                    clockin: attendance?.clockin ? attendance.clockin : null,
+                    clockout: attendance?.clockout ? attendance.clockout : null,
                 }
             };
         } catch (error) {
@@ -96,7 +95,7 @@ export class AttendanceService {
                 message: "출퇴근 정보 조회에 실패하였습니다. 잠시 후 다시 시도해주세요."
             };
         }
-    }
+    } 
 
     async clockOut(token: string, attendanceId: number) {
         // JWT 토큰 검증 및 email 추출
@@ -155,9 +154,9 @@ export class AttendanceService {
                 attendance: {
                     id: updatedAttendance.id,
                     user_id: updatedAttendance.user_id,
-                    date: convertToAsiaSeoul(updatedAttendance.date),
-                    clockin: convertToAsiaSeoul(updatedAttendance.clockin),
-                    clockout: convertToAsiaSeoul(updatedAttendance.clockout),
+                    date: updatedAttendance.date,
+                    clockin: updatedAttendance.clockin,
+                    clockout: updatedAttendance.clockout,
                 }
             };
         } catch (error) {
