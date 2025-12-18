@@ -9,18 +9,15 @@ const prisma = new PrismaClient({ adapter });
 
 export class AttendanceRepository {
     async create(userId: string, dateString?: string, clockinString?: string) {
-        // date는 문자열 그대로 사용 (yyyy-MM-dd 형식)
-        // Prisma가 자동으로 파싱하므로 타임존 변환 없이 저장됨
-        let date: string | Date;
+        // dateString을 ISO 형식으로 변환 (yyyy-MM-ddT00:00:00)
+        let date: Date;
         if (dateString) {
-            date = dateString; // 문자열 그대로 전달
+            date = new Date(`${dateString}T00:00:00`);
         } else {
-            // dateString이 없으면 오늘 날짜를 yyyy-MM-dd 형식으로 생성
+            // dateString이 없으면 오늘 날짜 사용
             const today = new Date();
-            const year = today.getFullYear();
-            const month = String(today.getMonth() + 1).padStart(2, '0');
-            const day = String(today.getDate()).padStart(2, '0');
-            date = `${year}-${month}-${day}`;
+            today.setHours(0, 0, 0, 0);
+            date = today;
         }
 
         // clockin 파싱 (HH:mm:ss 형식)
@@ -51,12 +48,23 @@ export class AttendanceRepository {
     }
 
     async findByUserIdAndDate(userId: string, dateString: string) {
-        // dateString을 그대로 사용하여 날짜 비교
-        // Prisma가 문자열을 자동으로 파싱하므로 타임존 변환 없이 처리됨
+        // dateString을 ISO 형식으로 변환하여 날짜 비교
+        const date = new Date(`${dateString}T00:00:00`);
+        
+        // 해당 날짜의 시작과 끝 시간 설정
+        const startOfDay = new Date(date);
+        startOfDay.setHours(0, 0, 0, 0);
+        
+        const endOfDay = new Date(date);
+        endOfDay.setHours(23, 59, 59, 999);
+
         return prisma.attendance.findFirst({
             where: {
                 user_id: userId,
-                date: dateString, // 문자열 그대로 사용
+                date: {
+                    gte: startOfDay,
+                    lte: endOfDay,
+                }
             },
             select: {
                 id: true,
