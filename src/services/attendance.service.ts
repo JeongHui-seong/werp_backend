@@ -44,9 +44,10 @@ export class AttendanceService {
             };
         } catch (error) {
             console.error("출근 등록 실패:", error);
+            const errorMessage = error instanceof Error ? error.message : "출근 등록에 실패하였습니다. 잠시 후 다시 시도해주세요.";
             return {
                 success: false,
-                message: "출근 등록에 실패하였습니다. 잠시 후 다시 시도해주세요."
+                message: errorMessage
             };
         }
     }
@@ -168,9 +169,10 @@ export class AttendanceService {
             };
         } catch (error) {
             console.error("퇴근 등록 실패:", error);
+            const errorMessage = error instanceof Error ? error.message : "퇴근 등록에 실패하였습니다. 잠시 후 다시 시도해주세요.";
             return {
                 success: false,
-                message: "퇴근 등록에 실패하였습니다. 잠시 후 다시 시도해주세요."
+                message: errorMessage
             };
         }
     }

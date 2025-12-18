@@ -9,27 +9,22 @@ const prisma = new PrismaClient({ adapter });
 
 export class AttendanceRepository {
     async create(userId: string, dateString?: string, clockinString?: string) {
+        // dateString 필수 체크
+        if (!dateString) {
+            throw new Error("date는 필수입니다. (yyyy-MM-dd 형식)");
+        }
+
         // dateString을 ISO 형식으로 변환 (yyyy-MM-ddT00:00:00)
-        let date: Date;
-        if (dateString) {
-            date = new Date(`${dateString}T00:00:00`);
-        } else {
-            // dateString이 없으면 오늘 날짜 사용
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            date = today;
+        const date = new Date(`${dateString}T00:00:00`);
+
+        // clockinString 필수 체크
+        if (!clockinString) {
+            throw new Error("clockin은 필수입니다. (HH:mm:ss 형식)");
         }
 
         // clockin 파싱 (HH:mm:ss 형식)
-        let clockin: Date | null = null;
-        if (clockinString) {
-            const [hours, minutes, seconds = 0] = clockinString.split(':').map(Number);
-            clockin = new Date(1970, 0, 1, hours, minutes, seconds);
-        } else {
-            // 현재 시간에서 시간 부분만 추출
-            const now = new Date();
-            clockin = new Date(1970, 0, 1, now.getHours(), now.getMinutes(), now.getSeconds());
-        }
+        const [hours, minutes, seconds = 0] = clockinString.split(':').map(Number);
+        const clockin = new Date(1970, 0, 1, hours, minutes, seconds);
 
         return prisma.attendance.create({
             data: {
@@ -92,29 +87,21 @@ export class AttendanceRepository {
             throw new Error("출근 기록을 찾을 수 없거나 출근 시간이 없습니다.");
         }
 
-        // clockout 파싱 (HH:mm:ss 형식)
-        let clockoutTime: Date;
-        if (clockoutString) {
-            const [hours, minutes, seconds = 0] = clockoutString.split(':').map(Number);
-            clockoutTime = new Date(1970, 0, 1, hours, minutes, seconds);
-        } else {
-            // 현재 시간에서 시간 부분만 추출
-            const now = new Date();
-            clockoutTime = new Date(1970, 0, 1, now.getHours(), now.getMinutes(), now.getSeconds());
+        // clockoutString 필수 체크
+        if (!clockoutString) {
+            throw new Error("clockout은 필수입니다. (HH:mm:ss 형식)");
         }
+
+        // clockout 파싱 (HH:mm:ss 형식)
+        const [hours, minutes, seconds = 0] = clockoutString.split(':').map(Number);
+        const clockoutTime = new Date(1970, 0, 1, hours, minutes, seconds);
         
         // worktime 계산을 위해 date와 clockin, clockout을 결합
         const clockinDate = new Date(attendance.date);
         clockinDate.setHours(attendance.clockin.getHours(), attendance.clockin.getMinutes(), attendance.clockin.getSeconds());
         
         const clockoutDate = new Date(attendance.date);
-        if (clockoutString) {
-            const [hours, minutes, seconds = 0] = clockoutString.split(':').map(Number);
-            clockoutDate.setHours(hours, minutes, seconds);
-        } else {
-            const now = new Date();
-            clockoutDate.setHours(now.getHours(), now.getMinutes(), now.getSeconds());
-        }
+        clockoutDate.setHours(hours, minutes, seconds);
         
         // worktime 계산 (clockout - clockin을 분 단위로)
         const worktimeMinutes = Math.floor((clockoutDate.getTime() - clockinDate.getTime()) / (1000 * 60));
