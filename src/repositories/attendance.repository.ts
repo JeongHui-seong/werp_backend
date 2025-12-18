@@ -19,12 +19,11 @@ export class AttendanceRepository {
 
         // clockinString 필수 체크
         if (!clockinString) {
-            throw new Error("clockin은 필수입니다. (HH:mm:ss 형식)");
+            throw new Error("clockin은 필수입니다. (ISO 형식)");
         }
 
-        // clockin 파싱 (HH:mm:ss 형식)
-        const [hours, minutes, seconds = 0] = clockinString.split(':').map(Number);
-        const clockin = new Date(1970, 0, 1, hours, minutes, seconds);
+        // clockin은 ISO 형식 문자열을 그대로 Date 객체로 변환
+        const clockin = new Date(clockinString);
 
         return prisma.attendance.create({
             data: {
@@ -89,22 +88,15 @@ export class AttendanceRepository {
 
         // clockoutString 필수 체크
         if (!clockoutString) {
-            throw new Error("clockout은 필수입니다. (HH:mm:ss 형식)");
+            throw new Error("clockout은 필수입니다. (ISO 형식)");
         }
 
-        // clockout 파싱 (HH:mm:ss 형식)
-        const [hours, minutes, seconds = 0] = clockoutString.split(':').map(Number);
-        const clockoutTime = new Date(1970, 0, 1, hours, minutes, seconds);
-        
-        // worktime 계산을 위해 date와 clockin, clockout을 결합
-        const clockinDate = new Date(attendance.date);
-        clockinDate.setHours(attendance.clockin.getHours(), attendance.clockin.getMinutes(), attendance.clockin.getSeconds());
-        
-        const clockoutDate = new Date(attendance.date);
-        clockoutDate.setHours(hours, minutes, seconds);
+        // clockout은 ISO 형식 문자열을 그대로 Date 객체로 변환
+        const clockoutTime = new Date(clockoutString);
         
         // worktime 계산 (clockout - clockin을 분 단위로)
-        const worktimeMinutes = Math.floor((clockoutDate.getTime() - clockinDate.getTime()) / (1000 * 60));
+        // clockin과 clockout이 이미 ISO 형식의 Date 객체이므로 직접 계산
+        const worktimeMinutes = Math.floor((clockoutTime.getTime() - attendance.clockin.getTime()) / (1000 * 60));
 
         return prisma.attendance.update({
             where: {
