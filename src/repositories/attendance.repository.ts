@@ -50,12 +50,33 @@ export class AttendanceRepository {
     }
 
     async updateClockout(attendanceId: number) {
+        // 먼저 attendance를 조회하여 clockin 값을 가져옵니다
+        const attendance = await prisma.attendance.findUnique({
+            where: {
+                id: attendanceId,
+            },
+            select: {
+                clockin: true,
+            }
+        });
+
+        if (!attendance || !attendance.clockin) {
+            throw new Error("출근 기록을 찾을 수 없거나 출근 시간이 없습니다.");
+        }
+
+        // clockout 시간 설정
+        const clockoutTime = new Date();
+        
+        // worktime 계산 (clockout - clockin을 분 단위로)
+        const worktimeMinutes = Math.floor((clockoutTime.getTime() - attendance.clockin.getTime()) / (1000 * 60));
+
         return prisma.attendance.update({
             where: {
                 id: attendanceId,
             },
             data: {
-                clockout: new Date(),
+                clockout: clockoutTime,
+                worktime: worktimeMinutes,
             },
             select: {
                 id: true,
@@ -63,6 +84,7 @@ export class AttendanceRepository {
                 date: true,
                 clockin: true,
                 clockout: true,
+                worktime: true,
             }
         });
     }
