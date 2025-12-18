@@ -103,5 +103,45 @@ export class AttendanceRepository {
             }
         });
     }
+
+    async findByUserIdAndMonth(userId: string, year: number, month: number) {
+        // 해당 월의 시작일과 종료일 계산
+        const startDate = new Date(year, month - 1, 1);
+        const endDate = new Date(year, month, 0, 23, 59, 59, 999);
+
+        return prisma.attendance.findMany({
+            where: {
+                user_id: userId,
+                date: {
+                    gte: startDate,
+                    lte: endDate,
+                },
+                // 휴가와 연결된 근태는 제외 (leaves_id가 null인 것만)
+                leaves_id: null,
+            },
+            select: {
+                id: true,
+                user_id: true,
+                date: true,
+                clockin: true,
+                clockout: true,
+                worktime: true,
+                note: true,
+                leave: {
+                    select: {
+                        status: true,
+                        leave_type: {
+                            select: {
+                                type: true,
+                            }
+                        }
+                    }
+                }
+            },
+            orderBy: {
+                date: 'asc',
+            }
+        });
+    }
 }
 
