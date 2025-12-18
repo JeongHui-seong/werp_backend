@@ -15,7 +15,10 @@ export class AttendanceController {
             });
         }
 
-        const result = await this.service.clockIn(token);
+        // body에서 date와 clockin 추출 (선택사항)
+        const { date, clockin } = req.body;
+
+        const result = await this.service.clockIn(token, date, clockin);
         
         if (!result.success) {
             // 토큰 검증 실패는 401, 사용자 조회 실패는 404, DB 오류 등은 500
@@ -41,15 +44,27 @@ export class AttendanceController {
             });
         }
 
-        const result = await this.service.getTodayAttendance(token);
+        // 쿼리 파라미터에서 날짜 추출
+        const { date } = req.query;
+
+        if (!date || typeof date !== 'string') {
+            return res.status(400).json({
+                success: false,
+                message: "date 쿼리 파라미터가 필요합니다. (예: ?date=2025-01-15)"
+            });
+        }
+
+        const result = await this.service.getTodayAttendance(token, date);
         
         if (!result.success) {
-            // 토큰 검증 실패는 401, 사용자 조회 실패는 404, 데이터 없음은 404, DB 오류 등은 500
+            // 토큰 검증 실패는 401, 사용자 조회 실패는 404, 유효하지 않은 날짜는 400, DB 오류 등은 500
             let statusCode = 500;
             if (result.message.includes("유효하지 않은 인증 토큰")) {
                 statusCode = 401;
             } else if (result.message.includes("사용자를 찾을 수 없습니다")){
                 statusCode = 404;
+            } else if (result.message.includes("유효하지 않은") || result.message.includes("날짜가 필요")) {
+                statusCode = 400;
             }
             return res.status(statusCode).json(result);
         }
@@ -67,8 +82,8 @@ export class AttendanceController {
             });
         }
 
-        // 바디에서 attendance ID 추출
-        const { attendanceId } = req.body;
+        // 바디에서 attendance ID와 clockout 추출
+        const { attendanceId, clockout } = req.body;
 
         if (!attendanceId) {
             return res.status(400).json({
@@ -86,7 +101,7 @@ export class AttendanceController {
             });
         }
 
-        const result = await this.service.clockOut(token, id);
+        const result = await this.service.clockOut(token, id, clockout);
         
         if (!result.success) {
             // 토큰 검증 실패는 401, 사용자 조회 실패는 404, 출근 기록 없음은 404, 

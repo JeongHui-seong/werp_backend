@@ -6,7 +6,7 @@ export class AttendanceService {
     private attendanceRepo = new AttendanceRepository();
     private userRepo = new UserRepository();
 
-    async clockIn(token: string) {
+    async clockIn(token: string, date?: string, clockin?: string) {
         // JWT 토큰 검증 및 email 추출
         const payload = verifyToken(token);
         
@@ -29,7 +29,7 @@ export class AttendanceService {
 
         try {
             // 출근 기록 생성
-            const attendance = await this.attendanceRepo.create(user.id);
+            const attendance = await this.attendanceRepo.create(user.id, date, clockin);
 
             return {
                 success: true,
@@ -51,7 +51,7 @@ export class AttendanceService {
         }
     }
 
-    async getTodayAttendance(token: string) {
+    async getTodayAttendance(token: string, dateString: string) {
         // JWT 토큰 검증 및 email 추출
         const payload = verifyToken(token);
         
@@ -73,10 +73,16 @@ export class AttendanceService {
         }
 
         try {
-            // 오늘 날짜의 출퇴근 정보 조회
-            const today = new Date();
-            console.log(today);
-            const attendance = await this.attendanceRepo.findByUserIdAndDate(user.id, today);
+            // 날짜 문자열 파싱 (예: "2025-01-15")
+            if (!dateString) {
+                return {
+                    success: false,
+                    message: "날짜가 필요합니다. (예: 2025-01-15)"
+                };
+            }
+
+            // 날짜의 출퇴근 정보 조회
+            const attendance = await this.attendanceRepo.findByUserIdAndDate(user.id, dateString);
 
             return {
                 success: true,
@@ -98,7 +104,7 @@ export class AttendanceService {
         }
     } 
 
-    async clockOut(token: string, attendanceId: number) {
+    async clockOut(token: string, attendanceId: number, clockout?: string) {
         // JWT 토큰 검증 및 email 추출
         const payload = verifyToken(token);
         
@@ -147,7 +153,7 @@ export class AttendanceService {
             }
 
             // 퇴근 시간 업데이트
-            const updatedAttendance = await this.attendanceRepo.updateClockout(attendanceId);
+            const updatedAttendance = await this.attendanceRepo.updateClockout(attendanceId, clockout);
 
             return {
                 success: true,

@@ -51,8 +51,8 @@ model Role {
 model Attendance {
   id  Int @id @default(autoincrement())
   user_id String @db.Uuid
-  date DateTime @default(now()) @db.Date
-  clockin DateTime @default(now())
+  date DateTime @db.Date
+  clockin DateTime?
   clockout DateTime?
   worktime Int?
   leaves_id Int?

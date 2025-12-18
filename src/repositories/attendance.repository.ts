@@ -8,10 +8,37 @@ const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL })
 const prisma = new PrismaClient({ adapter });
 
 export class AttendanceRepository {
-    async create(userId: string) {
+    async create(userId: string, dateString?: string, clockinString?: string) {
+        // date는 문자열 그대로 사용 (yyyy-MM-dd 형식)
+        // Prisma가 자동으로 파싱하므로 타임존 변환 없이 저장됨
+        let date: string | Date;
+        if (dateString) {
+            date = dateString; // 문자열 그대로 전달
+        } else {
+            // dateString이 없으면 오늘 날짜를 yyyy-MM-dd 형식으로 생성
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            date = `${year}-${month}-${day}`;
+        }
+
+        // clockin 파싱 (HH:mm:ss 형식)
+        let clockin: Date | null = null;
+        if (clockinString) {
+            const [hours, minutes, seconds = 0] = clockinString.split(':').map(Number);
+            clockin = new Date(1970, 0, 1, hours, minutes, seconds);
+        } else {
+            // 현재 시간에서 시간 부분만 추출
+            const now = new Date();
+            clockin = new Date(1970, 0, 1, now.getHours(), now.getMinutes(), now.getSeconds());
+        }
+
         return prisma.attendance.create({
             data: {
                 user_id: userId,
+                date: date,
+                clockin: clockin,
             },
             select: {
                 id: true,
@@ -23,21 +50,13 @@ export class AttendanceRepository {
         });
     }
 
-    async findByUserIdAndDate(userId: string, date: Date) {
-        // 오늘 날짜의 시작 시간과 끝 시간 설정
-        const startOfDay = new Date(date);
-        startOfDay.setHours(0, 0, 0, 0);
-        
-        const endOfDay = new Date(date);
-        endOfDay.setHours(23, 59, 59, 999);
-
+    async findByUserIdAndDate(userId: string, dateString: string) {
+        // dateString을 그대로 사용하여 날짜 비교
+        // Prisma가 문자열을 자동으로 파싱하므로 타임존 변환 없이 처리됨
         return prisma.attendance.findFirst({
             where: {
                 user_id: userId,
-                date: {
-                    gte: startOfDay,
-                    lte: endOfDay,
-                }
+                date: dateString, // 문자열 그대로 사용
             },
             select: {
                 id: true,
@@ -49,13 +68,14 @@ export class AttendanceRepository {
         });
     }
 
-    async updateClockout(attendanceId: number) {
-        // 먼저 attendance를 조회하여 clockin 값을 가져옵니다
+    async updateClockout(attendanceId: number, clockoutString?: string) {
+        // 먼저 attendance를 조회하여 clockin과 date 값을 가져옵니다
         const attendance = await prisma.attendance.findUnique({
             where: {
                 id: attendanceId,
             },
             select: {
+                date: true,
                 clockin: true,
             }
         });
@@ -64,11 +84,32 @@ export class AttendanceRepository {
             throw new Error("출근 기록을 찾을 수 없거나 출근 시간이 없습니다.");
         }
 
-        // clockout 시간 설정
-        const clockoutTime = new Date();
+        // clockout 파싱 (HH:mm:ss 형식)
+        let clockoutTime: Date;
+        if (clockoutString) {
+            const [hours, minutes, seconds = 0] = clockoutString.split(':').map(Number);
+            clockoutTime = new Date(1970, 0, 1, hours, minutes, seconds);
+        } else {
+            // 현재 시간에서 시간 부분만 추출
+            const now = new Date();
+            clockoutTime = new Date(1970, 0, 1, now.getHours(), now.getMinutes(), now.getSeconds());
+        }
+        
+        // worktime 계산을 위해 date와 clockin, clockout을 결합
+        const clockinDate = new Date(attendance.date);
+        clockinDate.setHours(attendance.clockin.getHours(), attendance.clockin.getMinutes(), attendance.clockin.getSeconds());
+        
+        const clockoutDate = new Date(attendance.date);
+        if (clockoutString) {
+            const [hours, minutes, seconds = 0] = clockoutString.split(':').map(Number);
+            clockoutDate.setHours(hours, minutes, seconds);
+        } else {
+            const now = new Date();
+            clockoutDate.setHours(now.getHours(), now.getMinutes(), now.getSeconds());
+        }
         
         // worktime 계산 (clockout - clockin을 분 단위로)
-        const worktimeMinutes = Math.floor((clockoutTime.getTime() - attendance.clockin.getTime()) / (1000 * 60));
+        const worktimeMinutes = Math.floor((clockoutDate.getTime() - clockinDate.getTime()) / (1000 * 60));
 
         return prisma.attendance.update({
             where: {
