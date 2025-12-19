@@ -311,5 +311,44 @@ export class AttendanceService {
             };
         }
     }
+
+    async getYearMonths(token: string) {
+        // JWT 토큰 검증 및 email 추출
+        const payload = verifyToken(token);
+        
+        if (!payload) {
+            return {
+                success: false,
+                message: "유효하지 않은 인증 토큰입니다. 다시 로그인해주세요."
+            };
+        }
+
+        // email로 user 조회하여 user_id 가져오기
+        const user = await this.userRepo.findByEmail(payload.email);
+        
+        if (!user) {
+            return {
+                success: false,
+                message: "사용자를 찾을 수 없습니다."
+            };
+        }
+
+        try {
+            // 출퇴근 기록이 있는 년월 목록 조회
+            const yearMonths = await this.attendanceRepo.findDistinctYearMonthsByUserId(user.id);
+
+            return {
+                success: true,
+                message: "년월 목록을 조회했습니다.",
+                yearMonth: yearMonths,
+            };
+        } catch (error) {
+            console.error("년월 목록 조회 실패:", error);
+            return {
+                success: false,
+                message: "년월 목록 조회에 실패하였습니다. 잠시 후 다시 시도해주세요."
+            };
+        }
+    }
 }
 

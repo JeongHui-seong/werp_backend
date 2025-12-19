@@ -161,5 +161,31 @@ export class AttendanceRepository {
             }
         });
     }
+
+    async findDistinctYearMonthsByUserId(userId: string): Promise<string[]> {
+        // 해당 사용자의 모든 attendance에서 date 필드만 가져오기
+        const attendances = await prisma.attendance.findMany({
+            where: {
+                user_id: userId,
+            },
+            select: {
+                date: true,
+            },
+            orderBy: {
+                date: 'desc',
+            }
+        });
+
+        // date에서 년월만 추출하여 중복 제거 (타임존 변환 없이 문자열에서 직접 추출)
+        const yearMonths = new Set<string>();
+        attendances.forEach(attendance => {
+            // Date 객체를 ISO 문자열로 변환 후 앞 7자리(YYYY-MM)만 추출
+            const yearMonth = attendance.date.toISOString().slice(0, 7);
+            yearMonths.add(yearMonth);
+        });
+
+        // 배열로 변환하여 내림차순 정렬
+        return Array.from(yearMonths).sort((a, b) => b.localeCompare(a));
+    }
 }
 

@@ -15,3 +15,4 @@ appRouter.post("/attendance/clockin", attendanceController.clockIn);
 appRouter.post("/attendance/clockout", attendanceController.clockOut);
 appRouter.get("/attendance/today", attendanceController.getTodayAttendance);
 appRouter.get("/attendance/monthly", attendanceController.getMonthlyAttendance);
+appRouter.get("/attendance/year-months", attendanceController.getYearMonths);
