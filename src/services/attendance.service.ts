@@ -243,31 +243,20 @@ export class AttendanceService {
                     }
                 }
 
-                // 지각 시간 계산
-                if (attendance.clockin) {
-                    const clockinDate = new Date(attendance.clockin);
-                    const clockinHour = clockinDate.getHours();
-                    const clockinMinute = clockinDate.getMinutes();
-                    const clockinTotalMinutes = clockinHour * 60 + clockinMinute;
-                    const startWorkTotalMinutes = startHour * 60 + startMinute;
-
-                    if (clockinTotalMinutes > startWorkTotalMinutes) {
-                        const lateTime = clockinTotalMinutes - startWorkTotalMinutes;
-                        lateMinutes += lateTime;
-                    }
-                }
-
-                // record 생성
+                // 지각 시간 계산 (문자열에서 직접 추출하여 타임존 버그 방지)
                 let lateTime = 0;
                 if (attendance.clockin) {
-                    const clockinDate = new Date(attendance.clockin);
-                    const clockinHour = clockinDate.getHours();
-                    const clockinMinute = clockinDate.getMinutes();
+                    // ISO 문자열에서 시간 추출 (예: "2025-12-01T09:00:00.000Z" → "09:00")
+                    const clockinISO = attendance.clockin.toISOString();
+                    const timePart = clockinISO.split('T')[1]; // "09:00:00.000Z"
+                    const [clockinHour, clockinMinute] = timePart.split(':').map(Number);
+                    
                     const clockinTotalMinutes = clockinHour * 60 + clockinMinute;
                     const startWorkTotalMinutes = startHour * 60 + startMinute;
 
                     if (clockinTotalMinutes > startWorkTotalMinutes) {
                         lateTime = clockinTotalMinutes - startWorkTotalMinutes;
+                        lateMinutes += lateTime;
                     }
                 }
 
