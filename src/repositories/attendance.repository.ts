@@ -42,22 +42,12 @@ export class AttendanceRepository {
     }
 
     async findByUserIdAndDate(userId: string, dateString: string) {
-        // dateString을 ISO 형식으로 변환하여 날짜 비교
-        const date = new Date(`${dateString}T00:00:00Z`);
-        
-        // 해당 날짜의 시작과 끝 시간 설정
-        const startOfDay = new Date(date);
-        startOfDay.setHours(0, 0, 0, 0);
-        
-        const endOfDay = new Date(date);
-        endOfDay.setHours(23, 59, 59, 999);
-
         return prisma.attendance.findFirst({
             where: {
                 user_id: userId,
                 date: {
-                    gte: startOfDay,
-                    lte: endOfDay,
+                    gte: new Date(`${dateString}T00:00:00Z`),
+                    lte: new Date(`${dateString}T23:59:59Z`),
                 }
             },
             select: {
