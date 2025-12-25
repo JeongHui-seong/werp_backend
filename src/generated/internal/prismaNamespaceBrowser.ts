@@ -139,7 +139,8 @@ export type LeaveScalarFieldEnum = (typeof LeaveScalarFieldEnum)[keyof typeof Le
 
 export const LeaveTypeScalarFieldEnum = {
   id: 'id',
-  type: 'type'
+  type: 'type',
+  days: 'days'
 } as const
 
 export type LeaveTypeScalarFieldEnum = (typeof LeaveTypeScalarFieldEnum)[keyof typeof LeaveTypeScalarFieldEnum]

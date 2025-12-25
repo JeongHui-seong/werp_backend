@@ -90,7 +90,8 @@ model Leave {
 
 model LeaveType {
   id  Int @id @default(autoincrement())
-  type String @db.VarChar(20)
+  type String @db.VarChar(20) @unique
+  days Decimal @db.Decimal(3, 2)
 
   leaves Leave[]
 }

@@ -28,50 +28,60 @@ export type AggregateLeaveType = {
 
 export type LeaveTypeAvgAggregateOutputType = {
   id: number | null
+  days: runtime.Decimal | null
 }
 
 export type LeaveTypeSumAggregateOutputType = {
   id: number | null
+  days: runtime.Decimal | null
 }
 
 export type LeaveTypeMinAggregateOutputType = {
   id: number | null
   type: string | null
+  days: runtime.Decimal | null
 }
 
 export type LeaveTypeMaxAggregateOutputType = {
   id: number | null
   type: string | null
+  days: runtime.Decimal | null
 }
 
 export type LeaveTypeCountAggregateOutputType = {
   id: number
   type: number
+  days: number
   _all: number
 }
 
 
 export type LeaveTypeAvgAggregateInputType = {
   id?: true
+  days?: true
 }
 
 export type LeaveTypeSumAggregateInputType = {
   id?: true
+  days?: true
 }
 
 export type LeaveTypeMinAggregateInputType = {
   id?: true
   type?: true
+  days?: true
 }
 
 export type LeaveTypeMaxAggregateInputType = {
   id?: true
   type?: true
+  days?: true
 }
 
 export type LeaveTypeCountAggregateInputType = {
   id?: true
   type?: true
+  days?: true
   _all?: true
 }
 
@@ -164,6 +174,7 @@ export type LeaveTypeGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 export type LeaveTypeGroupByOutputType = {
   id: number
   type: string
+  days: runtime.Decimal
   _count: LeaveTypeCountAggregateOutputType | null
   _avg: LeaveTypeAvgAggregateOutputType | null
   _sum: LeaveTypeSumAggregateOutputType | null
@@ -192,27 +203,31 @@ export type LeaveTypeWhereInput = {
   NOT?: Prisma.LeaveTypeWhereInput | Prisma.LeaveTypeWhereInput[]
   id?: Prisma.IntFilter<"LeaveType"> | number
   type?: Prisma.StringFilter<"LeaveType"> | string
+  days?: Prisma.DecimalFilter<"LeaveType"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   leaves?: Prisma.LeaveListRelationFilter
 }
 
 export type LeaveTypeOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  days?: Prisma.SortOrder
   leaves?: Prisma.LeaveOrderByRelationAggregateInput
 }
 
 export type LeaveTypeWhereUniqueInput = Prisma.AtLeast<{
   id?: number
+  type?: string
   AND?: Prisma.LeaveTypeWhereInput | Prisma.LeaveTypeWhereInput[]
   OR?: Prisma.LeaveTypeWhereInput[]
   NOT?: Prisma.LeaveTypeWhereInput | Prisma.LeaveTypeWhereInput[]
-  type?: Prisma.StringFilter<"LeaveType"> | string
+  days?: Prisma.DecimalFilter<"LeaveType"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   leaves?: Prisma.LeaveListRelationFilter
-}, "id">
+}, "id" | "type">
 
 export type LeaveTypeOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  days?: Prisma.SortOrder
   _count?: Prisma.LeaveTypeCountOrderByAggregateInput
   _avg?: Prisma.LeaveTypeAvgOrderByAggregateInput
   _max?: Prisma.LeaveTypeMaxOrderByAggregateInput
@@ -226,42 +241,50 @@ export type LeaveTypeScalarWhereWithAggregatesInput = {
   NOT?: Prisma.LeaveTypeScalarWhereWithAggregatesInput | Prisma.LeaveTypeScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"LeaveType"> | number
   type?: Prisma.StringWithAggregatesFilter<"LeaveType"> | string
+  days?: Prisma.DecimalWithAggregatesFilter<"LeaveType"> | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type LeaveTypeCreateInput = {
   type: string
+  days: runtime.Decimal | runtime.DecimalJsLike | number | string
   leaves?: Prisma.LeaveCreateNestedManyWithoutLeave_typeInput
 }
 
 export type LeaveTypeUncheckedCreateInput = {
   id?: number
   type: string
+  days: runtime.Decimal | runtime.DecimalJsLike | number | string
   leaves?: Prisma.LeaveUncheckedCreateNestedManyWithoutLeave_typeInput
 }
 
 export type LeaveTypeUpdateInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
+  days?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   leaves?: Prisma.LeaveUpdateManyWithoutLeave_typeNestedInput
 }
 
 export type LeaveTypeUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.StringFieldUpdateOperationsInput | string
+  days?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   leaves?: Prisma.LeaveUncheckedUpdateManyWithoutLeave_typeNestedInput
 }
 
 export type LeaveTypeCreateManyInput = {
   id?: number
   type: string
+  days: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type LeaveTypeUpdateManyMutationInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
+  days?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type LeaveTypeUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.StringFieldUpdateOperationsInput | string
+  days?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type LeaveTypeScalarRelationFilter = {
@@ -272,24 +295,29 @@ export type LeaveTypeScalarRelationFilter = {
 export type LeaveTypeCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  days?: Prisma.SortOrder
 }
 
 export type LeaveTypeAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  days?: Prisma.SortOrder
 }
 
 export type LeaveTypeMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  days?: Prisma.SortOrder
 }
 
 export type LeaveTypeMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
+  days?: Prisma.SortOrder
 }
 
 export type LeaveTypeSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  days?: Prisma.SortOrder
 }
 
 export type LeaveTypeCreateNestedOneWithoutLeavesInput = {
@@ -306,13 +334,23 @@ export type LeaveTypeUpdateOneRequiredWithoutLeavesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.LeaveTypeUpdateToOneWithWhereWithoutLeavesInput, Prisma.LeaveTypeUpdateWithoutLeavesInput>, Prisma.LeaveTypeUncheckedUpdateWithoutLeavesInput>
 }
 
+export type DecimalFieldUpdateOperationsInput = {
+  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
+}
+
 export type LeaveTypeCreateWithoutLeavesInput = {
   type: string
+  days: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type LeaveTypeUncheckedCreateWithoutLeavesInput = {
   id?: number
   type: string
+  days: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type LeaveTypeCreateOrConnectWithoutLeavesInput = {
@@ -333,11 +371,13 @@ export type LeaveTypeUpdateToOneWithWhereWithoutLeavesInput = {
 
 export type LeaveTypeUpdateWithoutLeavesInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
+  days?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type LeaveTypeUncheckedUpdateWithoutLeavesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.StringFieldUpdateOperationsInput | string
+  days?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 
@@ -374,6 +414,7 @@ export type LeaveTypeCountOutputTypeCountLeavesArgs<ExtArgs extends runtime.Type
 export type LeaveTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   type?: boolean
+  days?: boolean
   leaves?: boolean | Prisma.LeaveType$leavesArgs<ExtArgs>
   _count?: boolean | Prisma.LeaveTypeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["leaveType"]>
@@ -381,19 +422,22 @@ export type LeaveTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
 export type LeaveTypeSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   type?: boolean
+  days?: boolean
 }, ExtArgs["result"]["leaveType"]>
 
 export type LeaveTypeSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   type?: boolean
+  days?: boolean
 }, ExtArgs["result"]["leaveType"]>
 
 export type LeaveTypeSelectScalar = {
   id?: boolean
   type?: boolean
+  days?: boolean
 }
 
-export type LeaveTypeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type", ExtArgs["result"]["leaveType"]>
+export type LeaveTypeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type" | "days", ExtArgs["result"]["leaveType"]>
 export type LeaveTypeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   leaves?: boolean | Prisma.LeaveType$leavesArgs<ExtArgs>
   _count?: boolean | Prisma.LeaveTypeCountOutputTypeDefaultArgs<ExtArgs>
@@ -409,6 +453,7 @@ export type $LeaveTypePayload<ExtArgs extends runtime.Types.Extensions.InternalA
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     type: string
+    days: runtime.Decimal
   }, ExtArgs["result"]["leaveType"]>
   composites: {}
 }
@@ -835,6 +880,7 @@ export interface Prisma__LeaveTypeClient<T, Null = never, ExtArgs extends runtim
 export interface LeaveTypeFieldRefs {
   readonly id: Prisma.FieldRef<"LeaveType", 'Int'>
   readonly type: Prisma.FieldRef<"LeaveType", 'String'>
+  readonly days: Prisma.FieldRef<"LeaveType", 'Decimal'>
 }
     
 
