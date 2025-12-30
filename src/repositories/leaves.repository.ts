@@ -16,20 +16,25 @@ export class LeavesRepository {
         });
     }
 
-    async upsertLeaveTypes(leaveTypes: Array<{ type: string; days: number | string }>) {
-        // type을 기준으로 upsert 수행 (type이 unique이므로 Prisma upsert 사용)
+    async upsertLeaveTypes(leaveTypes: Array<{ id?:number; type: string; days: number | string }>) {
         const results = [];
         
         for (const leaveType of leaveTypes) {
-            // type이 unique이므로 upsert 사용
-            const result = await prisma.leaveType.upsert({
-                where: { type: leaveType.type },
-                update: { days: leaveType.days } as any,
-                create: {
-                    type: leaveType.type,
-                    days: leaveType.days
-                } as any
-            });
+            const result = leaveType.id ?
+                await prisma.leaveType.update({
+                    where: { id: leaveType.id },
+                    data: {
+                        type: leaveType.type,
+                        days: leaveType.days
+                    }
+                })
+                : await prisma.leaveType.create({
+                    data: {
+                        type: leaveType.type,
+                        days: leaveType.days,
+                    }
+                })
+
             results.push(result);
         }
 

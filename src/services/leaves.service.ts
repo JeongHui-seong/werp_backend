@@ -21,7 +21,7 @@ export class LeavesService {
         }
     }
 
-    async upsertLeaveTypes(leaveTypes: Array<{ type: string; days: number | string }>) {
+    async upsertLeaveTypes(leaveTypes: Array<{ id?: number; type: string; days: number | string }>) {
         try {
             // 입력 검증
             if (!Array.isArray(leaveTypes) || leaveTypes.length === 0) {
