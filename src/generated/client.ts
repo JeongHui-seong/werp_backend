@@ -67,3 +67,8 @@ export type Leave = Prisma.LeaveModel
  * 
  */
 export type LeaveType = Prisma.LeaveTypeModel
+/**
+ * Model LeavePolicy
+ * 
+ */
+export type LeavePolicy = Prisma.LeavePolicyModel

@@ -56,7 +56,8 @@ export const ModelName = {
   Role: 'Role',
   Attendance: 'Attendance',
   Leave: 'Leave',
-  LeaveType: 'LeaveType'
+  LeaveType: 'LeaveType',
+  LeavePolicy: 'LeavePolicy'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -144,6 +145,15 @@ export const LeaveTypeScalarFieldEnum = {
 } as const
 
 export type LeaveTypeScalarFieldEnum = (typeof LeaveTypeScalarFieldEnum)[keyof typeof LeaveTypeScalarFieldEnum]
+
+
+export const LeavePolicyScalarFieldEnum = {
+  id: 'id',
+  year: 'year',
+  days: 'days'
+} as const
+
+export type LeavePolicyScalarFieldEnum = (typeof LeavePolicyScalarFieldEnum)[keyof typeof LeavePolicyScalarFieldEnum]
 
 
 export const SortOrder = {

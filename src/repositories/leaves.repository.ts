@@ -50,5 +50,33 @@ export class LeavesRepository {
             }
         });
     }
+
+    async findLeavePolicyByYear(year: number){
+        return prisma.leavePolicy.findUnique({
+            where: {
+                year
+            }
+        })
+    }
+
+    async createLeavePolicy(year: number, days: number){
+        return prisma.leavePolicy.create({
+            data: {
+                year,
+                days
+            }
+        })
+    }
+
+    async updateLeavePolicy(year: number, days: number){
+        return prisma.leavePolicy.update({
+            where: {
+                year
+            },
+            data: {
+                days
+            }
+        })
+    }
 }
 

@@ -66,5 +66,9 @@ export class LeavesController {
         
         return res.status(200).json(result);
     }
+
+    // TODO
+    // 로그인이 필요한 메서드에 유저 검증 및 관리자 설정은 관리자 검증
+    // middleware에 유저 검증 및 관리자 검증 분기 후 router에서 next를 통해 사용
 }
 

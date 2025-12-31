@@ -104,5 +104,51 @@ export class LeavesService {
             };
         }
     }
+
+    async getLeavePolicy(year: number){
+        try{
+            const findResult = await this.leavesRepo.findLeavePolicyByYear(year);
+            if (findResult) {
+                return {
+                    success: true,
+                    message: `${year}년도 기본 연차를 불러왔습니다.`,
+                    result: findResult
+                }
+            }
+
+            // 해당 년도에 값이 없다면 기본 연차 15일로 만들기
+            const createResult = await this.leavesRepo.createLeavePolicy(year, 15);
+            return {
+                success: true,
+                message: `${year}년도 기본 연차가 존재하지 않아 기본값으로 생성하였습니다.`,
+                result: createResult
+            }
+
+        } catch (error) {
+            console.error(`${year}년도 기본 연차 불러오기 실패 : `, error);
+            const errorMessage = error instanceof Error ? error.message : `${year}년도 기본 연차를 불러오는데 실패하였습니다. 잠시 후 다시 시도해주세요.`;
+            return {
+                success: false,
+                message: errorMessage
+            };
+        }
+    }
+
+    async updateLeavePolicy(year: number, days: number){
+        try{
+            const result = this.leavesRepo.updateLeavePolicy(year, days);
+            return {
+                success: true,
+                message: `${year}년도 기본 연차를 수정하였습니다.`
+            }
+        } catch (error) {
+            console.error(`${year}년도 기본 연차 수정 실패 : `, error);
+            const errorMessage = error instanceof Error? error.message : `${year}년도 기본 연차 수정에 실패하였습니다. 잠시 후 다시 시도해주세요.`
+            return {
+                success: false,
+                message: errorMessage
+            }
+        }
+    }
 }
 
