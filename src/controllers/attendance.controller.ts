@@ -1,24 +1,18 @@
 import { Request, Response } from "express";
 import { AttendanceService } from "../services/attendance.service";
-import { extractTokenFromHeader } from "../utils/jwt";
+import { assertAuthenticated } from "../utils/assertAuthenticated";
 
 export class AttendanceController {
     private service = new AttendanceService();
 
     clockIn = async (req: Request, res: Response) => {
-        const token = extractTokenFromHeader(req);
-
-        if (!token) {
-            return res.status(401).json({
-                success: false,
-                message: "인증 토큰이 필요합니다. Authorization 헤더에 Bearer 토큰을 포함해주세요."
-            });
-        }
+        assertAuthenticated(req);
 
         // body에서 date와 clockin 추출 (선택사항)
         const { date, clockin } = req.body;
+        const email = req.user.email;
 
-        const result = await this.service.clockIn(token, date, clockin);
+        const result = await this.service.clockIn(email, date, clockin);
         
         if (!result.success) {
             // 토큰 검증 실패는 401, 사용자 조회 실패는 404, DB 오류 등은 500
@@ -35,17 +29,11 @@ export class AttendanceController {
     }
 
     getTodayAttendance = async (req: Request, res: Response) => {
-        const token = extractTokenFromHeader(req);
-
-        if (!token) {
-            return res.status(401).json({
-                success: false,
-                message: "인증 토큰이 필요합니다. Authorization 헤더에 Bearer 토큰을 포함해주세요."
-            });
-        }
-
+        assertAuthenticated(req);
+        
         // 쿼리 파라미터에서 날짜 추출
         const { date } = req.query;
+        const email = req.user.email;
 
         if (!date || typeof date !== 'string') {
             return res.status(400).json({
@@ -54,7 +42,7 @@ export class AttendanceController {
             });
         }
 
-        const result = await this.service.getTodayAttendance(token, date);
+        const result = await this.service.getTodayAttendance(email, date);
         
         if (!result.success) {
             // 토큰 검증 실패는 401, 사용자 조회 실패는 404, 유효하지 않은 날짜는 400, DB 오류 등은 500
@@ -73,17 +61,11 @@ export class AttendanceController {
     }
 
     clockOut = async (req: Request, res: Response) => {
-        const token = extractTokenFromHeader(req);
-
-        if (!token) {
-            return res.status(401).json({
-                success: false,
-                message: "인증 토큰이 필요합니다. Authorization 헤더에 Bearer 토큰을 포함해주세요."
-            });
-        }
+        assertAuthenticated(req);
 
         // 바디에서 attendance ID와 clockout 추출
         const { attendanceId, clockout } = req.body;
+        const email = req.user.email
 
         if (!attendanceId) {
             return res.status(400).json({
@@ -101,7 +83,7 @@ export class AttendanceController {
             });
         }
 
-        const result = await this.service.clockOut(token, id, clockout);
+        const result = await this.service.clockOut(email, id, clockout);
         
         if (!result.success) {
             // 토큰 검증 실패는 401, 사용자 조회 실패는 404, 출근 기록 없음은 404, 
@@ -124,17 +106,11 @@ export class AttendanceController {
     }
 
     getMonthlyAttendance = async (req: Request, res: Response) => {
-        const token = extractTokenFromHeader(req);
-
-        if (!token) {
-            return res.status(401).json({
-                success: false,
-                message: "인증 토큰이 필요합니다. Authorization 헤더에 Bearer 토큰을 포함해주세요."
-            });
-        }
+        assertAuthenticated(req);
 
         // 쿼리 파라미터에서 yearMonth와 startWorkTime 추출
         const { yearMonth, startWorkTime } = req.query;
+        const email = req.user.email
 
         if (!yearMonth || typeof yearMonth !== 'string') {
             return res.status(400).json({
@@ -150,7 +126,7 @@ export class AttendanceController {
             });
         }
 
-        const result = await this.service.getMonthlyAttendance(token, yearMonth, startWorkTime);
+        const result = await this.service.getMonthlyAttendance(email, yearMonth, startWorkTime);
         
         if (!result.success) {
             // 토큰 검증 실패는 401, 사용자 조회 실패는 404, 유효하지 않은 파라미터는 400, DB 오류 등은 500
@@ -169,16 +145,10 @@ export class AttendanceController {
     }
 
     getYearMonths = async (req: Request, res: Response) => {
-        const token = extractTokenFromHeader(req);
+        assertAuthenticated(req);
+        const email = req.user.email
 
-        if (!token) {
-            return res.status(401).json({
-                success: false,
-                message: "인증 토큰이 필요합니다. Authorization 헤더에 Bearer 토큰을 포함해주세요."
-            });
-        }
-
-        const result = await this.service.getYearMonths(token);
+        const result = await this.service.getYearMonths(email);
         
         if (!result.success) {
             // 토큰 검증 실패는 401, 사용자 조회 실패는 404, DB 오류 등은 500

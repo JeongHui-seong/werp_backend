@@ -37,14 +37,10 @@ export function extractTokenFromHeader(req: Request): string | null {
  * @param token JWT 토큰 문자열
  * @returns 검증된 페이로드 또는 null
  */
-export function verifyToken(token: string): JWTPayload | null {
-    try {
-        const jwtSecret = process.env.JWT_SECRET || "default-secret-key";
-        const decoded = jwt.verify(token, jwtSecret) as JWTPayload;
-        return decoded;
-    } catch (error) {
-        console.error("JWT 토큰 검증 실패:", error);
-        return null;
-    }
+export function verifyToken(token: string): JWTPayload {
+    const jwtSecret = process.env.JWT_SECRET || "default-secret-key";
+    const decoded = jwt.verify(token, jwtSecret) as JWTPayload;
+    return decoded;
+
 }
 

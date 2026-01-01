@@ -2,6 +2,8 @@ import { Router } from "express";
 import { AuthController } from "./controllers/auth.controller";
 import { AttendanceController } from "./controllers/attendance.controller";
 import { LeavesController } from "./controllers/leaves.controller";
+import { authenticate } from "./middlewares/auth.middleware";
+import { requireRole } from "./middlewares/requireRole.middleware";
 
 export const appRouter = Router();
 
@@ -13,12 +15,12 @@ appRouter.post("/auth/find-email", authController.findEmail);
 appRouter.post("/auth/resend-code", authController.resendCode);
 appRouter.post("/auth/login", authController.login);
 
-appRouter.post("/attendance/clockin", attendanceController.clockIn);
-appRouter.post("/attendance/clockout", attendanceController.clockOut);
-appRouter.get("/attendance/today", attendanceController.getTodayAttendance);
-appRouter.get("/attendance/monthly", attendanceController.getMonthlyAttendance);
-appRouter.get("/attendance/year-months", attendanceController.getYearMonths);
+appRouter.post("/attendance/clockin", authenticate, attendanceController.clockIn);
+appRouter.post("/attendance/clockout", authenticate, attendanceController.clockOut);
+appRouter.get("/attendance/today", authenticate, attendanceController.getTodayAttendance);
+appRouter.get("/attendance/monthly", authenticate, attendanceController.getMonthlyAttendance);
+appRouter.get("/attendance/year-months", authenticate, attendanceController.getYearMonths);
 
-appRouter.get("/leaves/types", leavesController.getLeaveTypes);
-appRouter.post("/leaves/types", leavesController.upsertLeaveTypes);
-appRouter.delete("/leaves/types", leavesController.deleteLeaveTypes);
+appRouter.get("/leaves/types", authenticate, requireRole("admin"), leavesController.getLeaveTypes);
+appRouter.post("/leaves/types", authenticate, requireRole("admin"), leavesController.upsertLeaveTypes);
+appRouter.delete("/leaves/types", authenticate, requireRole("admin"), leavesController.deleteLeaveTypes);

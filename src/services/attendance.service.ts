@@ -6,19 +6,9 @@ export class AttendanceService {
     private attendanceRepo = new AttendanceRepository();
     private userRepo = new UserRepository();
 
-    async clockIn(token: string, date?: string, clockin?: string) {
-        // JWT 토큰 검증 및 email 추출
-        const payload = verifyToken(token);
-        
-        if (!payload) {
-            return {
-                success: false,
-                message: "유효하지 않은 인증 토큰입니다. 다시 로그인해주세요."
-            };
-        }
-
+    async clockIn(email: string, date?: string, clockin?: string) {
         // email로 user 조회하여 user_id 가져오기
-        const user = await this.userRepo.findByEmail(payload.email);
+        const user = await this.userRepo.findByEmail(email);
         
         if (!user) {
             return {
@@ -52,19 +42,9 @@ export class AttendanceService {
         }
     }
 
-    async getTodayAttendance(token: string, dateString: string) {
-        // JWT 토큰 검증 및 email 추출
-        const payload = verifyToken(token);
-        
-        if (!payload) {
-            return {
-                success: false,
-                message: "유효하지 않은 인증 토큰입니다. 다시 로그인해주세요."
-            };
-        }
-
+    async getTodayAttendance(email: string, dateString: string) {
         // email로 user 조회하여 user_id 가져오기
-        const user = await this.userRepo.findByEmail(payload.email);
+        const user = await this.userRepo.findByEmail(email);
         
         if (!user) {
             return {
@@ -105,19 +85,9 @@ export class AttendanceService {
         }
     } 
 
-    async clockOut(token: string, attendanceId: number, clockout?: string) {
-        // JWT 토큰 검증 및 email 추출
-        const payload = verifyToken(token);
-        
-        if (!payload) {
-            return {
-                success: false,
-                message: "유효하지 않은 인증 토큰입니다. 다시 로그인해주세요."
-            };
-        }
-
+    async clockOut(email: string, attendanceId: number, clockout?: string) {
         // email로 user 조회하여 user_id 가져오기
-        const user = await this.userRepo.findByEmail(payload.email);
+        const user = await this.userRepo.findByEmail(email);
         
         if (!user) {
             return {
@@ -177,19 +147,9 @@ export class AttendanceService {
         }
     }
 
-    async getMonthlyAttendance(token: string, yearMonth: string, startWorkTime: string) {
-        // JWT 토큰 검증 및 email 추출
-        const payload = verifyToken(token);
-        
-        if (!payload) {
-            return {
-                success: false,
-                message: "유효하지 않은 인증 토큰입니다. 다시 로그인해주세요."
-            };
-        }
-
+    async getMonthlyAttendance(email: string, yearMonth: string, startWorkTime: string) {
         // email로 user 조회하여 user_id 가져오기
-        const user = await this.userRepo.findByEmail(payload.email);
+        const user = await this.userRepo.findByEmail(email);
         
         if (!user) {
             return {
@@ -304,19 +264,9 @@ export class AttendanceService {
         }
     }
 
-    async getYearMonths(token: string) {
-        // JWT 토큰 검증 및 email 추출
-        const payload = verifyToken(token);
-        
-        if (!payload) {
-            return {
-                success: false,
-                message: "유효하지 않은 인증 토큰입니다. 다시 로그인해주세요."
-            };
-        }
-
+    async getYearMonths(email: string) {
         // email로 user 조회하여 user_id 가져오기
-        const user = await this.userRepo.findByEmail(payload.email);
+        const user = await this.userRepo.findByEmail(email);
         
         if (!user) {
             return {
