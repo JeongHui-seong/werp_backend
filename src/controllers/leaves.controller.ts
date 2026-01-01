@@ -68,7 +68,7 @@ export class LeavesController {
     }
 
     getLeavePolicy = async (req: Request, res: Response) => {
-        const { year } = req.body;
+        const { year } = req.query;
 
         if (!year) {
             return res.status(400).json({
@@ -77,7 +77,7 @@ export class LeavesController {
             })
         }
 
-        const result = await this.service.getLeavePolicy(year);
+        const result = await this.service.getLeavePolicy(Number(year));
 
         if(!result.success) {
             return res.status(500).json(result);

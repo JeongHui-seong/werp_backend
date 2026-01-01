@@ -24,3 +24,6 @@ appRouter.get("/attendance/year-months", authenticate, attendanceController.getY
 appRouter.get("/leaves/types", authenticate, requireRole("admin"), leavesController.getLeaveTypes);
 appRouter.post("/leaves/types", authenticate, requireRole("admin"), leavesController.upsertLeaveTypes);
 appRouter.delete("/leaves/types", authenticate, requireRole("admin"), leavesController.deleteLeaveTypes);
+
+appRouter.get("/leaves/policy", authenticate, requireRole("admin"), leavesController.getLeavePolicy);
+appRouter.put("/leaves/policy", authenticate, requireRole("admin"), leavesController.updateLeavePolicy);
