@@ -66,5 +66,50 @@ export class LeavesController {
         
         return res.status(200).json(result);
     }
+
+    getLeavePolicy = async (req: Request, res: Response) => {
+        const { year } = req.body;
+
+        if (!year) {
+            return res.status(400).json({
+                success: false,
+                message: "년도가 전달되지 않았습니다."
+            })
+        }
+
+        const result = await this.service.getLeavePolicy(year);
+
+        if(!result.success) {
+            return res.status(500).json(result);
+        }
+
+        return res.status(200).json(result);
+    }
+
+    updateLeavePolicy = async (req: Request, res: Response) => {
+        const { year, days } = req.body;
+
+        if (!year) {
+            return res.status(400).json({
+                success: false,
+                message: "업데이트할 년도가 전달되지 않았습니다."
+            })
+        }
+
+        if (!days) {
+            return res.status(400).json({
+                success: false,
+                message: "업데이트할 날짜가 전달되지 않았습니다."
+            })
+        }
+
+        const result = await this.service.updateLeavePolicy(year, days)
+
+        if (!result.success) {
+            return res.status(500).json(result);
+        }
+
+        return res.status(200).json(result)
+    }
 }
 
