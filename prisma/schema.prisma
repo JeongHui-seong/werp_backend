@@ -99,5 +99,5 @@ model LeaveType {
 model LeavePolicy {
   id Int @id @default(autoincrement())
   year Int @unique
-  days Decimal @db.Decimal(3, 2)
+  days Int
 }
