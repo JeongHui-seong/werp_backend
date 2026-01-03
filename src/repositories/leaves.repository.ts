@@ -78,5 +78,43 @@ export class LeavesRepository {
             }
         })
     }
+
+    async findLeavesByUserIdAndYear(userId: string, year: number) {
+        const startDate = new Date(Date.UTC(year, 0, 1));
+        const endDate = new Date(Date.UTC(year + 1, 0, 1));
+
+        return prisma.leave.findMany({
+            where: {
+                user_id: userId,
+                startdate: {
+                    gte: startDate,
+                    lt: endDate,
+                }
+            },
+            orderBy: {
+                startdate: 'asc',
+            },
+            select: {
+                id: true,
+                startdate: true,
+                enddate: true,
+                status: true,
+                reason: true,
+                approved_at: true,
+                created_at: true,
+                rejection_reason: true,
+                approver: {
+                    select: {
+                        name: true,
+                    }
+                },
+                leave_type: {
+                    select: {
+                        type: true,
+                    }
+                }
+            }
+        });
+    }
 }
 

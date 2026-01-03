@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { LeavesService } from "../services/leaves.service";
+import { assertAuthenticated } from "../utils/assertAuthenticated";
 
 export class LeavesController {
     private service = new LeavesService();
@@ -110,6 +111,28 @@ export class LeavesController {
         }
 
         return res.status(200).json(result)
+    }
+
+    getLeaves = async (req: Request, res: Response) => {
+        assertAuthenticated(req);
+
+        const email = req.user.email;
+        const { year } = req.query;
+
+        if (!year) {
+            return res.status(400).json({
+                success: false,
+                message: "년도가 전달되지 않았습니다."
+            })
+        }
+
+        const result = await this.service.getLeaves(email, Number(year));
+
+        if (!result.success) {
+            return res.status(500).json(result);
+        }
+
+        return res.status(200).json(result);
     }
 }
 

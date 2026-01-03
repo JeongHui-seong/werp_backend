@@ -27,3 +27,5 @@ appRouter.delete("/leaves/types", authenticate, requireRole("admin"), leavesCont
 
 appRouter.get("/leaves/policy", authenticate, requireRole("admin"), leavesController.getLeavePolicy);
 appRouter.put("/leaves/policy", authenticate, requireRole("admin"), leavesController.updateLeavePolicy);
+
+appRouter.get("/leaves/yearly", authenticate, leavesController.getLeaves);

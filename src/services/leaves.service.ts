@@ -1,7 +1,9 @@
 import { LeavesRepository } from "../repositories/leaves.repository";
+import { UserRepository } from "../repositories/user.repository";
 
 export class LeavesService {
     private leavesRepo = new LeavesRepository();
+    private userRepo = new UserRepository();
 
     async getLeaveTypes() {
         try {
@@ -148,6 +150,70 @@ export class LeavesService {
                 success: false,
                 message: errorMessage
             }
+        }
+    }
+
+    async getLeaves(email: string, year: number) {
+        const user = await this.userRepo.findByEmail(email);
+        if (!user) {
+            return {
+                success: false,
+                message: "사용자를 찾을 수 없습니다."
+            };
+        }
+
+        try {
+             const leaves = await this.leavesRepo.findLeavesByUserIdAndYear(user.id, year);
+
+             let remainingLeaves = 0;
+             let usedLeaves = 0;
+             let pendingLeaves = 0;
+             const records = [];
+
+             for (const leave of leaves) {
+                if (leave.status === 'approved') {
+                    usedLeaves += 1;
+                } else if (leave.status === 'pending') {
+                    pendingLeaves += 1;
+                }
+
+                records.push({
+                    id : leave.id,
+                    startdate: leave.startdate,
+                    enddate: leave.enddate,
+                    status: leave.status,
+                    reason: leave.reason || null,
+                    approved_at: leave.approved_at || null,
+                    created_at: leave.created_at,
+                    rejection_reason: leave.rejection_reason,
+                    approver_name: leave.approver?.name || null,
+                    leave_type: leave.leave_type?.type || null,
+                })
+             }
+
+             const leavePolicyResult = await this.leavesRepo.findLeavePolicyByYear(year);
+             const leavePolicyDays = leavePolicyResult?.days?.toNumber() || 0;
+             remainingLeaves = leavePolicyDays - usedLeaves;
+
+             return {
+                 success: true,
+                 message: `${year}년도 ${user.name}님의 연차 정보를 불러왔습니다.`,
+                 result: {
+                    summary: {
+                        remainingLeaves: remainingLeaves,
+                        usedLeaves: usedLeaves,
+                        pendingLeaves: pendingLeaves
+                    },
+                    records: records
+                 }
+             };
+        } catch (error) {
+            console.error(`${year}년도 ${user.name}님의 연차 정보 불러오기 실패 : `, error);
+            const errorMessage = error instanceof Error ? error.message : `${year}년도 ${user.name}님의 연차 정보를 불러오는데 실패하였습니다. 잠시 후 다시 시도해주세요.`;
+            return {
+                success: false,
+                message: errorMessage
+            };
         }
     }
 }
