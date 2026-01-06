@@ -134,8 +134,8 @@ export class AttendanceRepository {
                     gte: startDate,
                     lt: nextMonthDate,
                 },
-                // 휴가와 연결된 근태는 제외 (leaves_id가 null인 것만)
-                leaves_id: null,
+                // 휴가와 연결된 근태는 제외 (leaves_date_id가 null인 것만)
+                leave_date_id: null,
             },
             select: {
                 id: true,
@@ -145,17 +145,20 @@ export class AttendanceRepository {
                 clockout: true,
                 worktime: true,
                 note: true,
-                leave: {
+                leave_date: {
                     select: {
-                        status: true,
-                        leave_type: {
+                        leave_request: {
                             select: {
-                                type: true,
+                                status: true,
+                                leave_type: {
+                                    select: {
+                                        type: true
+                                    }
+                                }
                             }
-                        }
                     }
                 }
-            },
+            }},
             orderBy: {
                 date: 'asc',
             }

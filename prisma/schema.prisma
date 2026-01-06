@@ -30,8 +30,8 @@ model User {
   role  Role  @relation(fields: [role_id], references: [id])
   
   attendances Attendance[]
-  leaves Leave[]
-  approvedLeaves Leave[] @relation("ApprovedLeaves")
+  LeaveRequest LeaveRequest[]
+  approvedLeaves LeaveRequest[] @relation("ApprovedLeaves")
 }
 
 model Department {
@@ -55,45 +55,58 @@ model Attendance {
   clockin DateTime?
   clockout DateTime?
   worktime Int?
-  leaves_id Int?
+  leave_date_id Int?
   note String? @db.Text
 
   user User @relation(fields: [user_id], references: [id])
-  leave Leave? @relation(fields: [leaves_id], references: [id])
+  leave_date LeaveDate? @relation(fields: [leave_date_id], references: [id])
 
   @@index([user_id])
   @@index([date])
 }
 
-model Leave {
-  id  Int @id @default(autoincrement())
-  user_id String @db.Uuid
-  approver_id String? @db.Uuid
+model LeaveRequest {
+  id            Int      @id @default(autoincrement())
+  user_id       String   @db.Uuid
+  approver_id   String?  @db.Uuid
   leave_type_id Int
-  startdate DateTime @db.Date
-  enddate DateTime @db.Date
-  status String @db.VarChar(20)
-  reason String? @db.VarChar(255)
-  approved_at DateTime? @db.Date
-  created_at DateTime @default(now()) @db.Date
+
+  start_date    DateTime @db.Date
+  end_date      DateTime @db.Date
+
+  status        String   @db.VarChar(20)
+  reason        String?  @db.VarChar(255)
+
+  created_at    DateTime @default(now()) @db.Date
+  approved_at   DateTime? @db.Date
   rejection_reason String? @db.VarChar(255)
 
-  user User @relation(fields: [user_id], references: [id])
-  approver User? @relation("ApprovedLeaves", fields: [approver_id], references: [id])
-  leave_type LeaveType @relation(fields: [leave_type_id], references: [id])
-  attendances Attendance[]
+  dates         LeaveDate[]
 
-  @@index([user_id])
-  @@index([approver_id])
-  @@index([leave_type_id])
+  user          User     @relation(fields: [user_id], references: [id])
+  approver      User?    @relation("ApprovedLeaves", fields: [approver_id], references: [id])
+  leave_type    LeaveType @relation(fields: [leave_type_id], references: [id])
 }
+
+model LeaveDate {
+  id              Int      @id @default(autoincrement())
+  leave_request_id Int
+  leave_date      DateTime @db.Date
+
+  leave_request   LeaveRequest @relation(fields: [leave_request_id], references: [id])
+
+  @@unique([leave_request_id, leave_date])
+
+  attendances Attendance[]
+}
+
 
 model LeaveType {
   id  Int @id @default(autoincrement())
   type String @db.VarChar(20) @unique
   days Decimal @db.Decimal(3, 2)
 
-  leaves Leave[]
+  LeaveRequest LeaveRequest[]
 }
 
 model LeavePolicy {

@@ -171,28 +171,28 @@ export class LeavesService {
              const records = [];
 
              for (const leave of leaves) {
-                if (leave.status === 'approved') {
+                if (leave.leave_request.status === 'approved') {
                     usedLeaves += 1;
-                } else if (leave.status === 'pending') {
+                } else if (leave.leave_request.status === 'pending') {
                     pendingLeaves += 1;
                 }
 
                 records.push({
-                    id : leave.id,
-                    startdate: leave.startdate,
-                    enddate: leave.enddate,
-                    status: leave.status,
-                    reason: leave.reason || null,
-                    approved_at: leave.approved_at || null,
-                    created_at: leave.created_at,
-                    rejection_reason: leave.rejection_reason,
-                    approver_name: leave.approver?.name || null,
-                    leave_type: leave.leave_type?.type || null,
+                    id : leave.leave_request.id,
+                    start_date: leave.leave_request.start_date,
+                    end_date: leave.leave_request.end_date,
+                    status: leave.leave_request.status,
+                    reason: leave.leave_request.reason,
+                    approved_at: leave.leave_request.approved_at || null,
+                    created_at: leave.leave_request.created_at,
+                    rejection_reason: leave.leave_request.rejection_reason || null,
+                    approver_name: leave.leave_request.approver?.name || null,
+                    leave_type: leave.leave_request.leave_type?.type || null,
                 })
              }
 
              const leavePolicyResult = await this.leavesRepo.findLeavePolicyByYear(year);
-             const leavePolicyDays = leavePolicyResult?.days?.toNumber() || 0;
+             const leavePolicyDays = leavePolicyResult?.days || 0;
              remainingLeaves = leavePolicyDays - usedLeaves;
 
              return {
@@ -210,6 +210,33 @@ export class LeavesService {
         } catch (error) {
             console.error(`${year}년도 ${user.name}님의 연차 정보 불러오기 실패 : `, error);
             const errorMessage = error instanceof Error ? error.message : `${year}년도 ${user.name}님의 연차 정보를 불러오는데 실패하였습니다. 잠시 후 다시 시도해주세요.`;
+            return {
+                success: false,
+                message: errorMessage
+            };
+        }
+    }
+
+    async createLeaves(email: string, payload: {created_at: string; leave_type: string; startdate: string; enddate: string; reason: string;}) {
+        const user = await this.userRepo.findByEmail(email);
+        if (!user) {
+            return {
+                success: false,
+                message: "사용자를 찾을 수 없습니다."
+            };
+        }
+
+        try {
+            const dates = await this.leavesRepo.createLeavesByUserId(payload, user.id);
+
+            return {
+                success: true,
+                message: "연차 신청이 완료되었습니다.",
+                result: dates
+            };
+        } catch (error) {
+            console.error(`연차 신청 실패 : `, error);
+            const errorMessage = error instanceof Error ? error.message : `연차 신청에 실패하였습니다. 잠시 후 다시 시도해주세요.`;
             return {
                 success: false,
                 message: errorMessage

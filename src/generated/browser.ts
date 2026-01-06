@@ -38,10 +38,15 @@ export type Role = Prisma.RoleModel
  */
 export type Attendance = Prisma.AttendanceModel
 /**
- * Model Leave
+ * Model LeaveRequest
  * 
  */
-export type Leave = Prisma.LeaveModel
+export type LeaveRequest = Prisma.LeaveRequestModel
+/**
+ * Model LeaveDate
+ * 
+ */
+export type LeaveDate = Prisma.LeaveDateModel
 /**
  * Model LeaveType
  * 

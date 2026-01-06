@@ -55,7 +55,8 @@ export const ModelName = {
   Department: 'Department',
   Role: 'Role',
   Attendance: 'Attendance',
-  Leave: 'Leave',
+  LeaveRequest: 'LeaveRequest',
+  LeaveDate: 'LeaveDate',
   LeaveType: 'LeaveType',
   LeavePolicy: 'LeavePolicy'
 } as const
@@ -114,28 +115,37 @@ export const AttendanceScalarFieldEnum = {
   clockin: 'clockin',
   clockout: 'clockout',
   worktime: 'worktime',
-  leaves_id: 'leaves_id',
+  leave_date_id: 'leave_date_id',
   note: 'note'
 } as const
 
 export type AttendanceScalarFieldEnum = (typeof AttendanceScalarFieldEnum)[keyof typeof AttendanceScalarFieldEnum]
 
 
-export const LeaveScalarFieldEnum = {
+export const LeaveRequestScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
   approver_id: 'approver_id',
   leave_type_id: 'leave_type_id',
-  startdate: 'startdate',
-  enddate: 'enddate',
+  start_date: 'start_date',
+  end_date: 'end_date',
   status: 'status',
   reason: 'reason',
-  approved_at: 'approved_at',
   created_at: 'created_at',
+  approved_at: 'approved_at',
   rejection_reason: 'rejection_reason'
 } as const
 
-export type LeaveScalarFieldEnum = (typeof LeaveScalarFieldEnum)[keyof typeof LeaveScalarFieldEnum]
+export type LeaveRequestScalarFieldEnum = (typeof LeaveRequestScalarFieldEnum)[keyof typeof LeaveRequestScalarFieldEnum]
+
+
+export const LeaveDateScalarFieldEnum = {
+  id: 'id',
+  leave_request_id: 'leave_request_id',
+  leave_date: 'leave_date'
+} as const
+
+export type LeaveDateScalarFieldEnum = (typeof LeaveDateScalarFieldEnum)[keyof typeof LeaveDateScalarFieldEnum]
 
 
 export const LeaveTypeScalarFieldEnum = {

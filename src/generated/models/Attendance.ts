@@ -29,13 +29,13 @@ export type AggregateAttendance = {
 export type AttendanceAvgAggregateOutputType = {
   id: number | null
   worktime: number | null
-  leaves_id: number | null
+  leave_date_id: number | null
 }
 
 export type AttendanceSumAggregateOutputType = {
   id: number | null
   worktime: number | null
-  leaves_id: number | null
+  leave_date_id: number | null
 }
 
 export type AttendanceMinAggregateOutputType = {
@@ -45,7 +45,7 @@ export type AttendanceMinAggregateOutputType = {
   clockin: Date | null
   clockout: Date | null
   worktime: number | null
-  leaves_id: number | null
+  leave_date_id: number | null
   note: string | null
 }
 
@@ -56,7 +56,7 @@ export type AttendanceMaxAggregateOutputType = {
   clockin: Date | null
   clockout: Date | null
   worktime: number | null
-  leaves_id: number | null
+  leave_date_id: number | null
   note: string | null
 }
 
@@ -67,7 +67,7 @@ export type AttendanceCountAggregateOutputType = {
   clockin: number
   clockout: number
   worktime: number
-  leaves_id: number
+  leave_date_id: number
   note: number
   _all: number
 }
@@ -76,13 +76,13 @@ export type AttendanceCountAggregateOutputType = {
 export type AttendanceAvgAggregateInputType = {
   id?: true
   worktime?: true
-  leaves_id?: true
+  leave_date_id?: true
 }
 
 export type AttendanceSumAggregateInputType = {
   id?: true
   worktime?: true
-  leaves_id?: true
+  leave_date_id?: true
 }
 
 export type AttendanceMinAggregateInputType = {
@@ -92,7 +92,7 @@ export type AttendanceMinAggregateInputType = {
   clockin?: true
   clockout?: true
   worktime?: true
-  leaves_id?: true
+  leave_date_id?: true
   note?: true
 }
 
@@ -103,7 +103,7 @@ export type AttendanceMaxAggregateInputType = {
   clockin?: true
   clockout?: true
   worktime?: true
-  leaves_id?: true
+  leave_date_id?: true
   note?: true
 }
 
@@ -114,7 +114,7 @@ export type AttendanceCountAggregateInputType = {
   clockin?: true
   clockout?: true
   worktime?: true
-  leaves_id?: true
+  leave_date_id?: true
   note?: true
   _all?: true
 }
@@ -212,7 +212,7 @@ export type AttendanceGroupByOutputType = {
   clockin: Date | null
   clockout: Date | null
   worktime: number | null
-  leaves_id: number | null
+  leave_date_id: number | null
   note: string | null
   _count: AttendanceCountAggregateOutputType | null
   _avg: AttendanceAvgAggregateOutputType | null
@@ -246,10 +246,10 @@ export type AttendanceWhereInput = {
   clockin?: Prisma.DateTimeNullableFilter<"Attendance"> | Date | string | null
   clockout?: Prisma.DateTimeNullableFilter<"Attendance"> | Date | string | null
   worktime?: Prisma.IntNullableFilter<"Attendance"> | number | null
-  leaves_id?: Prisma.IntNullableFilter<"Attendance"> | number | null
+  leave_date_id?: Prisma.IntNullableFilter<"Attendance"> | number | null
   note?: Prisma.StringNullableFilter<"Attendance"> | string | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  leave?: Prisma.XOR<Prisma.LeaveNullableScalarRelationFilter, Prisma.LeaveWhereInput> | null
+  leave_date?: Prisma.XOR<Prisma.LeaveDateNullableScalarRelationFilter, Prisma.LeaveDateWhereInput> | null
 }
 
 export type AttendanceOrderByWithRelationInput = {
@@ -259,10 +259,10 @@ export type AttendanceOrderByWithRelationInput = {
   clockin?: Prisma.SortOrderInput | Prisma.SortOrder
   clockout?: Prisma.SortOrderInput | Prisma.SortOrder
   worktime?: Prisma.SortOrderInput | Prisma.SortOrder
-  leaves_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  leave_date_id?: Prisma.SortOrderInput | Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
-  leave?: Prisma.LeaveOrderByWithRelationInput
+  leave_date?: Prisma.LeaveDateOrderByWithRelationInput
 }
 
 export type AttendanceWhereUniqueInput = Prisma.AtLeast<{
@@ -275,10 +275,10 @@ export type AttendanceWhereUniqueInput = Prisma.AtLeast<{
   clockin?: Prisma.DateTimeNullableFilter<"Attendance"> | Date | string | null
   clockout?: Prisma.DateTimeNullableFilter<"Attendance"> | Date | string | null
   worktime?: Prisma.IntNullableFilter<"Attendance"> | number | null
-  leaves_id?: Prisma.IntNullableFilter<"Attendance"> | number | null
+  leave_date_id?: Prisma.IntNullableFilter<"Attendance"> | number | null
   note?: Prisma.StringNullableFilter<"Attendance"> | string | null
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-  leave?: Prisma.XOR<Prisma.LeaveNullableScalarRelationFilter, Prisma.LeaveWhereInput> | null
+  leave_date?: Prisma.XOR<Prisma.LeaveDateNullableScalarRelationFilter, Prisma.LeaveDateWhereInput> | null
 }, "id">
 
 export type AttendanceOrderByWithAggregationInput = {
@@ -288,7 +288,7 @@ export type AttendanceOrderByWithAggregationInput = {
   clockin?: Prisma.SortOrderInput | Prisma.SortOrder
   clockout?: Prisma.SortOrderInput | Prisma.SortOrder
   worktime?: Prisma.SortOrderInput | Prisma.SortOrder
-  leaves_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  leave_date_id?: Prisma.SortOrderInput | Prisma.SortOrder
   note?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.AttendanceCountOrderByAggregateInput
   _avg?: Prisma.AttendanceAvgOrderByAggregateInput
@@ -307,7 +307,7 @@ export type AttendanceScalarWhereWithAggregatesInput = {
   clockin?: Prisma.DateTimeNullableWithAggregatesFilter<"Attendance"> | Date | string | null
   clockout?: Prisma.DateTimeNullableWithAggregatesFilter<"Attendance"> | Date | string | null
   worktime?: Prisma.IntNullableWithAggregatesFilter<"Attendance"> | number | null
-  leaves_id?: Prisma.IntNullableWithAggregatesFilter<"Attendance"> | number | null
+  leave_date_id?: Prisma.IntNullableWithAggregatesFilter<"Attendance"> | number | null
   note?: Prisma.StringNullableWithAggregatesFilter<"Attendance"> | string | null
 }
 
@@ -318,7 +318,7 @@ export type AttendanceCreateInput = {
   worktime?: number | null
   note?: string | null
   user: Prisma.UserCreateNestedOneWithoutAttendancesInput
-  leave?: Prisma.LeaveCreateNestedOneWithoutAttendancesInput
+  leave_date?: Prisma.LeaveDateCreateNestedOneWithoutAttendancesInput
 }
 
 export type AttendanceUncheckedCreateInput = {
@@ -328,7 +328,7 @@ export type AttendanceUncheckedCreateInput = {
   clockin?: Date | string | null
   clockout?: Date | string | null
   worktime?: number | null
-  leaves_id?: number | null
+  leave_date_id?: number | null
   note?: string | null
 }
 
@@ -339,7 +339,7 @@ export type AttendanceUpdateInput = {
   worktime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutAttendancesNestedInput
-  leave?: Prisma.LeaveUpdateOneWithoutAttendancesNestedInput
+  leave_date?: Prisma.LeaveDateUpdateOneWithoutAttendancesNestedInput
 }
 
 export type AttendanceUncheckedUpdateInput = {
@@ -349,7 +349,7 @@ export type AttendanceUncheckedUpdateInput = {
   clockin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clockout?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   worktime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  leaves_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  leave_date_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -360,7 +360,7 @@ export type AttendanceCreateManyInput = {
   clockin?: Date | string | null
   clockout?: Date | string | null
   worktime?: number | null
-  leaves_id?: number | null
+  leave_date_id?: number | null
   note?: string | null
 }
 
@@ -379,7 +379,7 @@ export type AttendanceUncheckedUpdateManyInput = {
   clockin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clockout?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   worktime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  leaves_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  leave_date_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -400,14 +400,14 @@ export type AttendanceCountOrderByAggregateInput = {
   clockin?: Prisma.SortOrder
   clockout?: Prisma.SortOrder
   worktime?: Prisma.SortOrder
-  leaves_id?: Prisma.SortOrder
+  leave_date_id?: Prisma.SortOrder
   note?: Prisma.SortOrder
 }
 
 export type AttendanceAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   worktime?: Prisma.SortOrder
-  leaves_id?: Prisma.SortOrder
+  leave_date_id?: Prisma.SortOrder
 }
 
 export type AttendanceMaxOrderByAggregateInput = {
@@ -417,7 +417,7 @@ export type AttendanceMaxOrderByAggregateInput = {
   clockin?: Prisma.SortOrder
   clockout?: Prisma.SortOrder
   worktime?: Prisma.SortOrder
-  leaves_id?: Prisma.SortOrder
+  leave_date_id?: Prisma.SortOrder
   note?: Prisma.SortOrder
 }
 
@@ -428,14 +428,14 @@ export type AttendanceMinOrderByAggregateInput = {
   clockin?: Prisma.SortOrder
   clockout?: Prisma.SortOrder
   worktime?: Prisma.SortOrder
-  leaves_id?: Prisma.SortOrder
+  leave_date_id?: Prisma.SortOrder
   note?: Prisma.SortOrder
 }
 
 export type AttendanceSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   worktime?: Prisma.SortOrder
-  leaves_id?: Prisma.SortOrder
+  leave_date_id?: Prisma.SortOrder
 }
 
 export type AttendanceCreateNestedManyWithoutUserInput = {
@@ -496,45 +496,45 @@ export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
 
-export type AttendanceCreateNestedManyWithoutLeaveInput = {
-  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutLeaveInput, Prisma.AttendanceUncheckedCreateWithoutLeaveInput> | Prisma.AttendanceCreateWithoutLeaveInput[] | Prisma.AttendanceUncheckedCreateWithoutLeaveInput[]
-  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutLeaveInput | Prisma.AttendanceCreateOrConnectWithoutLeaveInput[]
-  createMany?: Prisma.AttendanceCreateManyLeaveInputEnvelope
+export type AttendanceCreateNestedManyWithoutLeave_dateInput = {
+  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutLeave_dateInput, Prisma.AttendanceUncheckedCreateWithoutLeave_dateInput> | Prisma.AttendanceCreateWithoutLeave_dateInput[] | Prisma.AttendanceUncheckedCreateWithoutLeave_dateInput[]
+  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutLeave_dateInput | Prisma.AttendanceCreateOrConnectWithoutLeave_dateInput[]
+  createMany?: Prisma.AttendanceCreateManyLeave_dateInputEnvelope
   connect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
 }
 
-export type AttendanceUncheckedCreateNestedManyWithoutLeaveInput = {
-  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutLeaveInput, Prisma.AttendanceUncheckedCreateWithoutLeaveInput> | Prisma.AttendanceCreateWithoutLeaveInput[] | Prisma.AttendanceUncheckedCreateWithoutLeaveInput[]
-  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutLeaveInput | Prisma.AttendanceCreateOrConnectWithoutLeaveInput[]
-  createMany?: Prisma.AttendanceCreateManyLeaveInputEnvelope
+export type AttendanceUncheckedCreateNestedManyWithoutLeave_dateInput = {
+  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutLeave_dateInput, Prisma.AttendanceUncheckedCreateWithoutLeave_dateInput> | Prisma.AttendanceCreateWithoutLeave_dateInput[] | Prisma.AttendanceUncheckedCreateWithoutLeave_dateInput[]
+  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutLeave_dateInput | Prisma.AttendanceCreateOrConnectWithoutLeave_dateInput[]
+  createMany?: Prisma.AttendanceCreateManyLeave_dateInputEnvelope
   connect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
 }
 
-export type AttendanceUpdateManyWithoutLeaveNestedInput = {
-  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutLeaveInput, Prisma.AttendanceUncheckedCreateWithoutLeaveInput> | Prisma.AttendanceCreateWithoutLeaveInput[] | Prisma.AttendanceUncheckedCreateWithoutLeaveInput[]
-  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutLeaveInput | Prisma.AttendanceCreateOrConnectWithoutLeaveInput[]
-  upsert?: Prisma.AttendanceUpsertWithWhereUniqueWithoutLeaveInput | Prisma.AttendanceUpsertWithWhereUniqueWithoutLeaveInput[]
-  createMany?: Prisma.AttendanceCreateManyLeaveInputEnvelope
+export type AttendanceUpdateManyWithoutLeave_dateNestedInput = {
+  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutLeave_dateInput, Prisma.AttendanceUncheckedCreateWithoutLeave_dateInput> | Prisma.AttendanceCreateWithoutLeave_dateInput[] | Prisma.AttendanceUncheckedCreateWithoutLeave_dateInput[]
+  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutLeave_dateInput | Prisma.AttendanceCreateOrConnectWithoutLeave_dateInput[]
+  upsert?: Prisma.AttendanceUpsertWithWhereUniqueWithoutLeave_dateInput | Prisma.AttendanceUpsertWithWhereUniqueWithoutLeave_dateInput[]
+  createMany?: Prisma.AttendanceCreateManyLeave_dateInputEnvelope
   set?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
   disconnect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
   delete?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
   connect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
-  update?: Prisma.AttendanceUpdateWithWhereUniqueWithoutLeaveInput | Prisma.AttendanceUpdateWithWhereUniqueWithoutLeaveInput[]
-  updateMany?: Prisma.AttendanceUpdateManyWithWhereWithoutLeaveInput | Prisma.AttendanceUpdateManyWithWhereWithoutLeaveInput[]
+  update?: Prisma.AttendanceUpdateWithWhereUniqueWithoutLeave_dateInput | Prisma.AttendanceUpdateWithWhereUniqueWithoutLeave_dateInput[]
+  updateMany?: Prisma.AttendanceUpdateManyWithWhereWithoutLeave_dateInput | Prisma.AttendanceUpdateManyWithWhereWithoutLeave_dateInput[]
   deleteMany?: Prisma.AttendanceScalarWhereInput | Prisma.AttendanceScalarWhereInput[]
 }
 
-export type AttendanceUncheckedUpdateManyWithoutLeaveNestedInput = {
-  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutLeaveInput, Prisma.AttendanceUncheckedCreateWithoutLeaveInput> | Prisma.AttendanceCreateWithoutLeaveInput[] | Prisma.AttendanceUncheckedCreateWithoutLeaveInput[]
-  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutLeaveInput | Prisma.AttendanceCreateOrConnectWithoutLeaveInput[]
-  upsert?: Prisma.AttendanceUpsertWithWhereUniqueWithoutLeaveInput | Prisma.AttendanceUpsertWithWhereUniqueWithoutLeaveInput[]
-  createMany?: Prisma.AttendanceCreateManyLeaveInputEnvelope
+export type AttendanceUncheckedUpdateManyWithoutLeave_dateNestedInput = {
+  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutLeave_dateInput, Prisma.AttendanceUncheckedCreateWithoutLeave_dateInput> | Prisma.AttendanceCreateWithoutLeave_dateInput[] | Prisma.AttendanceUncheckedCreateWithoutLeave_dateInput[]
+  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutLeave_dateInput | Prisma.AttendanceCreateOrConnectWithoutLeave_dateInput[]
+  upsert?: Prisma.AttendanceUpsertWithWhereUniqueWithoutLeave_dateInput | Prisma.AttendanceUpsertWithWhereUniqueWithoutLeave_dateInput[]
+  createMany?: Prisma.AttendanceCreateManyLeave_dateInputEnvelope
   set?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
   disconnect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
   delete?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
   connect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
-  update?: Prisma.AttendanceUpdateWithWhereUniqueWithoutLeaveInput | Prisma.AttendanceUpdateWithWhereUniqueWithoutLeaveInput[]
-  updateMany?: Prisma.AttendanceUpdateManyWithWhereWithoutLeaveInput | Prisma.AttendanceUpdateManyWithWhereWithoutLeaveInput[]
+  update?: Prisma.AttendanceUpdateWithWhereUniqueWithoutLeave_dateInput | Prisma.AttendanceUpdateWithWhereUniqueWithoutLeave_dateInput[]
+  updateMany?: Prisma.AttendanceUpdateManyWithWhereWithoutLeave_dateInput | Prisma.AttendanceUpdateManyWithWhereWithoutLeave_dateInput[]
   deleteMany?: Prisma.AttendanceScalarWhereInput | Prisma.AttendanceScalarWhereInput[]
 }
 
@@ -544,7 +544,7 @@ export type AttendanceCreateWithoutUserInput = {
   clockout?: Date | string | null
   worktime?: number | null
   note?: string | null
-  leave?: Prisma.LeaveCreateNestedOneWithoutAttendancesInput
+  leave_date?: Prisma.LeaveDateCreateNestedOneWithoutAttendancesInput
 }
 
 export type AttendanceUncheckedCreateWithoutUserInput = {
@@ -553,7 +553,7 @@ export type AttendanceUncheckedCreateWithoutUserInput = {
   clockin?: Date | string | null
   clockout?: Date | string | null
   worktime?: number | null
-  leaves_id?: number | null
+  leave_date_id?: number | null
   note?: string | null
 }
 
@@ -593,11 +593,11 @@ export type AttendanceScalarWhereInput = {
   clockin?: Prisma.DateTimeNullableFilter<"Attendance"> | Date | string | null
   clockout?: Prisma.DateTimeNullableFilter<"Attendance"> | Date | string | null
   worktime?: Prisma.IntNullableFilter<"Attendance"> | number | null
-  leaves_id?: Prisma.IntNullableFilter<"Attendance"> | number | null
+  leave_date_id?: Prisma.IntNullableFilter<"Attendance"> | number | null
   note?: Prisma.StringNullableFilter<"Attendance"> | string | null
 }
 
-export type AttendanceCreateWithoutLeaveInput = {
+export type AttendanceCreateWithoutLeave_dateInput = {
   date: Date | string
   clockin?: Date | string | null
   clockout?: Date | string | null
@@ -606,7 +606,7 @@ export type AttendanceCreateWithoutLeaveInput = {
   user: Prisma.UserCreateNestedOneWithoutAttendancesInput
 }
 
-export type AttendanceUncheckedCreateWithoutLeaveInput = {
+export type AttendanceUncheckedCreateWithoutLeave_dateInput = {
   id?: number
   user_id: string
   date: Date | string
@@ -616,30 +616,30 @@ export type AttendanceUncheckedCreateWithoutLeaveInput = {
   note?: string | null
 }
 
-export type AttendanceCreateOrConnectWithoutLeaveInput = {
+export type AttendanceCreateOrConnectWithoutLeave_dateInput = {
   where: Prisma.AttendanceWhereUniqueInput
-  create: Prisma.XOR<Prisma.AttendanceCreateWithoutLeaveInput, Prisma.AttendanceUncheckedCreateWithoutLeaveInput>
+  create: Prisma.XOR<Prisma.AttendanceCreateWithoutLeave_dateInput, Prisma.AttendanceUncheckedCreateWithoutLeave_dateInput>
 }
 
-export type AttendanceCreateManyLeaveInputEnvelope = {
-  data: Prisma.AttendanceCreateManyLeaveInput | Prisma.AttendanceCreateManyLeaveInput[]
+export type AttendanceCreateManyLeave_dateInputEnvelope = {
+  data: Prisma.AttendanceCreateManyLeave_dateInput | Prisma.AttendanceCreateManyLeave_dateInput[]
   skipDuplicates?: boolean
 }
 
-export type AttendanceUpsertWithWhereUniqueWithoutLeaveInput = {
+export type AttendanceUpsertWithWhereUniqueWithoutLeave_dateInput = {
   where: Prisma.AttendanceWhereUniqueInput
-  update: Prisma.XOR<Prisma.AttendanceUpdateWithoutLeaveInput, Prisma.AttendanceUncheckedUpdateWithoutLeaveInput>
-  create: Prisma.XOR<Prisma.AttendanceCreateWithoutLeaveInput, Prisma.AttendanceUncheckedCreateWithoutLeaveInput>
+  update: Prisma.XOR<Prisma.AttendanceUpdateWithoutLeave_dateInput, Prisma.AttendanceUncheckedUpdateWithoutLeave_dateInput>
+  create: Prisma.XOR<Prisma.AttendanceCreateWithoutLeave_dateInput, Prisma.AttendanceUncheckedCreateWithoutLeave_dateInput>
 }
 
-export type AttendanceUpdateWithWhereUniqueWithoutLeaveInput = {
+export type AttendanceUpdateWithWhereUniqueWithoutLeave_dateInput = {
   where: Prisma.AttendanceWhereUniqueInput
-  data: Prisma.XOR<Prisma.AttendanceUpdateWithoutLeaveInput, Prisma.AttendanceUncheckedUpdateWithoutLeaveInput>
+  data: Prisma.XOR<Prisma.AttendanceUpdateWithoutLeave_dateInput, Prisma.AttendanceUncheckedUpdateWithoutLeave_dateInput>
 }
 
-export type AttendanceUpdateManyWithWhereWithoutLeaveInput = {
+export type AttendanceUpdateManyWithWhereWithoutLeave_dateInput = {
   where: Prisma.AttendanceScalarWhereInput
-  data: Prisma.XOR<Prisma.AttendanceUpdateManyMutationInput, Prisma.AttendanceUncheckedUpdateManyWithoutLeaveInput>
+  data: Prisma.XOR<Prisma.AttendanceUpdateManyMutationInput, Prisma.AttendanceUncheckedUpdateManyWithoutLeave_dateInput>
 }
 
 export type AttendanceCreateManyUserInput = {
@@ -648,7 +648,7 @@ export type AttendanceCreateManyUserInput = {
   clockin?: Date | string | null
   clockout?: Date | string | null
   worktime?: number | null
-  leaves_id?: number | null
+  leave_date_id?: number | null
   note?: string | null
 }
 
@@ -658,7 +658,7 @@ export type AttendanceUpdateWithoutUserInput = {
   clockout?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   worktime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  leave?: Prisma.LeaveUpdateOneWithoutAttendancesNestedInput
+  leave_date?: Prisma.LeaveDateUpdateOneWithoutAttendancesNestedInput
 }
 
 export type AttendanceUncheckedUpdateWithoutUserInput = {
@@ -667,7 +667,7 @@ export type AttendanceUncheckedUpdateWithoutUserInput = {
   clockin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clockout?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   worktime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  leaves_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  leave_date_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -677,11 +677,11 @@ export type AttendanceUncheckedUpdateManyWithoutUserInput = {
   clockin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clockout?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   worktime?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  leaves_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  leave_date_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
-export type AttendanceCreateManyLeaveInput = {
+export type AttendanceCreateManyLeave_dateInput = {
   id?: number
   user_id: string
   date: Date | string
@@ -691,7 +691,7 @@ export type AttendanceCreateManyLeaveInput = {
   note?: string | null
 }
 
-export type AttendanceUpdateWithoutLeaveInput = {
+export type AttendanceUpdateWithoutLeave_dateInput = {
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   clockin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   clockout?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -700,7 +700,7 @@ export type AttendanceUpdateWithoutLeaveInput = {
   user?: Prisma.UserUpdateOneRequiredWithoutAttendancesNestedInput
 }
 
-export type AttendanceUncheckedUpdateWithoutLeaveInput = {
+export type AttendanceUncheckedUpdateWithoutLeave_dateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -710,7 +710,7 @@ export type AttendanceUncheckedUpdateWithoutLeaveInput = {
   note?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
-export type AttendanceUncheckedUpdateManyWithoutLeaveInput = {
+export type AttendanceUncheckedUpdateManyWithoutLeave_dateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   user_id?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -729,10 +729,10 @@ export type AttendanceSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   clockin?: boolean
   clockout?: boolean
   worktime?: boolean
-  leaves_id?: boolean
+  leave_date_id?: boolean
   note?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  leave?: boolean | Prisma.Attendance$leaveArgs<ExtArgs>
+  leave_date?: boolean | Prisma.Attendance$leave_dateArgs<ExtArgs>
 }, ExtArgs["result"]["attendance"]>
 
 export type AttendanceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -742,10 +742,10 @@ export type AttendanceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   clockin?: boolean
   clockout?: boolean
   worktime?: boolean
-  leaves_id?: boolean
+  leave_date_id?: boolean
   note?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  leave?: boolean | Prisma.Attendance$leaveArgs<ExtArgs>
+  leave_date?: boolean | Prisma.Attendance$leave_dateArgs<ExtArgs>
 }, ExtArgs["result"]["attendance"]>
 
 export type AttendanceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -755,10 +755,10 @@ export type AttendanceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   clockin?: boolean
   clockout?: boolean
   worktime?: boolean
-  leaves_id?: boolean
+  leave_date_id?: boolean
   note?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  leave?: boolean | Prisma.Attendance$leaveArgs<ExtArgs>
+  leave_date?: boolean | Prisma.Attendance$leave_dateArgs<ExtArgs>
 }, ExtArgs["result"]["attendance"]>
 
 export type AttendanceSelectScalar = {
@@ -768,29 +768,29 @@ export type AttendanceSelectScalar = {
   clockin?: boolean
   clockout?: boolean
   worktime?: boolean
-  leaves_id?: boolean
+  leave_date_id?: boolean
   note?: boolean
 }
 
-export type AttendanceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "user_id" | "date" | "clockin" | "clockout" | "worktime" | "leaves_id" | "note", ExtArgs["result"]["attendance"]>
+export type AttendanceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "user_id" | "date" | "clockin" | "clockout" | "worktime" | "leave_date_id" | "note", ExtArgs["result"]["attendance"]>
 export type AttendanceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  leave?: boolean | Prisma.Attendance$leaveArgs<ExtArgs>
+  leave_date?: boolean | Prisma.Attendance$leave_dateArgs<ExtArgs>
 }
 export type AttendanceIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  leave?: boolean | Prisma.Attendance$leaveArgs<ExtArgs>
+  leave_date?: boolean | Prisma.Attendance$leave_dateArgs<ExtArgs>
 }
 export type AttendanceIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
-  leave?: boolean | Prisma.Attendance$leaveArgs<ExtArgs>
+  leave_date?: boolean | Prisma.Attendance$leave_dateArgs<ExtArgs>
 }
 
 export type $AttendancePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Attendance"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
-    leave: Prisma.$LeavePayload<ExtArgs> | null
+    leave_date: Prisma.$LeaveDatePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -799,7 +799,7 @@ export type $AttendancePayload<ExtArgs extends runtime.Types.Extensions.Internal
     clockin: Date | null
     clockout: Date | null
     worktime: number | null
-    leaves_id: number | null
+    leave_date_id: number | null
     note: string | null
   }, ExtArgs["result"]["attendance"]>
   composites: {}
@@ -1196,7 +1196,7 @@ readonly fields: AttendanceFieldRefs;
 export interface Prisma__AttendanceClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  leave<T extends Prisma.Attendance$leaveArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Attendance$leaveArgs<ExtArgs>>): Prisma.Prisma__LeaveClient<runtime.Types.Result.GetResult<Prisma.$LeavePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  leave_date<T extends Prisma.Attendance$leave_dateArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Attendance$leave_dateArgs<ExtArgs>>): Prisma.Prisma__LeaveDateClient<runtime.Types.Result.GetResult<Prisma.$LeaveDatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1232,7 +1232,7 @@ export interface AttendanceFieldRefs {
   readonly clockin: Prisma.FieldRef<"Attendance", 'DateTime'>
   readonly clockout: Prisma.FieldRef<"Attendance", 'DateTime'>
   readonly worktime: Prisma.FieldRef<"Attendance", 'Int'>
-  readonly leaves_id: Prisma.FieldRef<"Attendance", 'Int'>
+  readonly leave_date_id: Prisma.FieldRef<"Attendance", 'Int'>
   readonly note: Prisma.FieldRef<"Attendance", 'String'>
 }
     
@@ -1630,22 +1630,22 @@ export type AttendanceDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.In
 }
 
 /**
- * Attendance.leave
+ * Attendance.leave_date
  */
-export type Attendance$leaveArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Attendance$leave_dateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Leave
+   * Select specific fields to fetch from the LeaveDate
    */
-  select?: Prisma.LeaveSelect<ExtArgs> | null
+  select?: Prisma.LeaveDateSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Leave
+   * Omit specific fields from the LeaveDate
    */
-  omit?: Prisma.LeaveOmit<ExtArgs> | null
+  omit?: Prisma.LeaveDateOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.LeaveInclude<ExtArgs> | null
-  where?: Prisma.LeaveWhereInput
+  include?: Prisma.LeaveDateInclude<ExtArgs> | null
+  where?: Prisma.LeaveDateWhereInput
 }
 
 /**

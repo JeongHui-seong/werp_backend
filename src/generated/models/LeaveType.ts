@@ -204,14 +204,14 @@ export type LeaveTypeWhereInput = {
   id?: Prisma.IntFilter<"LeaveType"> | number
   type?: Prisma.StringFilter<"LeaveType"> | string
   days?: Prisma.DecimalFilter<"LeaveType"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  leaves?: Prisma.LeaveListRelationFilter
+  LeaveRequest?: Prisma.LeaveRequestListRelationFilter
 }
 
 export type LeaveTypeOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
   days?: Prisma.SortOrder
-  leaves?: Prisma.LeaveOrderByRelationAggregateInput
+  LeaveRequest?: Prisma.LeaveRequestOrderByRelationAggregateInput
 }
 
 export type LeaveTypeWhereUniqueInput = Prisma.AtLeast<{
@@ -221,7 +221,7 @@ export type LeaveTypeWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.LeaveTypeWhereInput[]
   NOT?: Prisma.LeaveTypeWhereInput | Prisma.LeaveTypeWhereInput[]
   days?: Prisma.DecimalFilter<"LeaveType"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  leaves?: Prisma.LeaveListRelationFilter
+  LeaveRequest?: Prisma.LeaveRequestListRelationFilter
 }, "id" | "type">
 
 export type LeaveTypeOrderByWithAggregationInput = {
@@ -247,27 +247,27 @@ export type LeaveTypeScalarWhereWithAggregatesInput = {
 export type LeaveTypeCreateInput = {
   type: string
   days: runtime.Decimal | runtime.DecimalJsLike | number | string
-  leaves?: Prisma.LeaveCreateNestedManyWithoutLeave_typeInput
+  LeaveRequest?: Prisma.LeaveRequestCreateNestedManyWithoutLeave_typeInput
 }
 
 export type LeaveTypeUncheckedCreateInput = {
   id?: number
   type: string
   days: runtime.Decimal | runtime.DecimalJsLike | number | string
-  leaves?: Prisma.LeaveUncheckedCreateNestedManyWithoutLeave_typeInput
+  LeaveRequest?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutLeave_typeInput
 }
 
 export type LeaveTypeUpdateInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   days?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  leaves?: Prisma.LeaveUpdateManyWithoutLeave_typeNestedInput
+  LeaveRequest?: Prisma.LeaveRequestUpdateManyWithoutLeave_typeNestedInput
 }
 
 export type LeaveTypeUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.StringFieldUpdateOperationsInput | string
   days?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  leaves?: Prisma.LeaveUncheckedUpdateManyWithoutLeave_typeNestedInput
+  LeaveRequest?: Prisma.LeaveRequestUncheckedUpdateManyWithoutLeave_typeNestedInput
 }
 
 export type LeaveTypeCreateManyInput = {
@@ -320,18 +320,18 @@ export type LeaveTypeSumOrderByAggregateInput = {
   days?: Prisma.SortOrder
 }
 
-export type LeaveTypeCreateNestedOneWithoutLeavesInput = {
-  create?: Prisma.XOR<Prisma.LeaveTypeCreateWithoutLeavesInput, Prisma.LeaveTypeUncheckedCreateWithoutLeavesInput>
-  connectOrCreate?: Prisma.LeaveTypeCreateOrConnectWithoutLeavesInput
+export type LeaveTypeCreateNestedOneWithoutLeaveRequestInput = {
+  create?: Prisma.XOR<Prisma.LeaveTypeCreateWithoutLeaveRequestInput, Prisma.LeaveTypeUncheckedCreateWithoutLeaveRequestInput>
+  connectOrCreate?: Prisma.LeaveTypeCreateOrConnectWithoutLeaveRequestInput
   connect?: Prisma.LeaveTypeWhereUniqueInput
 }
 
-export type LeaveTypeUpdateOneRequiredWithoutLeavesNestedInput = {
-  create?: Prisma.XOR<Prisma.LeaveTypeCreateWithoutLeavesInput, Prisma.LeaveTypeUncheckedCreateWithoutLeavesInput>
-  connectOrCreate?: Prisma.LeaveTypeCreateOrConnectWithoutLeavesInput
-  upsert?: Prisma.LeaveTypeUpsertWithoutLeavesInput
+export type LeaveTypeUpdateOneRequiredWithoutLeaveRequestNestedInput = {
+  create?: Prisma.XOR<Prisma.LeaveTypeCreateWithoutLeaveRequestInput, Prisma.LeaveTypeUncheckedCreateWithoutLeaveRequestInput>
+  connectOrCreate?: Prisma.LeaveTypeCreateOrConnectWithoutLeaveRequestInput
+  upsert?: Prisma.LeaveTypeUpsertWithoutLeaveRequestInput
   connect?: Prisma.LeaveTypeWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.LeaveTypeUpdateToOneWithWhereWithoutLeavesInput, Prisma.LeaveTypeUpdateWithoutLeavesInput>, Prisma.LeaveTypeUncheckedUpdateWithoutLeavesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.LeaveTypeUpdateToOneWithWhereWithoutLeaveRequestInput, Prisma.LeaveTypeUpdateWithoutLeaveRequestInput>, Prisma.LeaveTypeUncheckedUpdateWithoutLeaveRequestInput>
 }
 
 export type DecimalFieldUpdateOperationsInput = {
@@ -342,39 +342,39 @@ export type DecimalFieldUpdateOperationsInput = {
   divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
-export type LeaveTypeCreateWithoutLeavesInput = {
+export type LeaveTypeCreateWithoutLeaveRequestInput = {
   type: string
   days: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
-export type LeaveTypeUncheckedCreateWithoutLeavesInput = {
+export type LeaveTypeUncheckedCreateWithoutLeaveRequestInput = {
   id?: number
   type: string
   days: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
-export type LeaveTypeCreateOrConnectWithoutLeavesInput = {
+export type LeaveTypeCreateOrConnectWithoutLeaveRequestInput = {
   where: Prisma.LeaveTypeWhereUniqueInput
-  create: Prisma.XOR<Prisma.LeaveTypeCreateWithoutLeavesInput, Prisma.LeaveTypeUncheckedCreateWithoutLeavesInput>
+  create: Prisma.XOR<Prisma.LeaveTypeCreateWithoutLeaveRequestInput, Prisma.LeaveTypeUncheckedCreateWithoutLeaveRequestInput>
 }
 
-export type LeaveTypeUpsertWithoutLeavesInput = {
-  update: Prisma.XOR<Prisma.LeaveTypeUpdateWithoutLeavesInput, Prisma.LeaveTypeUncheckedUpdateWithoutLeavesInput>
-  create: Prisma.XOR<Prisma.LeaveTypeCreateWithoutLeavesInput, Prisma.LeaveTypeUncheckedCreateWithoutLeavesInput>
+export type LeaveTypeUpsertWithoutLeaveRequestInput = {
+  update: Prisma.XOR<Prisma.LeaveTypeUpdateWithoutLeaveRequestInput, Prisma.LeaveTypeUncheckedUpdateWithoutLeaveRequestInput>
+  create: Prisma.XOR<Prisma.LeaveTypeCreateWithoutLeaveRequestInput, Prisma.LeaveTypeUncheckedCreateWithoutLeaveRequestInput>
   where?: Prisma.LeaveTypeWhereInput
 }
 
-export type LeaveTypeUpdateToOneWithWhereWithoutLeavesInput = {
+export type LeaveTypeUpdateToOneWithWhereWithoutLeaveRequestInput = {
   where?: Prisma.LeaveTypeWhereInput
-  data: Prisma.XOR<Prisma.LeaveTypeUpdateWithoutLeavesInput, Prisma.LeaveTypeUncheckedUpdateWithoutLeavesInput>
+  data: Prisma.XOR<Prisma.LeaveTypeUpdateWithoutLeaveRequestInput, Prisma.LeaveTypeUncheckedUpdateWithoutLeaveRequestInput>
 }
 
-export type LeaveTypeUpdateWithoutLeavesInput = {
+export type LeaveTypeUpdateWithoutLeaveRequestInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   days?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
-export type LeaveTypeUncheckedUpdateWithoutLeavesInput = {
+export type LeaveTypeUncheckedUpdateWithoutLeaveRequestInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   type?: Prisma.StringFieldUpdateOperationsInput | string
   days?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -386,11 +386,11 @@ export type LeaveTypeUncheckedUpdateWithoutLeavesInput = {
  */
 
 export type LeaveTypeCountOutputType = {
-  leaves: number
+  LeaveRequest: number
 }
 
 export type LeaveTypeCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  leaves?: boolean | LeaveTypeCountOutputTypeCountLeavesArgs
+  LeaveRequest?: boolean | LeaveTypeCountOutputTypeCountLeaveRequestArgs
 }
 
 /**
@@ -406,8 +406,8 @@ export type LeaveTypeCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ex
 /**
  * LeaveTypeCountOutputType without action
  */
-export type LeaveTypeCountOutputTypeCountLeavesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.LeaveWhereInput
+export type LeaveTypeCountOutputTypeCountLeaveRequestArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LeaveRequestWhereInput
 }
 
 
@@ -415,7 +415,7 @@ export type LeaveTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   id?: boolean
   type?: boolean
   days?: boolean
-  leaves?: boolean | Prisma.LeaveType$leavesArgs<ExtArgs>
+  LeaveRequest?: boolean | Prisma.LeaveType$LeaveRequestArgs<ExtArgs>
   _count?: boolean | Prisma.LeaveTypeCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["leaveType"]>
 
@@ -439,7 +439,7 @@ export type LeaveTypeSelectScalar = {
 
 export type LeaveTypeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type" | "days", ExtArgs["result"]["leaveType"]>
 export type LeaveTypeInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  leaves?: boolean | Prisma.LeaveType$leavesArgs<ExtArgs>
+  LeaveRequest?: boolean | Prisma.LeaveType$LeaveRequestArgs<ExtArgs>
   _count?: boolean | Prisma.LeaveTypeCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type LeaveTypeIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -448,7 +448,7 @@ export type LeaveTypeIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
 export type $LeaveTypePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "LeaveType"
   objects: {
-    leaves: Prisma.$LeavePayload<ExtArgs>[]
+    LeaveRequest: Prisma.$LeaveRequestPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -848,7 +848,7 @@ readonly fields: LeaveTypeFieldRefs;
  */
 export interface Prisma__LeaveTypeClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  leaves<T extends Prisma.LeaveType$leavesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.LeaveType$leavesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeavePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  LeaveRequest<T extends Prisma.LeaveType$LeaveRequestArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.LeaveType$LeaveRequestArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeaveRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1269,27 +1269,27 @@ export type LeaveTypeDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
 }
 
 /**
- * LeaveType.leaves
+ * LeaveType.LeaveRequest
  */
-export type LeaveType$leavesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type LeaveType$LeaveRequestArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Leave
+   * Select specific fields to fetch from the LeaveRequest
    */
-  select?: Prisma.LeaveSelect<ExtArgs> | null
+  select?: Prisma.LeaveRequestSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Leave
+   * Omit specific fields from the LeaveRequest
    */
-  omit?: Prisma.LeaveOmit<ExtArgs> | null
+  omit?: Prisma.LeaveRequestOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.LeaveInclude<ExtArgs> | null
-  where?: Prisma.LeaveWhereInput
-  orderBy?: Prisma.LeaveOrderByWithRelationInput | Prisma.LeaveOrderByWithRelationInput[]
-  cursor?: Prisma.LeaveWhereUniqueInput
+  include?: Prisma.LeaveRequestInclude<ExtArgs> | null
+  where?: Prisma.LeaveRequestWhereInput
+  orderBy?: Prisma.LeaveRequestOrderByWithRelationInput | Prisma.LeaveRequestOrderByWithRelationInput[]
+  cursor?: Prisma.LeaveRequestWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.LeaveScalarFieldEnum | Prisma.LeaveScalarFieldEnum[]
+  distinct?: Prisma.LeaveRequestScalarFieldEnum | Prisma.LeaveRequestScalarFieldEnum[]
 }
 
 /**

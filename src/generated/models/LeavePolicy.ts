@@ -29,25 +29,25 @@ export type AggregateLeavePolicy = {
 export type LeavePolicyAvgAggregateOutputType = {
   id: number | null
   year: number | null
-  days: runtime.Decimal | null
+  days: number | null
 }
 
 export type LeavePolicySumAggregateOutputType = {
   id: number | null
   year: number | null
-  days: runtime.Decimal | null
+  days: number | null
 }
 
 export type LeavePolicyMinAggregateOutputType = {
   id: number | null
   year: number | null
-  days: runtime.Decimal | null
+  days: number | null
 }
 
 export type LeavePolicyMaxAggregateOutputType = {
   id: number | null
   year: number | null
-  days: runtime.Decimal | null
+  days: number | null
 }
 
 export type LeavePolicyCountAggregateOutputType = {
@@ -178,7 +178,7 @@ export type LeavePolicyGroupByArgs<ExtArgs extends runtime.Types.Extensions.Inte
 export type LeavePolicyGroupByOutputType = {
   id: number
   year: number
-  days: runtime.Decimal
+  days: number
   _count: LeavePolicyCountAggregateOutputType | null
   _avg: LeavePolicyAvgAggregateOutputType | null
   _sum: LeavePolicySumAggregateOutputType | null
@@ -207,7 +207,7 @@ export type LeavePolicyWhereInput = {
   NOT?: Prisma.LeavePolicyWhereInput | Prisma.LeavePolicyWhereInput[]
   id?: Prisma.IntFilter<"LeavePolicy"> | number
   year?: Prisma.IntFilter<"LeavePolicy"> | number
-  days?: Prisma.DecimalFilter<"LeavePolicy"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  days?: Prisma.IntFilter<"LeavePolicy"> | number
 }
 
 export type LeavePolicyOrderByWithRelationInput = {
@@ -222,7 +222,7 @@ export type LeavePolicyWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.LeavePolicyWhereInput | Prisma.LeavePolicyWhereInput[]
   OR?: Prisma.LeavePolicyWhereInput[]
   NOT?: Prisma.LeavePolicyWhereInput | Prisma.LeavePolicyWhereInput[]
-  days?: Prisma.DecimalFilter<"LeavePolicy"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  days?: Prisma.IntFilter<"LeavePolicy"> | number
 }, "id" | "year">
 
 export type LeavePolicyOrderByWithAggregationInput = {
@@ -242,46 +242,46 @@ export type LeavePolicyScalarWhereWithAggregatesInput = {
   NOT?: Prisma.LeavePolicyScalarWhereWithAggregatesInput | Prisma.LeavePolicyScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"LeavePolicy"> | number
   year?: Prisma.IntWithAggregatesFilter<"LeavePolicy"> | number
-  days?: Prisma.DecimalWithAggregatesFilter<"LeavePolicy"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  days?: Prisma.IntWithAggregatesFilter<"LeavePolicy"> | number
 }
 
 export type LeavePolicyCreateInput = {
   year: number
-  days: runtime.Decimal | runtime.DecimalJsLike | number | string
+  days: number
 }
 
 export type LeavePolicyUncheckedCreateInput = {
   id?: number
   year: number
-  days: runtime.Decimal | runtime.DecimalJsLike | number | string
+  days: number
 }
 
 export type LeavePolicyUpdateInput = {
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  days?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  days?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type LeavePolicyUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  days?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  days?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type LeavePolicyCreateManyInput = {
   id?: number
   year: number
-  days: runtime.Decimal | runtime.DecimalJsLike | number | string
+  days: number
 }
 
 export type LeavePolicyUpdateManyMutationInput = {
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  days?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  days?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type LeavePolicyUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   year?: Prisma.IntFieldUpdateOperationsInput | number
-  days?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  days?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type LeavePolicyCountOrderByAggregateInput = {
@@ -348,7 +348,7 @@ export type $LeavePolicyPayload<ExtArgs extends runtime.Types.Extensions.Interna
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     year: number
-    days: runtime.Decimal
+    days: number
   }, ExtArgs["result"]["leavePolicy"]>
   composites: {}
 }
@@ -774,7 +774,7 @@ export interface Prisma__LeavePolicyClient<T, Null = never, ExtArgs extends runt
 export interface LeavePolicyFieldRefs {
   readonly id: Prisma.FieldRef<"LeavePolicy", 'Int'>
   readonly year: Prisma.FieldRef<"LeavePolicy", 'Int'>
-  readonly days: Prisma.FieldRef<"LeavePolicy", 'Decimal'>
+  readonly days: Prisma.FieldRef<"LeavePolicy", 'Int'>
 }
     
 

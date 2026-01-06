@@ -225,8 +225,8 @@ export class AttendanceService {
 
                 // leave 정보 추출 (status가 approved인 경우만)
                 let leaveType = null;
-                if (attendance.leave && attendance.leave.status === 'approved') {
-                    leaveType = attendance.leave.leave_type?.type || null;
+                if (attendance.leave_date && attendance.leave_date.leave_request.status === 'approved') {
+                    leaveType = attendance.leave_date.leave_request.leave_type?.type || null;
                 }
 
                 records.push({

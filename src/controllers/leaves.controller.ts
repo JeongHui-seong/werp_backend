@@ -134,5 +134,26 @@ export class LeavesController {
 
         return res.status(200).json(result);
     }
-}
 
+    createLeaves = async (req: Request, res: Response) => {
+        assertAuthenticated(req);
+
+        const email = req.user.email;
+        const { payload } = req.body;
+
+        if (!payload) {
+            return res.status(400).json({
+                success: false,
+                message: "휴가 생성에 필요한 정보가 전달되지 않았습니다."
+            })
+        }
+
+        const result = await this.service.createLeaves(email, payload);
+
+        if (!result.success) {
+            return res.status(500).json(result);
+        }
+
+        return res.status(200).json(result);
+    }
+}

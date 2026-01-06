@@ -255,8 +255,8 @@ export type UserWhereInput = {
   department?: Prisma.XOR<Prisma.DepartmentScalarRelationFilter, Prisma.DepartmentWhereInput>
   role?: Prisma.XOR<Prisma.RoleScalarRelationFilter, Prisma.RoleWhereInput>
   attendances?: Prisma.AttendanceListRelationFilter
-  leaves?: Prisma.LeaveListRelationFilter
-  approvedLeaves?: Prisma.LeaveListRelationFilter
+  LeaveRequest?: Prisma.LeaveRequestListRelationFilter
+  approvedLeaves?: Prisma.LeaveRequestListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -272,8 +272,8 @@ export type UserOrderByWithRelationInput = {
   department?: Prisma.DepartmentOrderByWithRelationInput
   role?: Prisma.RoleOrderByWithRelationInput
   attendances?: Prisma.AttendanceOrderByRelationAggregateInput
-  leaves?: Prisma.LeaveOrderByRelationAggregateInput
-  approvedLeaves?: Prisma.LeaveOrderByRelationAggregateInput
+  LeaveRequest?: Prisma.LeaveRequestOrderByRelationAggregateInput
+  approvedLeaves?: Prisma.LeaveRequestOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -292,8 +292,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   department?: Prisma.XOR<Prisma.DepartmentScalarRelationFilter, Prisma.DepartmentWhereInput>
   role?: Prisma.XOR<Prisma.RoleScalarRelationFilter, Prisma.RoleWhereInput>
   attendances?: Prisma.AttendanceListRelationFilter
-  leaves?: Prisma.LeaveListRelationFilter
-  approvedLeaves?: Prisma.LeaveListRelationFilter
+  LeaveRequest?: Prisma.LeaveRequestListRelationFilter
+  approvedLeaves?: Prisma.LeaveRequestListRelationFilter
 }, "id" | "email" | "phone">
 
 export type UserOrderByWithAggregationInput = {
@@ -339,8 +339,8 @@ export type UserCreateInput = {
   department: Prisma.DepartmentCreateNestedOneWithoutUsersInput
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
-  leaves?: Prisma.LeaveCreateNestedManyWithoutUserInput
-  approvedLeaves?: Prisma.LeaveCreateNestedManyWithoutApproverInput
+  LeaveRequest?: Prisma.LeaveRequestCreateNestedManyWithoutUserInput
+  approvedLeaves?: Prisma.LeaveRequestCreateNestedManyWithoutApproverInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -354,8 +354,8 @@ export type UserUncheckedCreateInput = {
   dept_id: number
   role_id: number
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
-  leaves?: Prisma.LeaveUncheckedCreateNestedManyWithoutUserInput
-  approvedLeaves?: Prisma.LeaveUncheckedCreateNestedManyWithoutApproverInput
+  LeaveRequest?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
+  approvedLeaves?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
 }
 
 export type UserUpdateInput = {
@@ -369,8 +369,8 @@ export type UserUpdateInput = {
   department?: Prisma.DepartmentUpdateOneRequiredWithoutUsersNestedInput
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
-  leaves?: Prisma.LeaveUpdateManyWithoutUserNestedInput
-  approvedLeaves?: Prisma.LeaveUpdateManyWithoutApproverNestedInput
+  LeaveRequest?: Prisma.LeaveRequestUpdateManyWithoutUserNestedInput
+  approvedLeaves?: Prisma.LeaveRequestUpdateManyWithoutApproverNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -384,8 +384,8 @@ export type UserUncheckedUpdateInput = {
   dept_id?: Prisma.IntFieldUpdateOperationsInput | number
   role_id?: Prisma.IntFieldUpdateOperationsInput | number
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
-  leaves?: Prisma.LeaveUncheckedUpdateManyWithoutUserNestedInput
-  approvedLeaves?: Prisma.LeaveUncheckedUpdateManyWithoutApproverNestedInput
+  LeaveRequest?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
+  approvedLeaves?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -602,9 +602,9 @@ export type UserUpdateOneRequiredWithoutAttendancesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAttendancesInput, Prisma.UserUpdateWithoutAttendancesInput>, Prisma.UserUncheckedUpdateWithoutAttendancesInput>
 }
 
-export type UserCreateNestedOneWithoutLeavesInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutLeavesInput, Prisma.UserUncheckedCreateWithoutLeavesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLeavesInput
+export type UserCreateNestedOneWithoutLeaveRequestInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLeaveRequestInput, Prisma.UserUncheckedCreateWithoutLeaveRequestInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLeaveRequestInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
@@ -614,12 +614,12 @@ export type UserCreateNestedOneWithoutApprovedLeavesInput = {
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutLeavesNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutLeavesInput, Prisma.UserUncheckedCreateWithoutLeavesInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLeavesInput
-  upsert?: Prisma.UserUpsertWithoutLeavesInput
+export type UserUpdateOneRequiredWithoutLeaveRequestNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLeaveRequestInput, Prisma.UserUncheckedCreateWithoutLeaveRequestInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLeaveRequestInput
+  upsert?: Prisma.UserUpsertWithoutLeaveRequestInput
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLeavesInput, Prisma.UserUpdateWithoutLeavesInput>, Prisma.UserUncheckedUpdateWithoutLeavesInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLeaveRequestInput, Prisma.UserUpdateWithoutLeaveRequestInput>, Prisma.UserUncheckedUpdateWithoutLeaveRequestInput>
 }
 
 export type UserUpdateOneWithoutApprovedLeavesNestedInput = {
@@ -642,8 +642,8 @@ export type UserCreateWithoutDepartmentInput = {
   updated_at?: Date | string
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
-  leaves?: Prisma.LeaveCreateNestedManyWithoutUserInput
-  approvedLeaves?: Prisma.LeaveCreateNestedManyWithoutApproverInput
+  LeaveRequest?: Prisma.LeaveRequestCreateNestedManyWithoutUserInput
+  approvedLeaves?: Prisma.LeaveRequestCreateNestedManyWithoutApproverInput
 }
 
 export type UserUncheckedCreateWithoutDepartmentInput = {
@@ -656,8 +656,8 @@ export type UserUncheckedCreateWithoutDepartmentInput = {
   updated_at?: Date | string
   role_id: number
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
-  leaves?: Prisma.LeaveUncheckedCreateNestedManyWithoutUserInput
-  approvedLeaves?: Prisma.LeaveUncheckedCreateNestedManyWithoutApproverInput
+  LeaveRequest?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
+  approvedLeaves?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
 }
 
 export type UserCreateOrConnectWithoutDepartmentInput = {
@@ -711,8 +711,8 @@ export type UserCreateWithoutRoleInput = {
   updated_at?: Date | string
   department: Prisma.DepartmentCreateNestedOneWithoutUsersInput
   attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
-  leaves?: Prisma.LeaveCreateNestedManyWithoutUserInput
-  approvedLeaves?: Prisma.LeaveCreateNestedManyWithoutApproverInput
+  LeaveRequest?: Prisma.LeaveRequestCreateNestedManyWithoutUserInput
+  approvedLeaves?: Prisma.LeaveRequestCreateNestedManyWithoutApproverInput
 }
 
 export type UserUncheckedCreateWithoutRoleInput = {
@@ -725,8 +725,8 @@ export type UserUncheckedCreateWithoutRoleInput = {
   updated_at?: Date | string
   dept_id: number
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
-  leaves?: Prisma.LeaveUncheckedCreateNestedManyWithoutUserInput
-  approvedLeaves?: Prisma.LeaveUncheckedCreateNestedManyWithoutApproverInput
+  LeaveRequest?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
+  approvedLeaves?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
 }
 
 export type UserCreateOrConnectWithoutRoleInput = {
@@ -765,8 +765,8 @@ export type UserCreateWithoutAttendancesInput = {
   updated_at?: Date | string
   department: Prisma.DepartmentCreateNestedOneWithoutUsersInput
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
-  leaves?: Prisma.LeaveCreateNestedManyWithoutUserInput
-  approvedLeaves?: Prisma.LeaveCreateNestedManyWithoutApproverInput
+  LeaveRequest?: Prisma.LeaveRequestCreateNestedManyWithoutUserInput
+  approvedLeaves?: Prisma.LeaveRequestCreateNestedManyWithoutApproverInput
 }
 
 export type UserUncheckedCreateWithoutAttendancesInput = {
@@ -779,8 +779,8 @@ export type UserUncheckedCreateWithoutAttendancesInput = {
   updated_at?: Date | string
   dept_id: number
   role_id: number
-  leaves?: Prisma.LeaveUncheckedCreateNestedManyWithoutUserInput
-  approvedLeaves?: Prisma.LeaveUncheckedCreateNestedManyWithoutApproverInput
+  LeaveRequest?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
+  approvedLeaves?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
 }
 
 export type UserCreateOrConnectWithoutAttendancesInput = {
@@ -809,8 +809,8 @@ export type UserUpdateWithoutAttendancesInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   department?: Prisma.DepartmentUpdateOneRequiredWithoutUsersNestedInput
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
-  leaves?: Prisma.LeaveUpdateManyWithoutUserNestedInput
-  approvedLeaves?: Prisma.LeaveUpdateManyWithoutApproverNestedInput
+  LeaveRequest?: Prisma.LeaveRequestUpdateManyWithoutUserNestedInput
+  approvedLeaves?: Prisma.LeaveRequestUpdateManyWithoutApproverNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAttendancesInput = {
@@ -823,11 +823,11 @@ export type UserUncheckedUpdateWithoutAttendancesInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dept_id?: Prisma.IntFieldUpdateOperationsInput | number
   role_id?: Prisma.IntFieldUpdateOperationsInput | number
-  leaves?: Prisma.LeaveUncheckedUpdateManyWithoutUserNestedInput
-  approvedLeaves?: Prisma.LeaveUncheckedUpdateManyWithoutApproverNestedInput
+  LeaveRequest?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
+  approvedLeaves?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
 }
 
-export type UserCreateWithoutLeavesInput = {
+export type UserCreateWithoutLeaveRequestInput = {
   id?: string
   email: string
   name: string
@@ -838,10 +838,10 @@ export type UserCreateWithoutLeavesInput = {
   department: Prisma.DepartmentCreateNestedOneWithoutUsersInput
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
-  approvedLeaves?: Prisma.LeaveCreateNestedManyWithoutApproverInput
+  approvedLeaves?: Prisma.LeaveRequestCreateNestedManyWithoutApproverInput
 }
 
-export type UserUncheckedCreateWithoutLeavesInput = {
+export type UserUncheckedCreateWithoutLeaveRequestInput = {
   id?: string
   email: string
   name: string
@@ -852,12 +852,12 @@ export type UserUncheckedCreateWithoutLeavesInput = {
   dept_id: number
   role_id: number
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
-  approvedLeaves?: Prisma.LeaveUncheckedCreateNestedManyWithoutApproverInput
+  approvedLeaves?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
 }
 
-export type UserCreateOrConnectWithoutLeavesInput = {
+export type UserCreateOrConnectWithoutLeaveRequestInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutLeavesInput, Prisma.UserUncheckedCreateWithoutLeavesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLeaveRequestInput, Prisma.UserUncheckedCreateWithoutLeaveRequestInput>
 }
 
 export type UserCreateWithoutApprovedLeavesInput = {
@@ -871,7 +871,7 @@ export type UserCreateWithoutApprovedLeavesInput = {
   department: Prisma.DepartmentCreateNestedOneWithoutUsersInput
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
-  leaves?: Prisma.LeaveCreateNestedManyWithoutUserInput
+  LeaveRequest?: Prisma.LeaveRequestCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutApprovedLeavesInput = {
@@ -885,7 +885,7 @@ export type UserUncheckedCreateWithoutApprovedLeavesInput = {
   dept_id: number
   role_id: number
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
-  leaves?: Prisma.LeaveUncheckedCreateNestedManyWithoutUserInput
+  LeaveRequest?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutApprovedLeavesInput = {
@@ -893,18 +893,18 @@ export type UserCreateOrConnectWithoutApprovedLeavesInput = {
   create: Prisma.XOR<Prisma.UserCreateWithoutApprovedLeavesInput, Prisma.UserUncheckedCreateWithoutApprovedLeavesInput>
 }
 
-export type UserUpsertWithoutLeavesInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutLeavesInput, Prisma.UserUncheckedUpdateWithoutLeavesInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutLeavesInput, Prisma.UserUncheckedCreateWithoutLeavesInput>
+export type UserUpsertWithoutLeaveRequestInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutLeaveRequestInput, Prisma.UserUncheckedUpdateWithoutLeaveRequestInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLeaveRequestInput, Prisma.UserUncheckedCreateWithoutLeaveRequestInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutLeavesInput = {
+export type UserUpdateToOneWithWhereWithoutLeaveRequestInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutLeavesInput, Prisma.UserUncheckedUpdateWithoutLeavesInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutLeaveRequestInput, Prisma.UserUncheckedUpdateWithoutLeaveRequestInput>
 }
 
-export type UserUpdateWithoutLeavesInput = {
+export type UserUpdateWithoutLeaveRequestInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -915,10 +915,10 @@ export type UserUpdateWithoutLeavesInput = {
   department?: Prisma.DepartmentUpdateOneRequiredWithoutUsersNestedInput
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
-  approvedLeaves?: Prisma.LeaveUpdateManyWithoutApproverNestedInput
+  approvedLeaves?: Prisma.LeaveRequestUpdateManyWithoutApproverNestedInput
 }
 
-export type UserUncheckedUpdateWithoutLeavesInput = {
+export type UserUncheckedUpdateWithoutLeaveRequestInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
@@ -929,7 +929,7 @@ export type UserUncheckedUpdateWithoutLeavesInput = {
   dept_id?: Prisma.IntFieldUpdateOperationsInput | number
   role_id?: Prisma.IntFieldUpdateOperationsInput | number
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
-  approvedLeaves?: Prisma.LeaveUncheckedUpdateManyWithoutApproverNestedInput
+  approvedLeaves?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
 }
 
 export type UserUpsertWithoutApprovedLeavesInput = {
@@ -954,7 +954,7 @@ export type UserUpdateWithoutApprovedLeavesInput = {
   department?: Prisma.DepartmentUpdateOneRequiredWithoutUsersNestedInput
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
-  leaves?: Prisma.LeaveUpdateManyWithoutUserNestedInput
+  LeaveRequest?: Prisma.LeaveRequestUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutApprovedLeavesInput = {
@@ -968,7 +968,7 @@ export type UserUncheckedUpdateWithoutApprovedLeavesInput = {
   dept_id?: Prisma.IntFieldUpdateOperationsInput | number
   role_id?: Prisma.IntFieldUpdateOperationsInput | number
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
-  leaves?: Prisma.LeaveUncheckedUpdateManyWithoutUserNestedInput
+  LeaveRequest?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyDepartmentInput = {
@@ -992,8 +992,8 @@ export type UserUpdateWithoutDepartmentInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
-  leaves?: Prisma.LeaveUpdateManyWithoutUserNestedInput
-  approvedLeaves?: Prisma.LeaveUpdateManyWithoutApproverNestedInput
+  LeaveRequest?: Prisma.LeaveRequestUpdateManyWithoutUserNestedInput
+  approvedLeaves?: Prisma.LeaveRequestUpdateManyWithoutApproverNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDepartmentInput = {
@@ -1006,8 +1006,8 @@ export type UserUncheckedUpdateWithoutDepartmentInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   role_id?: Prisma.IntFieldUpdateOperationsInput | number
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
-  leaves?: Prisma.LeaveUncheckedUpdateManyWithoutUserNestedInput
-  approvedLeaves?: Prisma.LeaveUncheckedUpdateManyWithoutApproverNestedInput
+  LeaveRequest?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
+  approvedLeaves?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutDepartmentInput = {
@@ -1042,8 +1042,8 @@ export type UserUpdateWithoutRoleInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   department?: Prisma.DepartmentUpdateOneRequiredWithoutUsersNestedInput
   attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
-  leaves?: Prisma.LeaveUpdateManyWithoutUserNestedInput
-  approvedLeaves?: Prisma.LeaveUpdateManyWithoutApproverNestedInput
+  LeaveRequest?: Prisma.LeaveRequestUpdateManyWithoutUserNestedInput
+  approvedLeaves?: Prisma.LeaveRequestUpdateManyWithoutApproverNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRoleInput = {
@@ -1056,8 +1056,8 @@ export type UserUncheckedUpdateWithoutRoleInput = {
   updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dept_id?: Prisma.IntFieldUpdateOperationsInput | number
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
-  leaves?: Prisma.LeaveUncheckedUpdateManyWithoutUserNestedInput
-  approvedLeaves?: Prisma.LeaveUncheckedUpdateManyWithoutApproverNestedInput
+  LeaveRequest?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
+  approvedLeaves?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutRoleInput = {
@@ -1078,13 +1078,13 @@ export type UserUncheckedUpdateManyWithoutRoleInput = {
 
 export type UserCountOutputType = {
   attendances: number
-  leaves: number
+  LeaveRequest: number
   approvedLeaves: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   attendances?: boolean | UserCountOutputTypeCountAttendancesArgs
-  leaves?: boolean | UserCountOutputTypeCountLeavesArgs
+  LeaveRequest?: boolean | UserCountOutputTypeCountLeaveRequestArgs
   approvedLeaves?: boolean | UserCountOutputTypeCountApprovedLeavesArgs
 }
 
@@ -1108,15 +1108,15 @@ export type UserCountOutputTypeCountAttendancesArgs<ExtArgs extends runtime.Type
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountLeavesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.LeaveWhereInput
+export type UserCountOutputTypeCountLeaveRequestArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.LeaveRequestWhereInput
 }
 
 /**
  * UserCountOutputType without action
  */
 export type UserCountOutputTypeCountApprovedLeavesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.LeaveWhereInput
+  where?: Prisma.LeaveRequestWhereInput
 }
 
 
@@ -1133,7 +1133,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   department?: boolean | Prisma.DepartmentDefaultArgs<ExtArgs>
   role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
   attendances?: boolean | Prisma.User$attendancesArgs<ExtArgs>
-  leaves?: boolean | Prisma.User$leavesArgs<ExtArgs>
+  LeaveRequest?: boolean | Prisma.User$LeaveRequestArgs<ExtArgs>
   approvedLeaves?: boolean | Prisma.User$approvedLeavesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -1183,7 +1183,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   department?: boolean | Prisma.DepartmentDefaultArgs<ExtArgs>
   role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
   attendances?: boolean | Prisma.User$attendancesArgs<ExtArgs>
-  leaves?: boolean | Prisma.User$leavesArgs<ExtArgs>
+  LeaveRequest?: boolean | Prisma.User$LeaveRequestArgs<ExtArgs>
   approvedLeaves?: boolean | Prisma.User$approvedLeavesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -1202,8 +1202,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     department: Prisma.$DepartmentPayload<ExtArgs>
     role: Prisma.$RolePayload<ExtArgs>
     attendances: Prisma.$AttendancePayload<ExtArgs>[]
-    leaves: Prisma.$LeavePayload<ExtArgs>[]
-    approvedLeaves: Prisma.$LeavePayload<ExtArgs>[]
+    LeaveRequest: Prisma.$LeaveRequestPayload<ExtArgs>[]
+    approvedLeaves: Prisma.$LeaveRequestPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1612,8 +1612,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   department<T extends Prisma.DepartmentDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DepartmentDefaultArgs<ExtArgs>>): Prisma.Prisma__DepartmentClient<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   role<T extends Prisma.RoleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.RoleDefaultArgs<ExtArgs>>): Prisma.Prisma__RoleClient<runtime.Types.Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   attendances<T extends Prisma.User$attendancesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$attendancesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  leaves<T extends Prisma.User$leavesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$leavesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeavePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  approvedLeaves<T extends Prisma.User$approvedLeavesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$approvedLeavesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeavePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  LeaveRequest<T extends Prisma.User$LeaveRequestArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$LeaveRequestArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeaveRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  approvedLeaves<T extends Prisma.User$approvedLeavesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$approvedLeavesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$LeaveRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2072,27 +2072,27 @@ export type User$attendancesArgs<ExtArgs extends runtime.Types.Extensions.Intern
 }
 
 /**
- * User.leaves
+ * User.LeaveRequest
  */
-export type User$leavesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$LeaveRequestArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Leave
+   * Select specific fields to fetch from the LeaveRequest
    */
-  select?: Prisma.LeaveSelect<ExtArgs> | null
+  select?: Prisma.LeaveRequestSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Leave
+   * Omit specific fields from the LeaveRequest
    */
-  omit?: Prisma.LeaveOmit<ExtArgs> | null
+  omit?: Prisma.LeaveRequestOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.LeaveInclude<ExtArgs> | null
-  where?: Prisma.LeaveWhereInput
-  orderBy?: Prisma.LeaveOrderByWithRelationInput | Prisma.LeaveOrderByWithRelationInput[]
-  cursor?: Prisma.LeaveWhereUniqueInput
+  include?: Prisma.LeaveRequestInclude<ExtArgs> | null
+  where?: Prisma.LeaveRequestWhereInput
+  orderBy?: Prisma.LeaveRequestOrderByWithRelationInput | Prisma.LeaveRequestOrderByWithRelationInput[]
+  cursor?: Prisma.LeaveRequestWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.LeaveScalarFieldEnum | Prisma.LeaveScalarFieldEnum[]
+  distinct?: Prisma.LeaveRequestScalarFieldEnum | Prisma.LeaveRequestScalarFieldEnum[]
 }
 
 /**
@@ -2100,23 +2100,23 @@ export type User$leavesArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
  */
 export type User$approvedLeavesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Leave
+   * Select specific fields to fetch from the LeaveRequest
    */
-  select?: Prisma.LeaveSelect<ExtArgs> | null
+  select?: Prisma.LeaveRequestSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Leave
+   * Omit specific fields from the LeaveRequest
    */
-  omit?: Prisma.LeaveOmit<ExtArgs> | null
+  omit?: Prisma.LeaveRequestOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.LeaveInclude<ExtArgs> | null
-  where?: Prisma.LeaveWhereInput
-  orderBy?: Prisma.LeaveOrderByWithRelationInput | Prisma.LeaveOrderByWithRelationInput[]
-  cursor?: Prisma.LeaveWhereUniqueInput
+  include?: Prisma.LeaveRequestInclude<ExtArgs> | null
+  where?: Prisma.LeaveRequestWhereInput
+  orderBy?: Prisma.LeaveRequestOrderByWithRelationInput | Prisma.LeaveRequestOrderByWithRelationInput[]
+  cursor?: Prisma.LeaveRequestWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.LeaveScalarFieldEnum | Prisma.LeaveScalarFieldEnum[]
+  distinct?: Prisma.LeaveRequestScalarFieldEnum | Prisma.LeaveRequestScalarFieldEnum[]
 }
 
 /**

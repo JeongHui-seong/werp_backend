@@ -29,3 +29,4 @@ appRouter.get("/leaves/policy", authenticate, requireRole("admin"), leavesContro
 appRouter.put("/leaves/policy", authenticate, requireRole("admin"), leavesController.updateLeavePolicy);
 
 appRouter.get("/leaves/yearly", authenticate, leavesController.getLeaves);
+appRouter.post("/leaves/create", authenticate, leavesController.createLeaves);
