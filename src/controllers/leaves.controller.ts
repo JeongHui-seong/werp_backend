@@ -139,7 +139,7 @@ export class LeavesController {
         assertAuthenticated(req);
 
         const email = req.user.email;
-        const { payload } = req.body;
+        const payload = req.body;
 
         if (!payload) {
             return res.status(400).json({

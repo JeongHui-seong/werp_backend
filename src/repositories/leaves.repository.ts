@@ -115,7 +115,8 @@ export class LeavesRepository {
                         leave_type: {
                             select: {
                                 id: true,
-                                type: true
+                                type: true,
+                                days: true
                             }
                         }
                     }

@@ -1,3 +1,4 @@
+import { Prisma } from "../generated/browser";
 import { LeavesRepository } from "../repositories/leaves.repository";
 import { UserRepository } from "../repositories/user.repository";
 
@@ -165,16 +166,17 @@ export class LeavesService {
         try {
              const leaves = await this.leavesRepo.findLeavesByUserIdAndYear(user.id, year);
 
-             let remainingLeaves = 0;
-             let usedLeaves = 0;
-             let pendingLeaves = 0;
+             let remainingLeaves = new Prisma.Decimal(0);
+             let usedLeaves = new Prisma.Decimal(0);
+             let pendingLeaves = new Prisma.Decimal(0);
              const records = [];
 
              for (const leave of leaves) {
+                const days = leave.leave_request.leave_type?.days
                 if (leave.leave_request.status === 'approved') {
-                    usedLeaves += 1;
+                    usedLeaves = usedLeaves.plus(days);
                 } else if (leave.leave_request.status === 'pending') {
-                    pendingLeaves += 1;
+                    pendingLeaves = pendingLeaves.plus(days);
                 }
 
                 records.push({
@@ -192,17 +194,17 @@ export class LeavesService {
              }
 
              const leavePolicyResult = await this.leavesRepo.findLeavePolicyByYear(year);
-             const leavePolicyDays = leavePolicyResult?.days || 0;
-             remainingLeaves = leavePolicyDays - usedLeaves;
+             const leavePolicyDays = new Prisma.Decimal(leavePolicyResult?.days || 0);
+             remainingLeaves = leavePolicyDays.minus(usedLeaves);
 
              return {
                  success: true,
                  message: `${year}년도 ${user.name}님의 연차 정보를 불러왔습니다.`,
                  result: {
                     summary: {
-                        remainingLeaves: remainingLeaves,
-                        usedLeaves: usedLeaves,
-                        pendingLeaves: pendingLeaves
+                        remainingLeaves: remainingLeaves.toString(),
+                        usedLeaves: usedLeaves.toString(),
+                        pendingLeaves: pendingLeaves.toString()
                     },
                     records: records
                  }
@@ -227,6 +229,7 @@ export class LeavesService {
         }
 
         try {
+            console.log('연차 신청 payload : ', payload);
             const dates = await this.leavesRepo.createLeavesByUserId(payload, user.id);
 
             return {
