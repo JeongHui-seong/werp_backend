@@ -4,12 +4,14 @@ import { AttendanceController } from "./controllers/attendance.controller";
 import { LeavesController } from "./controllers/leaves.controller";
 import { authenticate } from "./middlewares/auth.middleware";
 import { requireRole } from "./middlewares/requireRole.middleware";
+import { UserController } from "./controllers/user.controller";
 
 export const appRouter = Router();
 
 const authController = new AuthController();
 const attendanceController = new AttendanceController();
 const leavesController = new LeavesController();
+const userController = new UserController();
 
 appRouter.post("/auth/find-email", authController.findEmail);
 appRouter.post("/auth/resend-code", authController.resendCode);
@@ -30,3 +32,5 @@ appRouter.put("/leaves/policy", authenticate, requireRole("admin"), leavesContro
 
 appRouter.get("/leaves/yearly", authenticate, leavesController.getLeaves);
 appRouter.post("/leaves/create", authenticate, leavesController.createLeaves);
+
+appRouter.get("/user/get-all", authenticate, requireRole("admin"), userController.getAllUsers);
