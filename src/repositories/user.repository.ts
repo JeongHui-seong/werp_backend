@@ -33,8 +33,8 @@ export class UserRepository {
     const where = {
         AND: [
         filter?.status ? { status: filter.status } : {},
-        filter?.deptId ? { dept_id: filter.deptId } : {},
-        filter?.roleId ? { role_id: filter.roleId } : {},
+        filter?.deptName ? { department: { name: filter.deptName } } : {},
+        filter?.roleName ? { role: { name: filter.roleName } } : {},
         search?.keyword
             ? {
                 OR: searchFields.map(field => ({

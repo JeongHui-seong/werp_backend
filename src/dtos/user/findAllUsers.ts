@@ -6,8 +6,8 @@ export type FindAllUsersDTO = {
 
     filter?: {
         status?: 'ACTIVE' | 'INACTIVE';
-        deptId?: number;
-        roleId?: number;
+        deptName?: string;
+        roleName?: string;
     }
 
     sort?: {

@@ -26,7 +26,7 @@ export class UserController {
                     size: sizeNum,
                     page: pageNum,
                 },
-                filter: safeParse<{ status?: 'ACTIVE' | 'INACTIVE'; deptId?: number; roleId?: number }>(filter as string),
+                filter: safeParse<{ status?: 'ACTIVE' | 'INACTIVE'; deptName?: string; roleName?: string }>(filter as string),
                 sort: safeParse<{ field: 'name' | 'email' | 'phone' | 'hireDate'; order: 'ASC' | 'DESC' }>(sort as string),
                 search: safeParse<{ keyword: string; fields?: Array<'name' | 'email' | 'phone'> }>(search as string),
             }
