@@ -72,4 +72,27 @@ export class UserController {
             })
         }
     }
+
+    updateUser = async(req: Request, res: Response) => {
+        try {
+            const id = req.params.id;
+            const { departmentId, roleId, ...rest } = req.body;
+
+            const result = await this.service.updateUser(id, {
+                ...rest,
+                dept_id: departmentId,
+                role_id: roleId
+            });
+
+            return res.status(200).json({
+                success: true,
+                message: "직원 정보를 성공적으로 수정했습니다."
+            })
+        } catch ( err ) {
+            return res.status(500).json({
+                success: false,
+                message: "직원 정보 수정에 실패하였습니다. 잠시 후 다시 시도해주세요."
+            })
+        }
+    }
 }

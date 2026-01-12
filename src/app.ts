@@ -35,3 +35,4 @@ appRouter.post("/leaves/create", authenticate, leavesController.createLeaves);
 
 appRouter.get("/user/get-all", authenticate, requireRole("admin"), userController.getAllUsers);
 appRouter.get("/user/get-roledept", authenticate, requireRole("admin"), userController.getRolesAndDept);
+appRouter.patch("/user/update-user/:id", authenticate, requireRole("admin"), userController.updateUser);

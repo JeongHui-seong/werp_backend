@@ -2,6 +2,7 @@ import { PrismaClient } from "../generated/client"
 import { PrismaPg } from "@prisma/adapter-pg";
 import dotenv from "dotenv";
 import { FindAllUsersDTO } from "../dtos/user/findAllUsers";
+import { updateUser } from "../dtos/user/updateUser";
 
 dotenv.config();
 
@@ -98,5 +99,12 @@ export class UserRepository {
 
     async findDepartment(){
         return prisma.department.findMany();
+    }
+
+    async updateUser(id: string, data: updateUser){
+        return prisma.user.update({
+            where: { id },
+            data
+        })
     }
 }

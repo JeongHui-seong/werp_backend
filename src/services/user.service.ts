@@ -1,4 +1,5 @@
 import { FindAllUsersDTO } from "../dtos/user/findAllUsers";
+import { updateUser } from "../dtos/user/updateUser";
 import { UserRepository } from "../repositories/user.repository";
 
 export class UserService {
@@ -39,6 +40,23 @@ export class UserService {
             return {
                 success: false,
                 message: "직급과 부서 조회에 실패하였습니다. 잠시 후 다시 시도해주세요."
+            }
+        }
+    }
+
+    async updateUser(id: string, data: updateUser) {
+        try {
+            const result = await this.userRepo.updateUser(id, data)
+
+            return {
+                success: true,
+                message: "직원 정보 수정을 성공하였습니다."
+            }
+        } catch (err) {
+            console.error("직원 정보 수정 실패 : ", err)
+            return {
+                success: false,
+                message: "직원 정보 수정에 실패하였습니다. 잠시 후 다시 시도해주세요."
             }
         }
     }
