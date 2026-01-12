@@ -34,3 +34,4 @@ appRouter.get("/leaves/yearly", authenticate, leavesController.getLeaves);
 appRouter.post("/leaves/create", authenticate, leavesController.createLeaves);
 
 appRouter.get("/user/get-all", authenticate, requireRole("admin"), userController.getAllUsers);
+appRouter.get("/user/get-roledept", authenticate, requireRole("admin"), userController.getRolesAndDept);

@@ -91,4 +91,12 @@ export class UserRepository {
 
     return { users, total };
     }
+
+    async findRole(){
+        return prisma.role.findMany();
+    }
+
+    async findDepartment(){
+        return prisma.department.findMany();
+    }
 }

@@ -54,4 +54,22 @@ export class UserController {
             });
         }
     }
+
+    getRolesAndDept = async(req: Request, res: Response) => {
+        try{
+            const result = await this.service.getRolesAndDept();
+
+            return res.status(200).json({
+                success: true,
+                message: "직급과 부서를 성공적으로 조회했습니다.",
+                role: result.role,
+                dept: result.dept
+            })
+        } catch (err) {
+            return res.status(500).json({
+                success: false,
+                message: "직급과 부서 조회에 실패하였습니다. 잠시 후 다시 시도해주세요."
+            })
+        }
+    }
 }

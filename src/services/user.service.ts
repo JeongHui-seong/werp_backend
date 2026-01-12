@@ -15,11 +15,31 @@ export class UserService {
                 total: usersData.total,
             };
         } catch (err) {
-            console.error("사용자 목록 조회 실패:", err);
+            console.error("사용자 목록 조회 실패 : ", err);
             return {
                 success: false,
                 message: "사용자 목록 조회에 실패하였습니다. 잠시 후 다시 시도해주세요."
             };
+        }
+    }
+
+    async getRolesAndDept() {
+        try {
+            const roleData = await this.userRepo.findRole();
+            const deptData = await this.userRepo.findDepartment();
+
+            return {
+                success: true,
+                message: "직급과 부서를 조회했습니다.",
+                role: roleData,
+                dept: deptData
+            }
+        } catch (err) {
+            console.error("직급과 부서 조회 실패 : ", err)
+            return {
+                success: false,
+                message: "직급과 부서 조회에 실패하였습니다. 잠시 후 다시 시도해주세요."
+            }
         }
     }
 }
