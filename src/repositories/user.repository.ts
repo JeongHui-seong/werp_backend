@@ -122,4 +122,14 @@ export class UserRepository {
             }
         })
     }
+
+    async deleteUser(ids: string[]){
+        return prisma.user.deleteMany({
+            where: {
+                id: {
+                    in: ids
+                }
+            }
+        })
+    }
 }

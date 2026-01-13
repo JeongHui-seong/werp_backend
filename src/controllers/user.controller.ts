@@ -113,4 +113,22 @@ export class UserController {
             })
         }
     }
+
+    deleteUser = async(req: Request, res: Response) => {
+        try {
+            const { ids } = req.body;
+
+            const result = await this.service.deleteUser(ids);
+
+            return res.status(200).json({
+                success: true,
+                message: "직원 삭제에 성공하였습니다."
+            })
+        } catch (err) {
+            return res.status(500).json({
+                success: false,
+                message: "직원 삭제에 실패하였습니다. 잠시 후 다시 시도해주세요."
+            })
+        }
+    }
 }

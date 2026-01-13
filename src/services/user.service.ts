@@ -75,4 +75,18 @@ export class UserService {
             throw err;
         }
     }
+
+    async deleteUser(ids: string[]) {
+        try {
+            const result = await this.userRepo.deleteUser(ids);
+
+            return {
+                success: true,
+                message: "직원 삭제에 성공하였습니다."
+            }
+        } catch (err) {
+            console.error("직원 삭제 실패 : ", err);
+            throw err;
+        }
+    }
 }

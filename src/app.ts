@@ -37,3 +37,4 @@ appRouter.get("/user/get-all", authenticate, requireRole("admin"), userControlle
 appRouter.get("/user/get-roledept", authenticate, requireRole("admin"), userController.getRolesAndDept);
 appRouter.patch("/user/update-user/:id", authenticate, requireRole("admin"), userController.updateUser);
 appRouter.put("/user/create-user", authenticate, requireRole("admin"), userController.createUser);
+appRouter.delete("/user/delete-user", authenticate, requireRole("admin"), userController.deleteUser);
