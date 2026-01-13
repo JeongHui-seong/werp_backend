@@ -3,6 +3,7 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import dotenv from "dotenv";
 import { FindAllUsersDTO } from "../dtos/user/findAllUsers";
 import { updateUser } from "../dtos/user/updateUser";
+import { createUserType } from "../dtos/user/createUser";
 
 dotenv.config();
 
@@ -105,6 +106,20 @@ export class UserRepository {
         return prisma.user.update({
             where: { id },
             data
+        })
+    }
+
+    async createUser(payload: createUserType){
+        return prisma.user.create({
+            data: {
+                email: payload.email,
+                name: payload.name,
+                phone: payload.phone,
+                status: payload.status,
+                hire_date: payload.hire_date,
+                dept_id: payload.dept_id,
+                role_id: payload.role_id
+            }
         })
     }
 }

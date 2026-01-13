@@ -95,4 +95,22 @@ export class UserController {
             })
         }
     }
+
+    createUser = async(req: Request, res: Response) => {
+        try {
+            const { payload } = req.body;
+
+            const result = await this.service.createUser(payload);
+
+            return res.status(200).json({
+                success: true,
+                message: "직원을 성공적으로 추가하였습니다."
+            })
+        } catch ( err ) {
+            return res.status(500).json({
+                success: false,
+                message: "직원 추가에 실패하였습니다. 잠시 후 다시 시도해주세요."
+            })
+        }
+    }
 }

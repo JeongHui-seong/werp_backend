@@ -1,3 +1,4 @@
+import { createUserType } from "../dtos/user/createUser";
 import { FindAllUsersDTO } from "../dtos/user/findAllUsers";
 import { updateUser } from "../dtos/user/updateUser";
 import { UserRepository } from "../repositories/user.repository";
@@ -46,7 +47,7 @@ export class UserService {
 
     async updateUser(id: string, data: updateUser) {
         try {
-            const result = await this.userRepo.updateUser(id, data)
+            const result = await this.userRepo.updateUser(id, data);
 
             return {
                 success: true,
@@ -58,6 +59,20 @@ export class UserService {
                 success: false,
                 message: "직원 정보 수정에 실패하였습니다. 잠시 후 다시 시도해주세요."
             }
+        }
+    }
+
+    async createUser(payload:createUserType) {
+        try {
+            const result = await this.userRepo.createUser(payload);
+
+            return {
+                success: true,
+                message: "직원을 성공적으로 추가하였습니다."
+            }
+        } catch (err) {
+            console.error("직원 추가 실패 : ", err);
+            throw err;
         }
     }
 }
