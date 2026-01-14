@@ -26,7 +26,7 @@ export class AttendanceService {
                 message: "출근 완료! 오늘도 힘내세요 ☺️",
                 attendance: {
                     id: attendance.id,
-                    user_id: attendance.user_id,
+                    user_id: attendance.userId,
                     date: attendance.date,
                     clockin: attendance.clockin,
                     clockout: attendance.clockout,
@@ -70,7 +70,7 @@ export class AttendanceService {
                 message: "출퇴근 정보를 조회했습니다.",
                 attendance: {
                     id: attendance?.id,
-                    user_id: attendance?.user_id,
+                    user_id: attendance?.userId,
                     date: attendance?.date ? attendance.date : null,
                     clockin: attendance?.clockin ? attendance.clockin : null,
                     clockout: attendance?.clockout ? attendance.clockout : null,
@@ -108,7 +108,7 @@ export class AttendanceService {
             }
 
             // 본인의 출근 기록인지 확인
-            if (attendance.user_id !== user.id) {
+            if (attendance.userId !== user.id) {
                 return {
                     success: false,
                     message: "본인의 출근 기록만 수정할 수 있습니다."
@@ -131,7 +131,7 @@ export class AttendanceService {
                 message: "퇴근 완료! 오늘 하루 수고하셨습니다 😊",
                 attendance: {
                     id: updatedAttendance.id,
-                    user_id: updatedAttendance.user_id,
+                    user_id: updatedAttendance.userId,
                     date: updatedAttendance.date,
                     clockin: updatedAttendance.clockin,
                     clockout: updatedAttendance.clockout,

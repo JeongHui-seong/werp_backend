@@ -181,13 +181,13 @@ export class LeavesService {
 
                 records.push({
                     id : leave.leave_request.id,
-                    start_date: leave.leave_request.start_date,
-                    end_date: leave.leave_request.end_date,
+                    start_date: leave.leave_request.startDate,
+                    end_date: leave.leave_request.endDate,
                     status: leave.leave_request.status,
                     reason: leave.leave_request.reason,
-                    approved_at: leave.leave_request.approved_at || null,
-                    created_at: leave.leave_request.created_at,
-                    rejection_reason: leave.leave_request.rejection_reason || null,
+                    approved_at: leave.leave_request.approvedAt || null,
+                    created_at: leave.leave_request.createdAt,
+                    rejection_reason: leave.leave_request.rejectionReason || null,
                     approver_name: leave.leave_request.approver?.name || null,
                     leave_type: leave.leave_request.leave_type?.type || null,
                 })
