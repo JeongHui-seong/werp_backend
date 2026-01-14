@@ -27,13 +27,13 @@ export type AggregateUser = {
 }
 
 export type UserAvgAggregateOutputType = {
-  dept_id: number | null
-  role_id: number | null
+  deptId: number | null
+  roleId: number | null
 }
 
 export type UserSumAggregateOutputType = {
-  dept_id: number | null
-  role_id: number | null
+  deptId: number | null
+  roleId: number | null
 }
 
 export type UserMinAggregateOutputType = {
@@ -42,10 +42,10 @@ export type UserMinAggregateOutputType = {
   name: string | null
   phone: string | null
   status: string | null
-  hire_date: Date | null
-  updated_at: Date | null
-  dept_id: number | null
-  role_id: number | null
+  hireDate: Date | null
+  updatedAt: Date | null
+  deptId: number | null
+  roleId: number | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -54,10 +54,10 @@ export type UserMaxAggregateOutputType = {
   name: string | null
   phone: string | null
   status: string | null
-  hire_date: Date | null
-  updated_at: Date | null
-  dept_id: number | null
-  role_id: number | null
+  hireDate: Date | null
+  updatedAt: Date | null
+  deptId: number | null
+  roleId: number | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -66,22 +66,22 @@ export type UserCountAggregateOutputType = {
   name: number
   phone: number
   status: number
-  hire_date: number
-  updated_at: number
-  dept_id: number
-  role_id: number
+  hireDate: number
+  updatedAt: number
+  deptId: number
+  roleId: number
   _all: number
 }
 
 
 export type UserAvgAggregateInputType = {
-  dept_id?: true
-  role_id?: true
+  deptId?: true
+  roleId?: true
 }
 
 export type UserSumAggregateInputType = {
-  dept_id?: true
-  role_id?: true
+  deptId?: true
+  roleId?: true
 }
 
 export type UserMinAggregateInputType = {
@@ -90,10 +90,10 @@ export type UserMinAggregateInputType = {
   name?: true
   phone?: true
   status?: true
-  hire_date?: true
-  updated_at?: true
-  dept_id?: true
-  role_id?: true
+  hireDate?: true
+  updatedAt?: true
+  deptId?: true
+  roleId?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -102,10 +102,10 @@ export type UserMaxAggregateInputType = {
   name?: true
   phone?: true
   status?: true
-  hire_date?: true
-  updated_at?: true
-  dept_id?: true
-  role_id?: true
+  hireDate?: true
+  updatedAt?: true
+  deptId?: true
+  roleId?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -114,10 +114,10 @@ export type UserCountAggregateInputType = {
   name?: true
   phone?: true
   status?: true
-  hire_date?: true
-  updated_at?: true
-  dept_id?: true
-  role_id?: true
+  hireDate?: true
+  updatedAt?: true
+  deptId?: true
+  roleId?: true
   _all?: true
 }
 
@@ -213,10 +213,10 @@ export type UserGroupByOutputType = {
   name: string
   phone: string
   status: string
-  hire_date: Date
-  updated_at: Date
-  dept_id: number
-  role_id: number
+  hireDate: Date
+  updatedAt: Date
+  deptId: number
+  roleId: number
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -248,10 +248,10 @@ export type UserWhereInput = {
   name?: Prisma.StringFilter<"User"> | string
   phone?: Prisma.StringFilter<"User"> | string
   status?: Prisma.StringFilter<"User"> | string
-  hire_date?: Prisma.DateTimeFilter<"User"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"User"> | Date | string
-  dept_id?: Prisma.IntFilter<"User"> | number
-  role_id?: Prisma.IntFilter<"User"> | number
+  hireDate?: Prisma.DateTimeFilter<"User"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  deptId?: Prisma.IntFilter<"User"> | number
+  roleId?: Prisma.IntFilter<"User"> | number
   department?: Prisma.XOR<Prisma.DepartmentScalarRelationFilter, Prisma.DepartmentWhereInput>
   role?: Prisma.XOR<Prisma.RoleScalarRelationFilter, Prisma.RoleWhereInput>
   attendances?: Prisma.AttendanceListRelationFilter
@@ -265,10 +265,10 @@ export type UserOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  hire_date?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-  dept_id?: Prisma.SortOrder
-  role_id?: Prisma.SortOrder
+  hireDate?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  deptId?: Prisma.SortOrder
+  roleId?: Prisma.SortOrder
   department?: Prisma.DepartmentOrderByWithRelationInput
   role?: Prisma.RoleOrderByWithRelationInput
   attendances?: Prisma.AttendanceOrderByRelationAggregateInput
@@ -285,10 +285,10 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   name?: Prisma.StringFilter<"User"> | string
   status?: Prisma.StringFilter<"User"> | string
-  hire_date?: Prisma.DateTimeFilter<"User"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"User"> | Date | string
-  dept_id?: Prisma.IntFilter<"User"> | number
-  role_id?: Prisma.IntFilter<"User"> | number
+  hireDate?: Prisma.DateTimeFilter<"User"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  deptId?: Prisma.IntFilter<"User"> | number
+  roleId?: Prisma.IntFilter<"User"> | number
   department?: Prisma.XOR<Prisma.DepartmentScalarRelationFilter, Prisma.DepartmentWhereInput>
   role?: Prisma.XOR<Prisma.RoleScalarRelationFilter, Prisma.RoleWhereInput>
   attendances?: Prisma.AttendanceListRelationFilter
@@ -302,10 +302,10 @@ export type UserOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  hire_date?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-  dept_id?: Prisma.SortOrder
-  role_id?: Prisma.SortOrder
+  hireDate?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  deptId?: Prisma.SortOrder
+  roleId?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
@@ -322,10 +322,10 @@ export type UserScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"User"> | string
   phone?: Prisma.StringWithAggregatesFilter<"User"> | string
   status?: Prisma.StringWithAggregatesFilter<"User"> | string
-  hire_date?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
-  updated_at?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
-  dept_id?: Prisma.IntWithAggregatesFilter<"User"> | number
-  role_id?: Prisma.IntWithAggregatesFilter<"User"> | number
+  hireDate?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
+  deptId?: Prisma.IntWithAggregatesFilter<"User"> | number
+  roleId?: Prisma.IntWithAggregatesFilter<"User"> | number
 }
 
 export type UserCreateInput = {
@@ -334,8 +334,8 @@ export type UserCreateInput = {
   name: string
   phone: string
   status: string
-  hire_date?: Date | string
-  updated_at?: Date | string
+  hireDate?: Date | string
+  updatedAt?: Date | string
   department: Prisma.DepartmentCreateNestedOneWithoutUsersInput
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
@@ -349,10 +349,10 @@ export type UserUncheckedCreateInput = {
   name: string
   phone: string
   status: string
-  hire_date?: Date | string
-  updated_at?: Date | string
-  dept_id: number
-  role_id: number
+  hireDate?: Date | string
+  updatedAt?: Date | string
+  deptId: number
+  roleId: number
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
   LeaveRequest?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
   approvedLeaves?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
@@ -364,8 +364,8 @@ export type UserUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hire_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hireDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   department?: Prisma.DepartmentUpdateOneRequiredWithoutUsersNestedInput
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
@@ -379,10 +379,10 @@ export type UserUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hire_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dept_id?: Prisma.IntFieldUpdateOperationsInput | number
-  role_id?: Prisma.IntFieldUpdateOperationsInput | number
+  hireDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deptId?: Prisma.IntFieldUpdateOperationsInput | number
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
   LeaveRequest?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
   approvedLeaves?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
@@ -394,10 +394,10 @@ export type UserCreateManyInput = {
   name: string
   phone: string
   status: string
-  hire_date?: Date | string
-  updated_at?: Date | string
-  dept_id: number
-  role_id: number
+  hireDate?: Date | string
+  updatedAt?: Date | string
+  deptId: number
+  roleId: number
 }
 
 export type UserUpdateManyMutationInput = {
@@ -406,8 +406,8 @@ export type UserUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hire_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hireDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -416,10 +416,10 @@ export type UserUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hire_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dept_id?: Prisma.IntFieldUpdateOperationsInput | number
-  role_id?: Prisma.IntFieldUpdateOperationsInput | number
+  hireDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deptId?: Prisma.IntFieldUpdateOperationsInput | number
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -428,15 +428,15 @@ export type UserCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  hire_date?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-  dept_id?: Prisma.SortOrder
-  role_id?: Prisma.SortOrder
+  hireDate?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  deptId?: Prisma.SortOrder
+  roleId?: Prisma.SortOrder
 }
 
 export type UserAvgOrderByAggregateInput = {
-  dept_id?: Prisma.SortOrder
-  role_id?: Prisma.SortOrder
+  deptId?: Prisma.SortOrder
+  roleId?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -445,10 +445,10 @@ export type UserMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  hire_date?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-  dept_id?: Prisma.SortOrder
-  role_id?: Prisma.SortOrder
+  hireDate?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  deptId?: Prisma.SortOrder
+  roleId?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -457,15 +457,15 @@ export type UserMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  hire_date?: Prisma.SortOrder
-  updated_at?: Prisma.SortOrder
-  dept_id?: Prisma.SortOrder
-  role_id?: Prisma.SortOrder
+  hireDate?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  deptId?: Prisma.SortOrder
+  roleId?: Prisma.SortOrder
 }
 
 export type UserSumOrderByAggregateInput = {
-  dept_id?: Prisma.SortOrder
-  role_id?: Prisma.SortOrder
+  deptId?: Prisma.SortOrder
+  roleId?: Prisma.SortOrder
 }
 
 export type UserListRelationFilter = {
@@ -638,8 +638,8 @@ export type UserCreateWithoutDepartmentInput = {
   name: string
   phone: string
   status: string
-  hire_date?: Date | string
-  updated_at?: Date | string
+  hireDate?: Date | string
+  updatedAt?: Date | string
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
   LeaveRequest?: Prisma.LeaveRequestCreateNestedManyWithoutUserInput
@@ -652,9 +652,9 @@ export type UserUncheckedCreateWithoutDepartmentInput = {
   name: string
   phone: string
   status: string
-  hire_date?: Date | string
-  updated_at?: Date | string
-  role_id: number
+  hireDate?: Date | string
+  updatedAt?: Date | string
+  roleId: number
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
   LeaveRequest?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
   approvedLeaves?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
@@ -695,10 +695,10 @@ export type UserScalarWhereInput = {
   name?: Prisma.StringFilter<"User"> | string
   phone?: Prisma.StringFilter<"User"> | string
   status?: Prisma.StringFilter<"User"> | string
-  hire_date?: Prisma.DateTimeFilter<"User"> | Date | string
-  updated_at?: Prisma.DateTimeFilter<"User"> | Date | string
-  dept_id?: Prisma.IntFilter<"User"> | number
-  role_id?: Prisma.IntFilter<"User"> | number
+  hireDate?: Prisma.DateTimeFilter<"User"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  deptId?: Prisma.IntFilter<"User"> | number
+  roleId?: Prisma.IntFilter<"User"> | number
 }
 
 export type UserCreateWithoutRoleInput = {
@@ -707,8 +707,8 @@ export type UserCreateWithoutRoleInput = {
   name: string
   phone: string
   status: string
-  hire_date?: Date | string
-  updated_at?: Date | string
+  hireDate?: Date | string
+  updatedAt?: Date | string
   department: Prisma.DepartmentCreateNestedOneWithoutUsersInput
   attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
   LeaveRequest?: Prisma.LeaveRequestCreateNestedManyWithoutUserInput
@@ -721,9 +721,9 @@ export type UserUncheckedCreateWithoutRoleInput = {
   name: string
   phone: string
   status: string
-  hire_date?: Date | string
-  updated_at?: Date | string
-  dept_id: number
+  hireDate?: Date | string
+  updatedAt?: Date | string
+  deptId: number
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
   LeaveRequest?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
   approvedLeaves?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
@@ -761,8 +761,8 @@ export type UserCreateWithoutAttendancesInput = {
   name: string
   phone: string
   status: string
-  hire_date?: Date | string
-  updated_at?: Date | string
+  hireDate?: Date | string
+  updatedAt?: Date | string
   department: Prisma.DepartmentCreateNestedOneWithoutUsersInput
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   LeaveRequest?: Prisma.LeaveRequestCreateNestedManyWithoutUserInput
@@ -775,10 +775,10 @@ export type UserUncheckedCreateWithoutAttendancesInput = {
   name: string
   phone: string
   status: string
-  hire_date?: Date | string
-  updated_at?: Date | string
-  dept_id: number
-  role_id: number
+  hireDate?: Date | string
+  updatedAt?: Date | string
+  deptId: number
+  roleId: number
   LeaveRequest?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
   approvedLeaves?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
 }
@@ -805,8 +805,8 @@ export type UserUpdateWithoutAttendancesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hire_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hireDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   department?: Prisma.DepartmentUpdateOneRequiredWithoutUsersNestedInput
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   LeaveRequest?: Prisma.LeaveRequestUpdateManyWithoutUserNestedInput
@@ -819,10 +819,10 @@ export type UserUncheckedUpdateWithoutAttendancesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hire_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dept_id?: Prisma.IntFieldUpdateOperationsInput | number
-  role_id?: Prisma.IntFieldUpdateOperationsInput | number
+  hireDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deptId?: Prisma.IntFieldUpdateOperationsInput | number
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   LeaveRequest?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
   approvedLeaves?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
 }
@@ -833,8 +833,8 @@ export type UserCreateWithoutLeaveRequestInput = {
   name: string
   phone: string
   status: string
-  hire_date?: Date | string
-  updated_at?: Date | string
+  hireDate?: Date | string
+  updatedAt?: Date | string
   department: Prisma.DepartmentCreateNestedOneWithoutUsersInput
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
@@ -847,10 +847,10 @@ export type UserUncheckedCreateWithoutLeaveRequestInput = {
   name: string
   phone: string
   status: string
-  hire_date?: Date | string
-  updated_at?: Date | string
-  dept_id: number
-  role_id: number
+  hireDate?: Date | string
+  updatedAt?: Date | string
+  deptId: number
+  roleId: number
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
   approvedLeaves?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutApproverInput
 }
@@ -866,8 +866,8 @@ export type UserCreateWithoutApprovedLeavesInput = {
   name: string
   phone: string
   status: string
-  hire_date?: Date | string
-  updated_at?: Date | string
+  hireDate?: Date | string
+  updatedAt?: Date | string
   department: Prisma.DepartmentCreateNestedOneWithoutUsersInput
   role: Prisma.RoleCreateNestedOneWithoutUsersInput
   attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
@@ -880,10 +880,10 @@ export type UserUncheckedCreateWithoutApprovedLeavesInput = {
   name: string
   phone: string
   status: string
-  hire_date?: Date | string
-  updated_at?: Date | string
-  dept_id: number
-  role_id: number
+  hireDate?: Date | string
+  updatedAt?: Date | string
+  deptId: number
+  roleId: number
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
   LeaveRequest?: Prisma.LeaveRequestUncheckedCreateNestedManyWithoutUserInput
 }
@@ -910,8 +910,8 @@ export type UserUpdateWithoutLeaveRequestInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hire_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hireDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   department?: Prisma.DepartmentUpdateOneRequiredWithoutUsersNestedInput
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
@@ -924,10 +924,10 @@ export type UserUncheckedUpdateWithoutLeaveRequestInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hire_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dept_id?: Prisma.IntFieldUpdateOperationsInput | number
-  role_id?: Prisma.IntFieldUpdateOperationsInput | number
+  hireDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deptId?: Prisma.IntFieldUpdateOperationsInput | number
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
   approvedLeaves?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
 }
@@ -949,8 +949,8 @@ export type UserUpdateWithoutApprovedLeavesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hire_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hireDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   department?: Prisma.DepartmentUpdateOneRequiredWithoutUsersNestedInput
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
@@ -963,10 +963,10 @@ export type UserUncheckedUpdateWithoutApprovedLeavesInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hire_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dept_id?: Prisma.IntFieldUpdateOperationsInput | number
-  role_id?: Prisma.IntFieldUpdateOperationsInput | number
+  hireDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deptId?: Prisma.IntFieldUpdateOperationsInput | number
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
   LeaveRequest?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
 }
@@ -977,9 +977,9 @@ export type UserCreateManyDepartmentInput = {
   name: string
   phone: string
   status: string
-  hire_date?: Date | string
-  updated_at?: Date | string
-  role_id: number
+  hireDate?: Date | string
+  updatedAt?: Date | string
+  roleId: number
 }
 
 export type UserUpdateWithoutDepartmentInput = {
@@ -988,8 +988,8 @@ export type UserUpdateWithoutDepartmentInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hire_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hireDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   role?: Prisma.RoleUpdateOneRequiredWithoutUsersNestedInput
   attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
   LeaveRequest?: Prisma.LeaveRequestUpdateManyWithoutUserNestedInput
@@ -1002,9 +1002,9 @@ export type UserUncheckedUpdateWithoutDepartmentInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hire_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  role_id?: Prisma.IntFieldUpdateOperationsInput | number
+  hireDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
   LeaveRequest?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
   approvedLeaves?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
@@ -1016,9 +1016,9 @@ export type UserUncheckedUpdateManyWithoutDepartmentInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hire_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  role_id?: Prisma.IntFieldUpdateOperationsInput | number
+  hireDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  roleId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type UserCreateManyRoleInput = {
@@ -1027,9 +1027,9 @@ export type UserCreateManyRoleInput = {
   name: string
   phone: string
   status: string
-  hire_date?: Date | string
-  updated_at?: Date | string
-  dept_id: number
+  hireDate?: Date | string
+  updatedAt?: Date | string
+  deptId: number
 }
 
 export type UserUpdateWithoutRoleInput = {
@@ -1038,8 +1038,8 @@ export type UserUpdateWithoutRoleInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hire_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hireDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   department?: Prisma.DepartmentUpdateOneRequiredWithoutUsersNestedInput
   attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
   LeaveRequest?: Prisma.LeaveRequestUpdateManyWithoutUserNestedInput
@@ -1052,9 +1052,9 @@ export type UserUncheckedUpdateWithoutRoleInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hire_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dept_id?: Prisma.IntFieldUpdateOperationsInput | number
+  hireDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deptId?: Prisma.IntFieldUpdateOperationsInput | number
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
   LeaveRequest?: Prisma.LeaveRequestUncheckedUpdateManyWithoutUserNestedInput
   approvedLeaves?: Prisma.LeaveRequestUncheckedUpdateManyWithoutApproverNestedInput
@@ -1066,9 +1066,9 @@ export type UserUncheckedUpdateManyWithoutRoleInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  hire_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updated_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  dept_id?: Prisma.IntFieldUpdateOperationsInput | number
+  hireDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deptId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
@@ -1126,10 +1126,10 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   name?: boolean
   phone?: boolean
   status?: boolean
-  hire_date?: boolean
-  updated_at?: boolean
-  dept_id?: boolean
-  role_id?: boolean
+  hireDate?: boolean
+  updatedAt?: boolean
+  deptId?: boolean
+  roleId?: boolean
   department?: boolean | Prisma.DepartmentDefaultArgs<ExtArgs>
   role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
   attendances?: boolean | Prisma.User$attendancesArgs<ExtArgs>
@@ -1144,10 +1144,10 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   name?: boolean
   phone?: boolean
   status?: boolean
-  hire_date?: boolean
-  updated_at?: boolean
-  dept_id?: boolean
-  role_id?: boolean
+  hireDate?: boolean
+  updatedAt?: boolean
+  deptId?: boolean
+  roleId?: boolean
   department?: boolean | Prisma.DepartmentDefaultArgs<ExtArgs>
   role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -1158,10 +1158,10 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   name?: boolean
   phone?: boolean
   status?: boolean
-  hire_date?: boolean
-  updated_at?: boolean
-  dept_id?: boolean
-  role_id?: boolean
+  hireDate?: boolean
+  updatedAt?: boolean
+  deptId?: boolean
+  roleId?: boolean
   department?: boolean | Prisma.DepartmentDefaultArgs<ExtArgs>
   role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -1172,13 +1172,13 @@ export type UserSelectScalar = {
   name?: boolean
   phone?: boolean
   status?: boolean
-  hire_date?: boolean
-  updated_at?: boolean
-  dept_id?: boolean
-  role_id?: boolean
+  hireDate?: boolean
+  updatedAt?: boolean
+  deptId?: boolean
+  roleId?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "name" | "phone" | "status" | "hire_date" | "updated_at" | "dept_id" | "role_id", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "name" | "phone" | "status" | "hireDate" | "updatedAt" | "deptId" | "roleId", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   department?: boolean | Prisma.DepartmentDefaultArgs<ExtArgs>
   role?: boolean | Prisma.RoleDefaultArgs<ExtArgs>
@@ -1211,10 +1211,10 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     name: string
     phone: string
     status: string
-    hire_date: Date
-    updated_at: Date
-    dept_id: number
-    role_id: number
+    hireDate: Date
+    updatedAt: Date
+    deptId: number
+    roleId: number
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1648,10 +1648,10 @@ export interface UserFieldRefs {
   readonly name: Prisma.FieldRef<"User", 'String'>
   readonly phone: Prisma.FieldRef<"User", 'String'>
   readonly status: Prisma.FieldRef<"User", 'String'>
-  readonly hire_date: Prisma.FieldRef<"User", 'DateTime'>
-  readonly updated_at: Prisma.FieldRef<"User", 'DateTime'>
-  readonly dept_id: Prisma.FieldRef<"User", 'Int'>
-  readonly role_id: Prisma.FieldRef<"User", 'Int'>
+  readonly hireDate: Prisma.FieldRef<"User", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly deptId: Prisma.FieldRef<"User", 'Int'>
+  readonly roleId: Prisma.FieldRef<"User", 'Int'>
 }
     
 

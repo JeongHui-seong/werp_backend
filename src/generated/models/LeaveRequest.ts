@@ -28,108 +28,108 @@ export type AggregateLeaveRequest = {
 
 export type LeaveRequestAvgAggregateOutputType = {
   id: number | null
-  leave_type_id: number | null
+  leaveTypeId: number | null
 }
 
 export type LeaveRequestSumAggregateOutputType = {
   id: number | null
-  leave_type_id: number | null
+  leaveTypeId: number | null
 }
 
 export type LeaveRequestMinAggregateOutputType = {
   id: number | null
-  user_id: string | null
-  approver_id: string | null
-  leave_type_id: number | null
-  start_date: Date | null
-  end_date: Date | null
+  userId: string | null
+  approverId: string | null
+  leaveTypeId: number | null
+  startDate: Date | null
+  endDate: Date | null
   status: string | null
   reason: string | null
-  created_at: Date | null
-  approved_at: Date | null
-  rejection_reason: string | null
+  createdAt: Date | null
+  approvedAt: Date | null
+  rejectionReason: string | null
 }
 
 export type LeaveRequestMaxAggregateOutputType = {
   id: number | null
-  user_id: string | null
-  approver_id: string | null
-  leave_type_id: number | null
-  start_date: Date | null
-  end_date: Date | null
+  userId: string | null
+  approverId: string | null
+  leaveTypeId: number | null
+  startDate: Date | null
+  endDate: Date | null
   status: string | null
   reason: string | null
-  created_at: Date | null
-  approved_at: Date | null
-  rejection_reason: string | null
+  createdAt: Date | null
+  approvedAt: Date | null
+  rejectionReason: string | null
 }
 
 export type LeaveRequestCountAggregateOutputType = {
   id: number
-  user_id: number
-  approver_id: number
-  leave_type_id: number
-  start_date: number
-  end_date: number
+  userId: number
+  approverId: number
+  leaveTypeId: number
+  startDate: number
+  endDate: number
   status: number
   reason: number
-  created_at: number
-  approved_at: number
-  rejection_reason: number
+  createdAt: number
+  approvedAt: number
+  rejectionReason: number
   _all: number
 }
 
 
 export type LeaveRequestAvgAggregateInputType = {
   id?: true
-  leave_type_id?: true
+  leaveTypeId?: true
 }
 
 export type LeaveRequestSumAggregateInputType = {
   id?: true
-  leave_type_id?: true
+  leaveTypeId?: true
 }
 
 export type LeaveRequestMinAggregateInputType = {
   id?: true
-  user_id?: true
-  approver_id?: true
-  leave_type_id?: true
-  start_date?: true
-  end_date?: true
+  userId?: true
+  approverId?: true
+  leaveTypeId?: true
+  startDate?: true
+  endDate?: true
   status?: true
   reason?: true
-  created_at?: true
-  approved_at?: true
-  rejection_reason?: true
+  createdAt?: true
+  approvedAt?: true
+  rejectionReason?: true
 }
 
 export type LeaveRequestMaxAggregateInputType = {
   id?: true
-  user_id?: true
-  approver_id?: true
-  leave_type_id?: true
-  start_date?: true
-  end_date?: true
+  userId?: true
+  approverId?: true
+  leaveTypeId?: true
+  startDate?: true
+  endDate?: true
   status?: true
   reason?: true
-  created_at?: true
-  approved_at?: true
-  rejection_reason?: true
+  createdAt?: true
+  approvedAt?: true
+  rejectionReason?: true
 }
 
 export type LeaveRequestCountAggregateInputType = {
   id?: true
-  user_id?: true
-  approver_id?: true
-  leave_type_id?: true
-  start_date?: true
-  end_date?: true
+  userId?: true
+  approverId?: true
+  leaveTypeId?: true
+  startDate?: true
+  endDate?: true
   status?: true
   reason?: true
-  created_at?: true
-  approved_at?: true
-  rejection_reason?: true
+  createdAt?: true
+  approvedAt?: true
+  rejectionReason?: true
   _all?: true
 }
 
@@ -221,16 +221,16 @@ export type LeaveRequestGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
 
 export type LeaveRequestGroupByOutputType = {
   id: number
-  user_id: string
-  approver_id: string | null
-  leave_type_id: number
-  start_date: Date
-  end_date: Date
+  userId: string
+  approverId: string | null
+  leaveTypeId: number
+  startDate: Date
+  endDate: Date
   status: string
   reason: string | null
-  created_at: Date
-  approved_at: Date | null
-  rejection_reason: string | null
+  createdAt: Date
+  approvedAt: Date | null
+  rejectionReason: string | null
   _count: LeaveRequestCountAggregateOutputType | null
   _avg: LeaveRequestAvgAggregateOutputType | null
   _sum: LeaveRequestSumAggregateOutputType | null
@@ -258,16 +258,16 @@ export type LeaveRequestWhereInput = {
   OR?: Prisma.LeaveRequestWhereInput[]
   NOT?: Prisma.LeaveRequestWhereInput | Prisma.LeaveRequestWhereInput[]
   id?: Prisma.IntFilter<"LeaveRequest"> | number
-  user_id?: Prisma.UuidFilter<"LeaveRequest"> | string
-  approver_id?: Prisma.UuidNullableFilter<"LeaveRequest"> | string | null
-  leave_type_id?: Prisma.IntFilter<"LeaveRequest"> | number
-  start_date?: Prisma.DateTimeFilter<"LeaveRequest"> | Date | string
-  end_date?: Prisma.DateTimeFilter<"LeaveRequest"> | Date | string
+  userId?: Prisma.UuidFilter<"LeaveRequest"> | string
+  approverId?: Prisma.UuidNullableFilter<"LeaveRequest"> | string | null
+  leaveTypeId?: Prisma.IntFilter<"LeaveRequest"> | number
+  startDate?: Prisma.DateTimeFilter<"LeaveRequest"> | Date | string
+  endDate?: Prisma.DateTimeFilter<"LeaveRequest"> | Date | string
   status?: Prisma.StringFilter<"LeaveRequest"> | string
   reason?: Prisma.StringNullableFilter<"LeaveRequest"> | string | null
-  created_at?: Prisma.DateTimeFilter<"LeaveRequest"> | Date | string
-  approved_at?: Prisma.DateTimeNullableFilter<"LeaveRequest"> | Date | string | null
-  rejection_reason?: Prisma.StringNullableFilter<"LeaveRequest"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"LeaveRequest"> | Date | string
+  approvedAt?: Prisma.DateTimeNullableFilter<"LeaveRequest"> | Date | string | null
+  rejectionReason?: Prisma.StringNullableFilter<"LeaveRequest"> | string | null
   dates?: Prisma.LeaveDateListRelationFilter
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   approver?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
@@ -276,16 +276,16 @@ export type LeaveRequestWhereInput = {
 
 export type LeaveRequestOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  user_id?: Prisma.SortOrder
-  approver_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  leave_type_id?: Prisma.SortOrder
-  start_date?: Prisma.SortOrder
-  end_date?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  approverId?: Prisma.SortOrderInput | Prisma.SortOrder
+  leaveTypeId?: Prisma.SortOrder
+  startDate?: Prisma.SortOrder
+  endDate?: Prisma.SortOrder
   status?: Prisma.SortOrder
   reason?: Prisma.SortOrderInput | Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  approved_at?: Prisma.SortOrderInput | Prisma.SortOrder
-  rejection_reason?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  approvedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  rejectionReason?: Prisma.SortOrderInput | Prisma.SortOrder
   dates?: Prisma.LeaveDateOrderByRelationAggregateInput
   user?: Prisma.UserOrderByWithRelationInput
   approver?: Prisma.UserOrderByWithRelationInput
@@ -297,16 +297,16 @@ export type LeaveRequestWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.LeaveRequestWhereInput | Prisma.LeaveRequestWhereInput[]
   OR?: Prisma.LeaveRequestWhereInput[]
   NOT?: Prisma.LeaveRequestWhereInput | Prisma.LeaveRequestWhereInput[]
-  user_id?: Prisma.UuidFilter<"LeaveRequest"> | string
-  approver_id?: Prisma.UuidNullableFilter<"LeaveRequest"> | string | null
-  leave_type_id?: Prisma.IntFilter<"LeaveRequest"> | number
-  start_date?: Prisma.DateTimeFilter<"LeaveRequest"> | Date | string
-  end_date?: Prisma.DateTimeFilter<"LeaveRequest"> | Date | string
+  userId?: Prisma.UuidFilter<"LeaveRequest"> | string
+  approverId?: Prisma.UuidNullableFilter<"LeaveRequest"> | string | null
+  leaveTypeId?: Prisma.IntFilter<"LeaveRequest"> | number
+  startDate?: Prisma.DateTimeFilter<"LeaveRequest"> | Date | string
+  endDate?: Prisma.DateTimeFilter<"LeaveRequest"> | Date | string
   status?: Prisma.StringFilter<"LeaveRequest"> | string
   reason?: Prisma.StringNullableFilter<"LeaveRequest"> | string | null
-  created_at?: Prisma.DateTimeFilter<"LeaveRequest"> | Date | string
-  approved_at?: Prisma.DateTimeNullableFilter<"LeaveRequest"> | Date | string | null
-  rejection_reason?: Prisma.StringNullableFilter<"LeaveRequest"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"LeaveRequest"> | Date | string
+  approvedAt?: Prisma.DateTimeNullableFilter<"LeaveRequest"> | Date | string | null
+  rejectionReason?: Prisma.StringNullableFilter<"LeaveRequest"> | string | null
   dates?: Prisma.LeaveDateListRelationFilter
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   approver?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
@@ -315,16 +315,16 @@ export type LeaveRequestWhereUniqueInput = Prisma.AtLeast<{
 
 export type LeaveRequestOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  user_id?: Prisma.SortOrder
-  approver_id?: Prisma.SortOrderInput | Prisma.SortOrder
-  leave_type_id?: Prisma.SortOrder
-  start_date?: Prisma.SortOrder
-  end_date?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  approverId?: Prisma.SortOrderInput | Prisma.SortOrder
+  leaveTypeId?: Prisma.SortOrder
+  startDate?: Prisma.SortOrder
+  endDate?: Prisma.SortOrder
   status?: Prisma.SortOrder
   reason?: Prisma.SortOrderInput | Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  approved_at?: Prisma.SortOrderInput | Prisma.SortOrder
-  rejection_reason?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  approvedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  rejectionReason?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.LeaveRequestCountOrderByAggregateInput
   _avg?: Prisma.LeaveRequestAvgOrderByAggregateInput
   _max?: Prisma.LeaveRequestMaxOrderByAggregateInput
@@ -337,26 +337,26 @@ export type LeaveRequestScalarWhereWithAggregatesInput = {
   OR?: Prisma.LeaveRequestScalarWhereWithAggregatesInput[]
   NOT?: Prisma.LeaveRequestScalarWhereWithAggregatesInput | Prisma.LeaveRequestScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"LeaveRequest"> | number
-  user_id?: Prisma.UuidWithAggregatesFilter<"LeaveRequest"> | string
-  approver_id?: Prisma.UuidNullableWithAggregatesFilter<"LeaveRequest"> | string | null
-  leave_type_id?: Prisma.IntWithAggregatesFilter<"LeaveRequest"> | number
-  start_date?: Prisma.DateTimeWithAggregatesFilter<"LeaveRequest"> | Date | string
-  end_date?: Prisma.DateTimeWithAggregatesFilter<"LeaveRequest"> | Date | string
+  userId?: Prisma.UuidWithAggregatesFilter<"LeaveRequest"> | string
+  approverId?: Prisma.UuidNullableWithAggregatesFilter<"LeaveRequest"> | string | null
+  leaveTypeId?: Prisma.IntWithAggregatesFilter<"LeaveRequest"> | number
+  startDate?: Prisma.DateTimeWithAggregatesFilter<"LeaveRequest"> | Date | string
+  endDate?: Prisma.DateTimeWithAggregatesFilter<"LeaveRequest"> | Date | string
   status?: Prisma.StringWithAggregatesFilter<"LeaveRequest"> | string
   reason?: Prisma.StringNullableWithAggregatesFilter<"LeaveRequest"> | string | null
-  created_at?: Prisma.DateTimeWithAggregatesFilter<"LeaveRequest"> | Date | string
-  approved_at?: Prisma.DateTimeNullableWithAggregatesFilter<"LeaveRequest"> | Date | string | null
-  rejection_reason?: Prisma.StringNullableWithAggregatesFilter<"LeaveRequest"> | string | null
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"LeaveRequest"> | Date | string
+  approvedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"LeaveRequest"> | Date | string | null
+  rejectionReason?: Prisma.StringNullableWithAggregatesFilter<"LeaveRequest"> | string | null
 }
 
 export type LeaveRequestCreateInput = {
-  start_date: Date | string
-  end_date: Date | string
+  startDate: Date | string
+  endDate: Date | string
   status: string
   reason?: string | null
-  created_at?: Date | string
-  approved_at?: Date | string | null
-  rejection_reason?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  rejectionReason?: string | null
   dates?: Prisma.LeaveDateCreateNestedManyWithoutLeave_requestInput
   user: Prisma.UserCreateNestedOneWithoutLeaveRequestInput
   approver?: Prisma.UserCreateNestedOneWithoutApprovedLeavesInput
@@ -365,27 +365,27 @@ export type LeaveRequestCreateInput = {
 
 export type LeaveRequestUncheckedCreateInput = {
   id?: number
-  user_id: string
-  approver_id?: string | null
-  leave_type_id: number
-  start_date: Date | string
-  end_date: Date | string
+  userId: string
+  approverId?: string | null
+  leaveTypeId: number
+  startDate: Date | string
+  endDate: Date | string
   status: string
   reason?: string | null
-  created_at?: Date | string
-  approved_at?: Date | string | null
-  rejection_reason?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  rejectionReason?: string | null
   dates?: Prisma.LeaveDateUncheckedCreateNestedManyWithoutLeave_requestInput
 }
 
 export type LeaveRequestUpdateInput = {
-  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rejection_reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dates?: Prisma.LeaveDateUpdateManyWithoutLeave_requestNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutLeaveRequestNestedInput
   approver?: Prisma.UserUpdateOneWithoutApprovedLeavesNestedInput
@@ -394,55 +394,55 @@ export type LeaveRequestUpdateInput = {
 
 export type LeaveRequestUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  approver_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  leave_type_id?: Prisma.IntFieldUpdateOperationsInput | number
-  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  approverId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leaveTypeId?: Prisma.IntFieldUpdateOperationsInput | number
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rejection_reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dates?: Prisma.LeaveDateUncheckedUpdateManyWithoutLeave_requestNestedInput
 }
 
 export type LeaveRequestCreateManyInput = {
   id?: number
-  user_id: string
-  approver_id?: string | null
-  leave_type_id: number
-  start_date: Date | string
-  end_date: Date | string
+  userId: string
+  approverId?: string | null
+  leaveTypeId: number
+  startDate: Date | string
+  endDate: Date | string
   status: string
   reason?: string | null
-  created_at?: Date | string
-  approved_at?: Date | string | null
-  rejection_reason?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  rejectionReason?: string | null
 }
 
 export type LeaveRequestUpdateManyMutationInput = {
-  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rejection_reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type LeaveRequestUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  approver_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  leave_type_id?: Prisma.IntFieldUpdateOperationsInput | number
-  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  approverId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leaveTypeId?: Prisma.IntFieldUpdateOperationsInput | number
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rejection_reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type LeaveRequestListRelationFilter = {
@@ -457,54 +457,54 @@ export type LeaveRequestOrderByRelationAggregateInput = {
 
 export type LeaveRequestCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  user_id?: Prisma.SortOrder
-  approver_id?: Prisma.SortOrder
-  leave_type_id?: Prisma.SortOrder
-  start_date?: Prisma.SortOrder
-  end_date?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  approverId?: Prisma.SortOrder
+  leaveTypeId?: Prisma.SortOrder
+  startDate?: Prisma.SortOrder
+  endDate?: Prisma.SortOrder
   status?: Prisma.SortOrder
   reason?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  approved_at?: Prisma.SortOrder
-  rejection_reason?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  approvedAt?: Prisma.SortOrder
+  rejectionReason?: Prisma.SortOrder
 }
 
 export type LeaveRequestAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  leave_type_id?: Prisma.SortOrder
+  leaveTypeId?: Prisma.SortOrder
 }
 
 export type LeaveRequestMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  user_id?: Prisma.SortOrder
-  approver_id?: Prisma.SortOrder
-  leave_type_id?: Prisma.SortOrder
-  start_date?: Prisma.SortOrder
-  end_date?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  approverId?: Prisma.SortOrder
+  leaveTypeId?: Prisma.SortOrder
+  startDate?: Prisma.SortOrder
+  endDate?: Prisma.SortOrder
   status?: Prisma.SortOrder
   reason?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  approved_at?: Prisma.SortOrder
-  rejection_reason?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  approvedAt?: Prisma.SortOrder
+  rejectionReason?: Prisma.SortOrder
 }
 
 export type LeaveRequestMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  user_id?: Prisma.SortOrder
-  approver_id?: Prisma.SortOrder
-  leave_type_id?: Prisma.SortOrder
-  start_date?: Prisma.SortOrder
-  end_date?: Prisma.SortOrder
+  userId?: Prisma.SortOrder
+  approverId?: Prisma.SortOrder
+  leaveTypeId?: Prisma.SortOrder
+  startDate?: Prisma.SortOrder
+  endDate?: Prisma.SortOrder
   status?: Prisma.SortOrder
   reason?: Prisma.SortOrder
-  created_at?: Prisma.SortOrder
-  approved_at?: Prisma.SortOrder
-  rejection_reason?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  approvedAt?: Prisma.SortOrder
+  rejectionReason?: Prisma.SortOrder
 }
 
 export type LeaveRequestSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  leave_type_id?: Prisma.SortOrder
+  leaveTypeId?: Prisma.SortOrder
 }
 
 export type LeaveRequestScalarRelationFilter = {
@@ -653,13 +653,13 @@ export type LeaveRequestUncheckedUpdateManyWithoutLeave_typeNestedInput = {
 }
 
 export type LeaveRequestCreateWithoutUserInput = {
-  start_date: Date | string
-  end_date: Date | string
+  startDate: Date | string
+  endDate: Date | string
   status: string
   reason?: string | null
-  created_at?: Date | string
-  approved_at?: Date | string | null
-  rejection_reason?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  rejectionReason?: string | null
   dates?: Prisma.LeaveDateCreateNestedManyWithoutLeave_requestInput
   approver?: Prisma.UserCreateNestedOneWithoutApprovedLeavesInput
   leave_type: Prisma.LeaveTypeCreateNestedOneWithoutLeaveRequestInput
@@ -667,15 +667,15 @@ export type LeaveRequestCreateWithoutUserInput = {
 
 export type LeaveRequestUncheckedCreateWithoutUserInput = {
   id?: number
-  approver_id?: string | null
-  leave_type_id: number
-  start_date: Date | string
-  end_date: Date | string
+  approverId?: string | null
+  leaveTypeId: number
+  startDate: Date | string
+  endDate: Date | string
   status: string
   reason?: string | null
-  created_at?: Date | string
-  approved_at?: Date | string | null
-  rejection_reason?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  rejectionReason?: string | null
   dates?: Prisma.LeaveDateUncheckedCreateNestedManyWithoutLeave_requestInput
 }
 
@@ -690,13 +690,13 @@ export type LeaveRequestCreateManyUserInputEnvelope = {
 }
 
 export type LeaveRequestCreateWithoutApproverInput = {
-  start_date: Date | string
-  end_date: Date | string
+  startDate: Date | string
+  endDate: Date | string
   status: string
   reason?: string | null
-  created_at?: Date | string
-  approved_at?: Date | string | null
-  rejection_reason?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  rejectionReason?: string | null
   dates?: Prisma.LeaveDateCreateNestedManyWithoutLeave_requestInput
   user: Prisma.UserCreateNestedOneWithoutLeaveRequestInput
   leave_type: Prisma.LeaveTypeCreateNestedOneWithoutLeaveRequestInput
@@ -704,15 +704,15 @@ export type LeaveRequestCreateWithoutApproverInput = {
 
 export type LeaveRequestUncheckedCreateWithoutApproverInput = {
   id?: number
-  user_id: string
-  leave_type_id: number
-  start_date: Date | string
-  end_date: Date | string
+  userId: string
+  leaveTypeId: number
+  startDate: Date | string
+  endDate: Date | string
   status: string
   reason?: string | null
-  created_at?: Date | string
-  approved_at?: Date | string | null
-  rejection_reason?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  rejectionReason?: string | null
   dates?: Prisma.LeaveDateUncheckedCreateNestedManyWithoutLeave_requestInput
 }
 
@@ -747,16 +747,16 @@ export type LeaveRequestScalarWhereInput = {
   OR?: Prisma.LeaveRequestScalarWhereInput[]
   NOT?: Prisma.LeaveRequestScalarWhereInput | Prisma.LeaveRequestScalarWhereInput[]
   id?: Prisma.IntFilter<"LeaveRequest"> | number
-  user_id?: Prisma.UuidFilter<"LeaveRequest"> | string
-  approver_id?: Prisma.UuidNullableFilter<"LeaveRequest"> | string | null
-  leave_type_id?: Prisma.IntFilter<"LeaveRequest"> | number
-  start_date?: Prisma.DateTimeFilter<"LeaveRequest"> | Date | string
-  end_date?: Prisma.DateTimeFilter<"LeaveRequest"> | Date | string
+  userId?: Prisma.UuidFilter<"LeaveRequest"> | string
+  approverId?: Prisma.UuidNullableFilter<"LeaveRequest"> | string | null
+  leaveTypeId?: Prisma.IntFilter<"LeaveRequest"> | number
+  startDate?: Prisma.DateTimeFilter<"LeaveRequest"> | Date | string
+  endDate?: Prisma.DateTimeFilter<"LeaveRequest"> | Date | string
   status?: Prisma.StringFilter<"LeaveRequest"> | string
   reason?: Prisma.StringNullableFilter<"LeaveRequest"> | string | null
-  created_at?: Prisma.DateTimeFilter<"LeaveRequest"> | Date | string
-  approved_at?: Prisma.DateTimeNullableFilter<"LeaveRequest"> | Date | string | null
-  rejection_reason?: Prisma.StringNullableFilter<"LeaveRequest"> | string | null
+  createdAt?: Prisma.DateTimeFilter<"LeaveRequest"> | Date | string
+  approvedAt?: Prisma.DateTimeNullableFilter<"LeaveRequest"> | Date | string | null
+  rejectionReason?: Prisma.StringNullableFilter<"LeaveRequest"> | string | null
 }
 
 export type LeaveRequestUpsertWithWhereUniqueWithoutApproverInput = {
@@ -776,13 +776,13 @@ export type LeaveRequestUpdateManyWithWhereWithoutApproverInput = {
 }
 
 export type LeaveRequestCreateWithoutDatesInput = {
-  start_date: Date | string
-  end_date: Date | string
+  startDate: Date | string
+  endDate: Date | string
   status: string
   reason?: string | null
-  created_at?: Date | string
-  approved_at?: Date | string | null
-  rejection_reason?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  rejectionReason?: string | null
   user: Prisma.UserCreateNestedOneWithoutLeaveRequestInput
   approver?: Prisma.UserCreateNestedOneWithoutApprovedLeavesInput
   leave_type: Prisma.LeaveTypeCreateNestedOneWithoutLeaveRequestInput
@@ -790,16 +790,16 @@ export type LeaveRequestCreateWithoutDatesInput = {
 
 export type LeaveRequestUncheckedCreateWithoutDatesInput = {
   id?: number
-  user_id: string
-  approver_id?: string | null
-  leave_type_id: number
-  start_date: Date | string
-  end_date: Date | string
+  userId: string
+  approverId?: string | null
+  leaveTypeId: number
+  startDate: Date | string
+  endDate: Date | string
   status: string
   reason?: string | null
-  created_at?: Date | string
-  approved_at?: Date | string | null
-  rejection_reason?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  rejectionReason?: string | null
 }
 
 export type LeaveRequestCreateOrConnectWithoutDatesInput = {
@@ -819,13 +819,13 @@ export type LeaveRequestUpdateToOneWithWhereWithoutDatesInput = {
 }
 
 export type LeaveRequestUpdateWithoutDatesInput = {
-  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rejection_reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   user?: Prisma.UserUpdateOneRequiredWithoutLeaveRequestNestedInput
   approver?: Prisma.UserUpdateOneWithoutApprovedLeavesNestedInput
   leave_type?: Prisma.LeaveTypeUpdateOneRequiredWithoutLeaveRequestNestedInput
@@ -833,26 +833,26 @@ export type LeaveRequestUpdateWithoutDatesInput = {
 
 export type LeaveRequestUncheckedUpdateWithoutDatesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  approver_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  leave_type_id?: Prisma.IntFieldUpdateOperationsInput | number
-  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  approverId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leaveTypeId?: Prisma.IntFieldUpdateOperationsInput | number
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rejection_reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type LeaveRequestCreateWithoutLeave_typeInput = {
-  start_date: Date | string
-  end_date: Date | string
+  startDate: Date | string
+  endDate: Date | string
   status: string
   reason?: string | null
-  created_at?: Date | string
-  approved_at?: Date | string | null
-  rejection_reason?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  rejectionReason?: string | null
   dates?: Prisma.LeaveDateCreateNestedManyWithoutLeave_requestInput
   user: Prisma.UserCreateNestedOneWithoutLeaveRequestInput
   approver?: Prisma.UserCreateNestedOneWithoutApprovedLeavesInput
@@ -860,15 +860,15 @@ export type LeaveRequestCreateWithoutLeave_typeInput = {
 
 export type LeaveRequestUncheckedCreateWithoutLeave_typeInput = {
   id?: number
-  user_id: string
-  approver_id?: string | null
-  start_date: Date | string
-  end_date: Date | string
+  userId: string
+  approverId?: string | null
+  startDate: Date | string
+  endDate: Date | string
   status: string
   reason?: string | null
-  created_at?: Date | string
-  approved_at?: Date | string | null
-  rejection_reason?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  rejectionReason?: string | null
   dates?: Prisma.LeaveDateUncheckedCreateNestedManyWithoutLeave_requestInput
 }
 
@@ -900,38 +900,38 @@ export type LeaveRequestUpdateManyWithWhereWithoutLeave_typeInput = {
 
 export type LeaveRequestCreateManyUserInput = {
   id?: number
-  approver_id?: string | null
-  leave_type_id: number
-  start_date: Date | string
-  end_date: Date | string
+  approverId?: string | null
+  leaveTypeId: number
+  startDate: Date | string
+  endDate: Date | string
   status: string
   reason?: string | null
-  created_at?: Date | string
-  approved_at?: Date | string | null
-  rejection_reason?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  rejectionReason?: string | null
 }
 
 export type LeaveRequestCreateManyApproverInput = {
   id?: number
-  user_id: string
-  leave_type_id: number
-  start_date: Date | string
-  end_date: Date | string
+  userId: string
+  leaveTypeId: number
+  startDate: Date | string
+  endDate: Date | string
   status: string
   reason?: string | null
-  created_at?: Date | string
-  approved_at?: Date | string | null
-  rejection_reason?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  rejectionReason?: string | null
 }
 
 export type LeaveRequestUpdateWithoutUserInput = {
-  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rejection_reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dates?: Prisma.LeaveDateUpdateManyWithoutLeave_requestNestedInput
   approver?: Prisma.UserUpdateOneWithoutApprovedLeavesNestedInput
   leave_type?: Prisma.LeaveTypeUpdateOneRequiredWithoutLeaveRequestNestedInput
@@ -939,39 +939,39 @@ export type LeaveRequestUpdateWithoutUserInput = {
 
 export type LeaveRequestUncheckedUpdateWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  approver_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  leave_type_id?: Prisma.IntFieldUpdateOperationsInput | number
-  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approverId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leaveTypeId?: Prisma.IntFieldUpdateOperationsInput | number
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rejection_reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dates?: Prisma.LeaveDateUncheckedUpdateManyWithoutLeave_requestNestedInput
 }
 
 export type LeaveRequestUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  approver_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  leave_type_id?: Prisma.IntFieldUpdateOperationsInput | number
-  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approverId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  leaveTypeId?: Prisma.IntFieldUpdateOperationsInput | number
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rejection_reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type LeaveRequestUpdateWithoutApproverInput = {
-  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rejection_reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dates?: Prisma.LeaveDateUpdateManyWithoutLeave_requestNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutLeaveRequestNestedInput
   leave_type?: Prisma.LeaveTypeUpdateOneRequiredWithoutLeaveRequestNestedInput
@@ -979,52 +979,52 @@ export type LeaveRequestUpdateWithoutApproverInput = {
 
 export type LeaveRequestUncheckedUpdateWithoutApproverInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  leave_type_id?: Prisma.IntFieldUpdateOperationsInput | number
-  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  leaveTypeId?: Prisma.IntFieldUpdateOperationsInput | number
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rejection_reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dates?: Prisma.LeaveDateUncheckedUpdateManyWithoutLeave_requestNestedInput
 }
 
 export type LeaveRequestUncheckedUpdateManyWithoutApproverInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  leave_type_id?: Prisma.IntFieldUpdateOperationsInput | number
-  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  leaveTypeId?: Prisma.IntFieldUpdateOperationsInput | number
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rejection_reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type LeaveRequestCreateManyLeave_typeInput = {
   id?: number
-  user_id: string
-  approver_id?: string | null
-  start_date: Date | string
-  end_date: Date | string
+  userId: string
+  approverId?: string | null
+  startDate: Date | string
+  endDate: Date | string
   status: string
   reason?: string | null
-  created_at?: Date | string
-  approved_at?: Date | string | null
-  rejection_reason?: string | null
+  createdAt?: Date | string
+  approvedAt?: Date | string | null
+  rejectionReason?: string | null
 }
 
 export type LeaveRequestUpdateWithoutLeave_typeInput = {
-  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rejection_reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dates?: Prisma.LeaveDateUpdateManyWithoutLeave_requestNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutLeaveRequestNestedInput
   approver?: Prisma.UserUpdateOneWithoutApprovedLeavesNestedInput
@@ -1032,29 +1032,29 @@ export type LeaveRequestUpdateWithoutLeave_typeInput = {
 
 export type LeaveRequestUncheckedUpdateWithoutLeave_typeInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  approver_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  approverId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rejection_reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dates?: Prisma.LeaveDateUncheckedUpdateManyWithoutLeave_requestNestedInput
 }
 
 export type LeaveRequestUncheckedUpdateManyWithoutLeave_typeInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  user_id?: Prisma.StringFieldUpdateOperationsInput | string
-  approver_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  start_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  end_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  approverId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
   reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  approved_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  rejection_reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  approvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  rejectionReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -1090,16 +1090,16 @@ export type LeaveRequestCountOutputTypeCountDatesArgs<ExtArgs extends runtime.Ty
 
 export type LeaveRequestSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  user_id?: boolean
-  approver_id?: boolean
-  leave_type_id?: boolean
-  start_date?: boolean
-  end_date?: boolean
+  userId?: boolean
+  approverId?: boolean
+  leaveTypeId?: boolean
+  startDate?: boolean
+  endDate?: boolean
   status?: boolean
   reason?: boolean
-  created_at?: boolean
-  approved_at?: boolean
-  rejection_reason?: boolean
+  createdAt?: boolean
+  approvedAt?: boolean
+  rejectionReason?: boolean
   dates?: boolean | Prisma.LeaveRequest$datesArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   approver?: boolean | Prisma.LeaveRequest$approverArgs<ExtArgs>
@@ -1109,16 +1109,16 @@ export type LeaveRequestSelect<ExtArgs extends runtime.Types.Extensions.Internal
 
 export type LeaveRequestSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  user_id?: boolean
-  approver_id?: boolean
-  leave_type_id?: boolean
-  start_date?: boolean
-  end_date?: boolean
+  userId?: boolean
+  approverId?: boolean
+  leaveTypeId?: boolean
+  startDate?: boolean
+  endDate?: boolean
   status?: boolean
   reason?: boolean
-  created_at?: boolean
-  approved_at?: boolean
-  rejection_reason?: boolean
+  createdAt?: boolean
+  approvedAt?: boolean
+  rejectionReason?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   approver?: boolean | Prisma.LeaveRequest$approverArgs<ExtArgs>
   leave_type?: boolean | Prisma.LeaveTypeDefaultArgs<ExtArgs>
@@ -1126,16 +1126,16 @@ export type LeaveRequestSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
 
 export type LeaveRequestSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  user_id?: boolean
-  approver_id?: boolean
-  leave_type_id?: boolean
-  start_date?: boolean
-  end_date?: boolean
+  userId?: boolean
+  approverId?: boolean
+  leaveTypeId?: boolean
+  startDate?: boolean
+  endDate?: boolean
   status?: boolean
   reason?: boolean
-  created_at?: boolean
-  approved_at?: boolean
-  rejection_reason?: boolean
+  createdAt?: boolean
+  approvedAt?: boolean
+  rejectionReason?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   approver?: boolean | Prisma.LeaveRequest$approverArgs<ExtArgs>
   leave_type?: boolean | Prisma.LeaveTypeDefaultArgs<ExtArgs>
@@ -1143,19 +1143,19 @@ export type LeaveRequestSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
 
 export type LeaveRequestSelectScalar = {
   id?: boolean
-  user_id?: boolean
-  approver_id?: boolean
-  leave_type_id?: boolean
-  start_date?: boolean
-  end_date?: boolean
+  userId?: boolean
+  approverId?: boolean
+  leaveTypeId?: boolean
+  startDate?: boolean
+  endDate?: boolean
   status?: boolean
   reason?: boolean
-  created_at?: boolean
-  approved_at?: boolean
-  rejection_reason?: boolean
+  createdAt?: boolean
+  approvedAt?: boolean
+  rejectionReason?: boolean
 }
 
-export type LeaveRequestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "user_id" | "approver_id" | "leave_type_id" | "start_date" | "end_date" | "status" | "reason" | "created_at" | "approved_at" | "rejection_reason", ExtArgs["result"]["leaveRequest"]>
+export type LeaveRequestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "approverId" | "leaveTypeId" | "startDate" | "endDate" | "status" | "reason" | "createdAt" | "approvedAt" | "rejectionReason", ExtArgs["result"]["leaveRequest"]>
 export type LeaveRequestInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   dates?: boolean | Prisma.LeaveRequest$datesArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1184,16 +1184,16 @@ export type $LeaveRequestPayload<ExtArgs extends runtime.Types.Extensions.Intern
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    user_id: string
-    approver_id: string | null
-    leave_type_id: number
-    start_date: Date
-    end_date: Date
+    userId: string
+    approverId: string | null
+    leaveTypeId: number
+    startDate: Date
+    endDate: Date
     status: string
     reason: string | null
-    created_at: Date
-    approved_at: Date | null
-    rejection_reason: string | null
+    createdAt: Date
+    approvedAt: Date | null
+    rejectionReason: string | null
   }, ExtArgs["result"]["leaveRequest"]>
   composites: {}
 }
@@ -1622,16 +1622,16 @@ export interface Prisma__LeaveRequestClient<T, Null = never, ExtArgs extends run
  */
 export interface LeaveRequestFieldRefs {
   readonly id: Prisma.FieldRef<"LeaveRequest", 'Int'>
-  readonly user_id: Prisma.FieldRef<"LeaveRequest", 'String'>
-  readonly approver_id: Prisma.FieldRef<"LeaveRequest", 'String'>
-  readonly leave_type_id: Prisma.FieldRef<"LeaveRequest", 'Int'>
-  readonly start_date: Prisma.FieldRef<"LeaveRequest", 'DateTime'>
-  readonly end_date: Prisma.FieldRef<"LeaveRequest", 'DateTime'>
+  readonly userId: Prisma.FieldRef<"LeaveRequest", 'String'>
+  readonly approverId: Prisma.FieldRef<"LeaveRequest", 'String'>
+  readonly leaveTypeId: Prisma.FieldRef<"LeaveRequest", 'Int'>
+  readonly startDate: Prisma.FieldRef<"LeaveRequest", 'DateTime'>
+  readonly endDate: Prisma.FieldRef<"LeaveRequest", 'DateTime'>
   readonly status: Prisma.FieldRef<"LeaveRequest", 'String'>
   readonly reason: Prisma.FieldRef<"LeaveRequest", 'String'>
-  readonly created_at: Prisma.FieldRef<"LeaveRequest", 'DateTime'>
-  readonly approved_at: Prisma.FieldRef<"LeaveRequest", 'DateTime'>
-  readonly rejection_reason: Prisma.FieldRef<"LeaveRequest", 'String'>
+  readonly createdAt: Prisma.FieldRef<"LeaveRequest", 'DateTime'>
+  readonly approvedAt: Prisma.FieldRef<"LeaveRequest", 'DateTime'>
+  readonly rejectionReason: Prisma.FieldRef<"LeaveRequest", 'String'>
 }
     
 

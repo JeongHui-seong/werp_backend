@@ -28,60 +28,60 @@ export type AggregateLeaveDate = {
 
 export type LeaveDateAvgAggregateOutputType = {
   id: number | null
-  leave_request_id: number | null
+  leaveRequestId: number | null
 }
 
 export type LeaveDateSumAggregateOutputType = {
   id: number | null
-  leave_request_id: number | null
+  leaveRequestId: number | null
 }
 
 export type LeaveDateMinAggregateOutputType = {
   id: number | null
-  leave_request_id: number | null
-  leave_date: Date | null
+  leaveRequestId: number | null
+  leaveDate: Date | null
 }
 
 export type LeaveDateMaxAggregateOutputType = {
   id: number | null
-  leave_request_id: number | null
-  leave_date: Date | null
+  leaveRequestId: number | null
+  leaveDate: Date | null
 }
 
 export type LeaveDateCountAggregateOutputType = {
   id: number
-  leave_request_id: number
-  leave_date: number
+  leaveRequestId: number
+  leaveDate: number
   _all: number
 }
 
 
 export type LeaveDateAvgAggregateInputType = {
   id?: true
-  leave_request_id?: true
+  leaveRequestId?: true
 }
 
 export type LeaveDateSumAggregateInputType = {
   id?: true
-  leave_request_id?: true
+  leaveRequestId?: true
 }
 
 export type LeaveDateMinAggregateInputType = {
   id?: true
-  leave_request_id?: true
-  leave_date?: true
+  leaveRequestId?: true
+  leaveDate?: true
 }
 
 export type LeaveDateMaxAggregateInputType = {
   id?: true
-  leave_request_id?: true
-  leave_date?: true
+  leaveRequestId?: true
+  leaveDate?: true
 }
 
 export type LeaveDateCountAggregateInputType = {
   id?: true
-  leave_request_id?: true
-  leave_date?: true
+  leaveRequestId?: true
+  leaveDate?: true
   _all?: true
 }
 
@@ -173,8 +173,8 @@ export type LeaveDateGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 
 export type LeaveDateGroupByOutputType = {
   id: number
-  leave_request_id: number
-  leave_date: Date
+  leaveRequestId: number
+  leaveDate: Date
   _count: LeaveDateCountAggregateOutputType | null
   _avg: LeaveDateAvgAggregateOutputType | null
   _sum: LeaveDateSumAggregateOutputType | null
@@ -202,36 +202,36 @@ export type LeaveDateWhereInput = {
   OR?: Prisma.LeaveDateWhereInput[]
   NOT?: Prisma.LeaveDateWhereInput | Prisma.LeaveDateWhereInput[]
   id?: Prisma.IntFilter<"LeaveDate"> | number
-  leave_request_id?: Prisma.IntFilter<"LeaveDate"> | number
-  leave_date?: Prisma.DateTimeFilter<"LeaveDate"> | Date | string
+  leaveRequestId?: Prisma.IntFilter<"LeaveDate"> | number
+  leaveDate?: Prisma.DateTimeFilter<"LeaveDate"> | Date | string
   leave_request?: Prisma.XOR<Prisma.LeaveRequestScalarRelationFilter, Prisma.LeaveRequestWhereInput>
   attendances?: Prisma.AttendanceListRelationFilter
 }
 
 export type LeaveDateOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  leave_request_id?: Prisma.SortOrder
-  leave_date?: Prisma.SortOrder
+  leaveRequestId?: Prisma.SortOrder
+  leaveDate?: Prisma.SortOrder
   leave_request?: Prisma.LeaveRequestOrderByWithRelationInput
   attendances?: Prisma.AttendanceOrderByRelationAggregateInput
 }
 
 export type LeaveDateWhereUniqueInput = Prisma.AtLeast<{
   id?: number
-  leave_request_id_leave_date?: Prisma.LeaveDateLeave_request_idLeave_dateCompoundUniqueInput
+  leaveRequestId_leaveDate?: Prisma.LeaveDateLeaveRequestIdLeaveDateCompoundUniqueInput
   AND?: Prisma.LeaveDateWhereInput | Prisma.LeaveDateWhereInput[]
   OR?: Prisma.LeaveDateWhereInput[]
   NOT?: Prisma.LeaveDateWhereInput | Prisma.LeaveDateWhereInput[]
-  leave_request_id?: Prisma.IntFilter<"LeaveDate"> | number
-  leave_date?: Prisma.DateTimeFilter<"LeaveDate"> | Date | string
+  leaveRequestId?: Prisma.IntFilter<"LeaveDate"> | number
+  leaveDate?: Prisma.DateTimeFilter<"LeaveDate"> | Date | string
   leave_request?: Prisma.XOR<Prisma.LeaveRequestScalarRelationFilter, Prisma.LeaveRequestWhereInput>
   attendances?: Prisma.AttendanceListRelationFilter
-}, "id" | "leave_request_id_leave_date">
+}, "id" | "leaveRequestId_leaveDate">
 
 export type LeaveDateOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  leave_request_id?: Prisma.SortOrder
-  leave_date?: Prisma.SortOrder
+  leaveRequestId?: Prisma.SortOrder
+  leaveDate?: Prisma.SortOrder
   _count?: Prisma.LeaveDateCountOrderByAggregateInput
   _avg?: Prisma.LeaveDateAvgOrderByAggregateInput
   _max?: Prisma.LeaveDateMaxOrderByAggregateInput
@@ -244,50 +244,50 @@ export type LeaveDateScalarWhereWithAggregatesInput = {
   OR?: Prisma.LeaveDateScalarWhereWithAggregatesInput[]
   NOT?: Prisma.LeaveDateScalarWhereWithAggregatesInput | Prisma.LeaveDateScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"LeaveDate"> | number
-  leave_request_id?: Prisma.IntWithAggregatesFilter<"LeaveDate"> | number
-  leave_date?: Prisma.DateTimeWithAggregatesFilter<"LeaveDate"> | Date | string
+  leaveRequestId?: Prisma.IntWithAggregatesFilter<"LeaveDate"> | number
+  leaveDate?: Prisma.DateTimeWithAggregatesFilter<"LeaveDate"> | Date | string
 }
 
 export type LeaveDateCreateInput = {
-  leave_date: Date | string
+  leaveDate: Date | string
   leave_request: Prisma.LeaveRequestCreateNestedOneWithoutDatesInput
   attendances?: Prisma.AttendanceCreateNestedManyWithoutLeave_dateInput
 }
 
 export type LeaveDateUncheckedCreateInput = {
   id?: number
-  leave_request_id: number
-  leave_date: Date | string
+  leaveRequestId: number
+  leaveDate: Date | string
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutLeave_dateInput
 }
 
 export type LeaveDateUpdateInput = {
-  leave_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leaveDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   leave_request?: Prisma.LeaveRequestUpdateOneRequiredWithoutDatesNestedInput
   attendances?: Prisma.AttendanceUpdateManyWithoutLeave_dateNestedInput
 }
 
 export type LeaveDateUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  leave_request_id?: Prisma.IntFieldUpdateOperationsInput | number
-  leave_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leaveRequestId?: Prisma.IntFieldUpdateOperationsInput | number
+  leaveDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutLeave_dateNestedInput
 }
 
 export type LeaveDateCreateManyInput = {
   id?: number
-  leave_request_id: number
-  leave_date: Date | string
+  leaveRequestId: number
+  leaveDate: Date | string
 }
 
 export type LeaveDateUpdateManyMutationInput = {
-  leave_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leaveDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type LeaveDateUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  leave_request_id?: Prisma.IntFieldUpdateOperationsInput | number
-  leave_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leaveRequestId?: Prisma.IntFieldUpdateOperationsInput | number
+  leaveDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type LeaveDateNullableScalarRelationFilter = {
@@ -305,37 +305,37 @@ export type LeaveDateOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type LeaveDateLeave_request_idLeave_dateCompoundUniqueInput = {
-  leave_request_id: number
-  leave_date: Date | string
+export type LeaveDateLeaveRequestIdLeaveDateCompoundUniqueInput = {
+  leaveRequestId: number
+  leaveDate: Date | string
 }
 
 export type LeaveDateCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  leave_request_id?: Prisma.SortOrder
-  leave_date?: Prisma.SortOrder
+  leaveRequestId?: Prisma.SortOrder
+  leaveDate?: Prisma.SortOrder
 }
 
 export type LeaveDateAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  leave_request_id?: Prisma.SortOrder
+  leaveRequestId?: Prisma.SortOrder
 }
 
 export type LeaveDateMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  leave_request_id?: Prisma.SortOrder
-  leave_date?: Prisma.SortOrder
+  leaveRequestId?: Prisma.SortOrder
+  leaveDate?: Prisma.SortOrder
 }
 
 export type LeaveDateMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  leave_request_id?: Prisma.SortOrder
-  leave_date?: Prisma.SortOrder
+  leaveRequestId?: Prisma.SortOrder
+  leaveDate?: Prisma.SortOrder
 }
 
 export type LeaveDateSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  leave_request_id?: Prisma.SortOrder
+  leaveRequestId?: Prisma.SortOrder
 }
 
 export type LeaveDateCreateNestedOneWithoutAttendancesInput = {
@@ -397,14 +397,14 @@ export type LeaveDateUncheckedUpdateManyWithoutLeave_requestNestedInput = {
 }
 
 export type LeaveDateCreateWithoutAttendancesInput = {
-  leave_date: Date | string
+  leaveDate: Date | string
   leave_request: Prisma.LeaveRequestCreateNestedOneWithoutDatesInput
 }
 
 export type LeaveDateUncheckedCreateWithoutAttendancesInput = {
   id?: number
-  leave_request_id: number
-  leave_date: Date | string
+  leaveRequestId: number
+  leaveDate: Date | string
 }
 
 export type LeaveDateCreateOrConnectWithoutAttendancesInput = {
@@ -424,24 +424,24 @@ export type LeaveDateUpdateToOneWithWhereWithoutAttendancesInput = {
 }
 
 export type LeaveDateUpdateWithoutAttendancesInput = {
-  leave_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leaveDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   leave_request?: Prisma.LeaveRequestUpdateOneRequiredWithoutDatesNestedInput
 }
 
 export type LeaveDateUncheckedUpdateWithoutAttendancesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  leave_request_id?: Prisma.IntFieldUpdateOperationsInput | number
-  leave_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leaveRequestId?: Prisma.IntFieldUpdateOperationsInput | number
+  leaveDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type LeaveDateCreateWithoutLeave_requestInput = {
-  leave_date: Date | string
+  leaveDate: Date | string
   attendances?: Prisma.AttendanceCreateNestedManyWithoutLeave_dateInput
 }
 
 export type LeaveDateUncheckedCreateWithoutLeave_requestInput = {
   id?: number
-  leave_date: Date | string
+  leaveDate: Date | string
   attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutLeave_dateInput
 }
 
@@ -476,29 +476,29 @@ export type LeaveDateScalarWhereInput = {
   OR?: Prisma.LeaveDateScalarWhereInput[]
   NOT?: Prisma.LeaveDateScalarWhereInput | Prisma.LeaveDateScalarWhereInput[]
   id?: Prisma.IntFilter<"LeaveDate"> | number
-  leave_request_id?: Prisma.IntFilter<"LeaveDate"> | number
-  leave_date?: Prisma.DateTimeFilter<"LeaveDate"> | Date | string
+  leaveRequestId?: Prisma.IntFilter<"LeaveDate"> | number
+  leaveDate?: Prisma.DateTimeFilter<"LeaveDate"> | Date | string
 }
 
 export type LeaveDateCreateManyLeave_requestInput = {
   id?: number
-  leave_date: Date | string
+  leaveDate: Date | string
 }
 
 export type LeaveDateUpdateWithoutLeave_requestInput = {
-  leave_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leaveDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   attendances?: Prisma.AttendanceUpdateManyWithoutLeave_dateNestedInput
 }
 
 export type LeaveDateUncheckedUpdateWithoutLeave_requestInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  leave_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leaveDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutLeave_dateNestedInput
 }
 
 export type LeaveDateUncheckedUpdateManyWithoutLeave_requestInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  leave_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  leaveDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -534,8 +534,8 @@ export type LeaveDateCountOutputTypeCountAttendancesArgs<ExtArgs extends runtime
 
 export type LeaveDateSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  leave_request_id?: boolean
-  leave_date?: boolean
+  leaveRequestId?: boolean
+  leaveDate?: boolean
   leave_request?: boolean | Prisma.LeaveRequestDefaultArgs<ExtArgs>
   attendances?: boolean | Prisma.LeaveDate$attendancesArgs<ExtArgs>
   _count?: boolean | Prisma.LeaveDateCountOutputTypeDefaultArgs<ExtArgs>
@@ -543,25 +543,25 @@ export type LeaveDateSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type LeaveDateSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  leave_request_id?: boolean
-  leave_date?: boolean
+  leaveRequestId?: boolean
+  leaveDate?: boolean
   leave_request?: boolean | Prisma.LeaveRequestDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["leaveDate"]>
 
 export type LeaveDateSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  leave_request_id?: boolean
-  leave_date?: boolean
+  leaveRequestId?: boolean
+  leaveDate?: boolean
   leave_request?: boolean | Prisma.LeaveRequestDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["leaveDate"]>
 
 export type LeaveDateSelectScalar = {
   id?: boolean
-  leave_request_id?: boolean
-  leave_date?: boolean
+  leaveRequestId?: boolean
+  leaveDate?: boolean
 }
 
-export type LeaveDateOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "leave_request_id" | "leave_date", ExtArgs["result"]["leaveDate"]>
+export type LeaveDateOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "leaveRequestId" | "leaveDate", ExtArgs["result"]["leaveDate"]>
 export type LeaveDateInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   leave_request?: boolean | Prisma.LeaveRequestDefaultArgs<ExtArgs>
   attendances?: boolean | Prisma.LeaveDate$attendancesArgs<ExtArgs>
@@ -582,8 +582,8 @@ export type $LeaveDatePayload<ExtArgs extends runtime.Types.Extensions.InternalA
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    leave_request_id: number
-    leave_date: Date
+    leaveRequestId: number
+    leaveDate: Date
   }, ExtArgs["result"]["leaveDate"]>
   composites: {}
 }
@@ -1010,8 +1010,8 @@ export interface Prisma__LeaveDateClient<T, Null = never, ExtArgs extends runtim
  */
 export interface LeaveDateFieldRefs {
   readonly id: Prisma.FieldRef<"LeaveDate", 'Int'>
-  readonly leave_request_id: Prisma.FieldRef<"LeaveDate", 'Int'>
-  readonly leave_date: Prisma.FieldRef<"LeaveDate", 'DateTime'>
+  readonly leaveRequestId: Prisma.FieldRef<"LeaveDate", 'Int'>
+  readonly leaveDate: Prisma.FieldRef<"LeaveDate", 'DateTime'>
 }
     
 

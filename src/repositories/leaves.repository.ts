@@ -87,25 +87,25 @@ export class LeavesRepository {
         return prisma.leaveDate.findMany({
             where: {
                 leave_request: {
-                    user_id: userId,
-                    start_date: {
+                    userId,
+                    startDate: {
                         gte: startDate,
                         lt: endDate
                     }
                 }
             },
             select: {
-                leave_date: true,
+                leaveDate: true,
                 leave_request: {
                     select: {
                         id: true,
-                        start_date: true,
-                        end_date: true,
+                        startDate: true,
+                        endDate: true,
                         status: true,
                         reason: true,
-                        approved_at: true,
-                        created_at: true,
-                        rejection_reason: true,
+                        approvedAt: true,
+                        createdAt: true,
+                        rejectionReason: true,
                         approver: {
                             select: {
                                 id: true,
@@ -148,17 +148,17 @@ export class LeavesRepository {
 
         return prisma.leaveRequest.create({
             data: {
-            user_id,
-            leave_type_id: leaveType?.id!,
-            start_date: start,
-            end_date: end,
+            userId: user_id,
+            leaveTypeId: leaveType?.id!,
+            startDate: start,
+            endDate: end,
             reason: payload.reason,
-            created_at: new Date(`${payload.created_at}T00:00:00Z`),
+            createdAt: new Date(`${payload.created_at}T00:00:00Z`),
             status: 'pending',
 
             dates: {
                 create: dates.map(date => ({
-                    leave_date: date
+                    leaveDate: date
                 }))
             }
             }

@@ -20,14 +20,14 @@ model User {
   name  String
   phone String  @unique
   status  String
-  hire_date DateTime @default(now())
-  updated_at  DateTime  @default(now()) @updatedAt
+  hireDate DateTime @default(now()) @map("hire_date")
+  updatedAt  DateTime  @default(now()) @updatedAt @map("updated_at")
 
-  dept_id Int
-  role_id Int
+  deptId Int @map("dept_id")
+  roleId Int @map("role_id")
 
-  department  Department  @relation(fields: [dept_id], references: [id])
-  role  Role  @relation(fields: [role_id], references: [id])
+  department  Department  @relation(fields: [deptId], references: [id])
+  role  Role  @relation(fields: [roleId], references: [id])
   
   attendances Attendance[]
   LeaveRequest LeaveRequest[]
@@ -50,52 +50,52 @@ model Role {
 
 model Attendance {
   id  Int @id @default(autoincrement())
-  user_id String @db.Uuid
+  userId String @db.Uuid @map("user_id")
   date DateTime @db.Date
   clockin DateTime?
   clockout DateTime?
   worktime Int?
-  leave_date_id Int?
+  leaveDateId Int? @map("leave_date_id")
   note String? @db.Text
 
-  user User @relation(fields: [user_id], references: [id])
-  leave_date LeaveDate? @relation(fields: [leave_date_id], references: [id])
+  user User @relation(fields: [userId], references: [id])
+  leave_date LeaveDate? @relation(fields: [leaveDateId], references: [id])
 
-  @@index([user_id])
+  @@index([userId])
   @@index([date])
 }
 
 model LeaveRequest {
   id            Int      @id @default(autoincrement())
-  user_id       String   @db.Uuid
-  approver_id   String?  @db.Uuid
-  leave_type_id Int
+  userId       String   @db.Uuid @map("user_id")
+  approverId   String?  @db.Uuid @map("approver_id")
+  leaveTypeId Int @map("leave_type_id")
 
-  start_date    DateTime @db.Date
-  end_date      DateTime @db.Date
+  startDate    DateTime @db.Date @map("start_date")
+  endDate      DateTime @db.Date @map("end_date")
 
   status        String   @db.VarChar(20)
   reason        String?  @db.VarChar(255)
 
-  created_at    DateTime @default(now()) @db.Date
-  approved_at   DateTime? @db.Date
-  rejection_reason String? @db.VarChar(255)
+  createdAt    DateTime @default(now()) @db.Date @map("created_at")
+  approvedAt   DateTime? @db.Date @map("approved_at")
+  rejectionReason String? @db.VarChar(255) @map("rejection_reason")
 
   dates         LeaveDate[]
 
-  user          User     @relation(fields: [user_id], references: [id])
-  approver      User?    @relation("ApprovedLeaves", fields: [approver_id], references: [id])
-  leave_type    LeaveType @relation(fields: [leave_type_id], references: [id])
+  user          User     @relation(fields: [userId], references: [id])
+  approver      User?    @relation("ApprovedLeaves", fields: [approverId], references: [id])
+  leave_type    LeaveType @relation(fields: [leaveTypeId], references: [id])
 }
 
 model LeaveDate {
   id              Int      @id @default(autoincrement())
-  leave_request_id Int
-  leave_date      DateTime @db.Date
+  leaveRequestId Int @map("leave_request_id")
+  leaveDate      DateTime @db.Date @map("leave_date")
 
-  leave_request   LeaveRequest @relation(fields: [leave_request_id], references: [id])
+  leave_request   LeaveRequest @relation(fields: [leaveRequestId], references: [id])
 
-  @@unique([leave_request_id, leave_date])
+  @@unique([leaveRequestId, leaveDate])
 
   attendances Attendance[]
 }

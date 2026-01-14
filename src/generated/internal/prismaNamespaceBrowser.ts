@@ -83,10 +83,10 @@ export const UserScalarFieldEnum = {
   name: 'name',
   phone: 'phone',
   status: 'status',
-  hire_date: 'hire_date',
-  updated_at: 'updated_at',
-  dept_id: 'dept_id',
-  role_id: 'role_id'
+  hireDate: 'hireDate',
+  updatedAt: 'updatedAt',
+  deptId: 'deptId',
+  roleId: 'roleId'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -110,12 +110,12 @@ export type RoleScalarFieldEnum = (typeof RoleScalarFieldEnum)[keyof typeof Role
 
 export const AttendanceScalarFieldEnum = {
   id: 'id',
-  user_id: 'user_id',
+  userId: 'userId',
   date: 'date',
   clockin: 'clockin',
   clockout: 'clockout',
   worktime: 'worktime',
-  leave_date_id: 'leave_date_id',
+  leaveDateId: 'leaveDateId',
   note: 'note'
 } as const
 
@@ -124,16 +124,16 @@ export type AttendanceScalarFieldEnum = (typeof AttendanceScalarFieldEnum)[keyof
 
 export const LeaveRequestScalarFieldEnum = {
   id: 'id',
-  user_id: 'user_id',
-  approver_id: 'approver_id',
-  leave_type_id: 'leave_type_id',
-  start_date: 'start_date',
-  end_date: 'end_date',
+  userId: 'userId',
+  approverId: 'approverId',
+  leaveTypeId: 'leaveTypeId',
+  startDate: 'startDate',
+  endDate: 'endDate',
   status: 'status',
   reason: 'reason',
-  created_at: 'created_at',
-  approved_at: 'approved_at',
-  rejection_reason: 'rejection_reason'
+  createdAt: 'createdAt',
+  approvedAt: 'approvedAt',
+  rejectionReason: 'rejectionReason'
 } as const
 
 export type LeaveRequestScalarFieldEnum = (typeof LeaveRequestScalarFieldEnum)[keyof typeof LeaveRequestScalarFieldEnum]
@@ -141,8 +141,8 @@ export type LeaveRequestScalarFieldEnum = (typeof LeaveRequestScalarFieldEnum)[k
 
 export const LeaveDateScalarFieldEnum = {
   id: 'id',
-  leave_request_id: 'leave_request_id',
-  leave_date: 'leave_date'
+  leaveRequestId: 'leaveRequestId',
+  leaveDate: 'leaveDate'
 } as const
 
 export type LeaveDateScalarFieldEnum = (typeof LeaveDateScalarFieldEnum)[keyof typeof LeaveDateScalarFieldEnum]

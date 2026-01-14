@@ -27,13 +27,13 @@ export class AttendanceRepository {
 
         return prisma.attendance.create({
             data: {
-                user_id: userId,
+                userId,
                 date: date,
                 clockin: clockin,
             },
             select: {
                 id: true,
-                user_id: true,
+                userId: true,
                 date: true,
                 clockin: true,
                 clockout: true,
@@ -44,7 +44,7 @@ export class AttendanceRepository {
     async findByUserIdAndDate(userId: string, dateString: string) {
         return prisma.attendance.findFirst({
             where: {
-                user_id: userId,
+                userId,
                 date: {
                     gte: new Date(`${dateString}T00:00:00Z`),
                     lte: new Date(`${dateString}T23:59:59Z`),
@@ -52,7 +52,7 @@ export class AttendanceRepository {
             },
             select: {
                 id: true,
-                user_id: true,
+                userId: true,
                 date: true,
                 clockin: true,
                 clockout: true,
@@ -98,7 +98,7 @@ export class AttendanceRepository {
             },
             select: {
                 id: true,
-                user_id: true,
+                userId: true,
                 date: true,
                 clockin: true,
                 clockout: true,
@@ -114,7 +114,7 @@ export class AttendanceRepository {
             },
             select: {
                 id: true,
-                user_id: true,
+                userId: true,
                 date: true,
                 clockin: true,
                 clockout: true,
@@ -129,17 +129,17 @@ export class AttendanceRepository {
 
         return prisma.attendance.findMany({
             where: {
-                user_id: userId,
+                userId,
                 date: {
                     gte: startDate,
                     lt: nextMonthDate,
                 },
                 // 휴가와 연결된 근태는 제외 (leaves_date_id가 null인 것만)
-                leave_date_id: null,
+                leaveDateId: null,
             },
             select: {
                 id: true,
-                user_id: true,
+                userId: true,
                 date: true,
                 clockin: true,
                 clockout: true,
@@ -169,7 +169,7 @@ export class AttendanceRepository {
         // 해당 사용자의 모든 attendance에서 date 필드만 가져오기
         const attendances = await prisma.attendance.findMany({
             where: {
-                user_id: userId,
+                userId,
             },
             select: {
                 date: true,

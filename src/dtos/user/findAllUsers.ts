@@ -5,13 +5,13 @@ export type FindAllUsersDTO = {
     };
 
     filter?: {
-        status?: 'ACTIVE' | 'INACTIVE';
-        deptName?: string;
-        roleName?: string;
+        status?: 'active' | 'inactive' | "quit";
+        deptId?: number;
+        roleId?: number;
     }
 
     sort?: {
-        field: 'name' | 'email' | 'phone' | 'hireDate';
+        field: 'name' | 'email' | 'hireDate';
         order: 'ASC' | 'DESC';
     }
 

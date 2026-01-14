@@ -28,70 +28,69 @@ export class UserRepository {
     }
 
     async findAllUsers(options: FindAllUsersDTO) {
-    const { pagination, filter, sort, search } = options;
+        const { pagination, filter, sort, search } = options;
 
-    const searchFields = search?.fields ?? ['name', 'email', 'phone'];
+        const searchFields = search?.fields ?? ['name', 'email', 'phone'];
 
-    const where = {
-        AND: [
-        filter?.status ? { status: filter.status } : {},
-        filter?.deptName ? { department: { name: filter.deptName } } : {},
-        filter?.roleName ? { role: { name: filter.roleName } } : {},
-        search?.keyword
-            ? {
-                OR: searchFields.map(field => ({
-                [field]: {
-                    contains: search.keyword,
-                    mode: 'insensitive',
+        const where = {
+            AND: [
+            filter?.status ? { status: filter.status } : {},
+            filter?.deptId ? { department: { id: filter.deptId } } : {},
+            filter?.roleId ? { role: { id: filter.roleId } } : {},
+            search?.keyword
+                ? {
+                    OR: searchFields.map(field => ({
+                    [field]: {
+                        contains: search.keyword,
+                        mode: 'insensitive',
+                    },
+                    })),
+                }
+                : {},
+            ],
+        };
+
+        const SORT_FIELD_MAP = {
+            name: 'name',
+            email: 'email',
+            hireDate: 'hire_date',
+        } as const;
+
+        const [users, total] = await prisma.$transaction([
+            prisma.user.findMany({
+            where,
+            skip: (pagination.page - 1) * pagination.size,
+            take: pagination.size,
+            orderBy: sort
+                ? {
+                    [SORT_FIELD_MAP[sort.field]]: sort.order.toLowerCase(),
+                }
+                : { hireDate: 'desc' },
+            select: {
+                id: true,
+                name: true,
+                email: true,
+                phone: true,
+                hireDate: true,
+                status: true,
+                department: {
+                    select: {
+                        id: true,
+                        name: true,
+                    },
                 },
-                })),
+                role: {
+                    select: {
+                        id: true,
+                        name: true,
+                    },
+                },
             }
-            : {},
-        ],
-    };
+            }),
+            prisma.user.count({ where }),
+        ]);
 
-    const SORT_FIELD_MAP = {
-        name: 'name',
-        email: 'email',
-        phone: 'phone',
-        hireDate: 'hire_date',
-    } as const;
-
-    const [users, total] = await prisma.$transaction([
-        prisma.user.findMany({
-        where,
-        skip: (pagination.page - 1) * pagination.size,
-        take: pagination.size,
-        orderBy: sort
-            ? {
-                [SORT_FIELD_MAP[sort.field]]: sort.order.toLowerCase(),
-            }
-            : { hire_date: 'desc' },
-        select: {
-            id: true,
-            name: true,
-            email: true,
-            phone: true,
-            hire_date: true,
-            status: true,
-            department: {
-                select: {
-                    id: true,
-                    name: true,
-                },
-            },
-            role: {
-                select: {
-                    id: true,
-                    name: true,
-                },
-            },
-        }
-        }),
-        prisma.user.count({ where }),
-    ]);
-
-    return { users, total };
+        return { users, total };
     }
 
     async findRole(){
@@ -116,9 +115,9 @@ export class UserRepository {
                 name: payload.name,
                 phone: payload.phone,
                 status: payload.status,
-                hire_date: payload.hire_date,
-                dept_id: payload.dept_id,
-                role_id: payload.role_id
+                hireDate: payload.hire_date,
+                deptId: payload.dept_id,
+                roleId: payload.role_id
             }
         })
     }
